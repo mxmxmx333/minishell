@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/11 08:15:28 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/11 08:24:37 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/11 08:25:11 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-#include "libft.h"
-#include "lex.h"
-#include "exe.h"
-#include "pars.h"
+int main(int ac, char **av, char **env)
+{
+    (void)ac;
+    (void)av;
+    (void)env;
+    return (0);
+}
 
-#endif

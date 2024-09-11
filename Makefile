@@ -6,13 +6,13 @@
 #    By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 10:57:59 by mbonengl          #+#    #+#              #
-#    Updated: 2024/09/06 18:46:00 by mbonengl         ###   ########.fr        #
+#    Updated: 2024/09/11 08:27:41 by mbonengl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-Name 		:= 	pipex
+Name 		:= 	minishell
 CFLAGS 		:= 	-I./inc -I./libft/inc -Wall -Wextra -Werror
-BFLAGS		:= 	-I./bonus/inc 
+BFLAGS		:= 	-I./bonus/inc
 LDFLAGS		:= 	-L./libft -lft
 CC 			:= 	cc
 SRC_DIR 	:= 	./src
@@ -24,7 +24,10 @@ B_SRC_DIR	:= 	./bonus/src
 B_OBJ_DIR	:= 	./bonus/obj
 LIBFT_DIR	:= 	./libft
 LIBFT		:= 	$(LIBFT_DIR)/libft.a
-SRC 		:=	$(SRC_DIR)/
+SRC 		:=	$(SRC_DIR)/main.c \
+				$(SRC_DIR)/exe/exe.c \
+				$(SRC_DIR)/lex/lex.c \
+				$(SRC_DIR)/pars/pars.c
 BSRC		:=	$(B_SRC_DIR)/main_bonus.c \
 
 OBJ 		:= 	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
