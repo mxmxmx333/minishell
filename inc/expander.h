@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars.h                                             :+:      :+:    :+:   */
+/*   xpand.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 16:58:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/11 08:18:39 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/13 14:59:26 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARS_H
-# define PARS_H
+/*
+    This file contains is the header file for the xpand directory, which contains
+    the part of the minishell, that is responsible for expanding the tokens that
+    are passed to it.
+*/
 
-#include "libft.h"
+#ifndef XPAND_H
+# define XPAND_H
+
+#include "minishell.h"
 
 #endif

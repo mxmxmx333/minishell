@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   exe.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/13 15:07:28 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/13 14:54:16 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-    This file contains is the header file for the minishell project, which contains
-    the part of the minishell, that is responsible for the main execution of the
-    program.
+    This file contains is the header file for the exe directory, which contains
+    the part of the minishell, that is responsible for executing the commands
+    that are passed to it.
 */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef EXE_H
+# define EXE_H
 
 #include "libft.h"
-#include "lexer.h"
-#include "execution.h"
-#include "parser.h"
-#include "console.h"
-#include "expander.h"
 
 #endif
