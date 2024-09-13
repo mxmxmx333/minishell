@@ -6,7 +6,7 @@
 #    By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 10:57:59 by mbonengl          #+#    #+#              #
-#    Updated: 2024/09/11 08:27:41 by mbonengl         ###   ########.fr        #
+#    Updated: 2024/09/13 15:11:55 by mbonengl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,12 @@ B_OBJ_DIR	:= 	./bonus/obj
 LIBFT_DIR	:= 	./libft
 LIBFT		:= 	$(LIBFT_DIR)/libft.a
 SRC 		:=	$(SRC_DIR)/main.c \
-				$(SRC_DIR)/exe/exe.c \
-				$(SRC_DIR)/lex/lex.c \
-				$(SRC_DIR)/pars/pars.c
-BSRC		:=	$(B_SRC_DIR)/main_bonus.c \
+				$(SRC_DIR)/execution/execution.c \
+				$(SRC_DIR)/lexer/lexer.c \
+				$(SRC_DIR)/parser/parser.c
+				$(SRC_DIR)/expander/expander.c \
+				$(SRC_DIR)/console/console.c
+BSRC		:=	
 
 OBJ 		:= 	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 BOBJ		:=	$(BSRC:$(B_SRC_DIR)/%.c=$(B_OBJ_DIR)/%.o)

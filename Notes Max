@@ -1,9 +1,0 @@
-To Dos:
-
-Bash Behavior Notes:
-Lexing:
--> Inside "$USER ..." (doubles) variable is going to expand
--> Inside 'USER ... ' (singles) variable is not(!) going to expand
-here_doc:
--> At reading from here_doc: if "LIMITER" (double quotation marks) inside the here_doc variables do not expand!
--> 

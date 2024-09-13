@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/13 15:42:08 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/10 16:58:38 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/13 15:42:15 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	This file contains is the header file for the minishell project, which contains
-**	the part of the minishell, that is responsible for the main execution of the
-**	program.
+**	This file contains is the header file for the pars directory, which contains
+**	the part of the minishell, that is responsible for parsing the tokens that
+**	are passed to it.
 */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef PARSER_H
+# define PARSER_H
 
-#include "libft.h"
-#include "lexer.h"
-#include "execution.h"
-#include "parser.h"
-#include "console.h"
-#include "expander.h"
-#include "libraries.h"
+#include "minishell.h"
 
 #endif

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   console.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/13 15:42:08 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/13 14:49:46 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/13 15:37:36 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	This file contains is the header file for the minishell project, which contains
-**	the part of the minishell, that is responsible for the main execution of the
-**	program.
+**	This file contains is the header file for the cons directory, which contains
+**	the part of the minishell, that is responsible for displaying the prompt in
+**	the terminal. As well as reading from readline and rerouting the input to the
+**	lexer for tokenization.
 */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef CONSOLE_H
+# define CONSOLE_H
 
-#include "libft.h"
-#include "lexer.h"
-#include "execution.h"
-#include "parser.h"
-#include "console.h"
-#include "expander.h"
-#include "libraries.h"
+#include "minishell.h"
 
 #endif

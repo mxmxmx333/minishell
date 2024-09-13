@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/13 15:42:08 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/13 15:41:52 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	This file contains is the header file for the minishell project, which contains
-**	the part of the minishell, that is responsible for the main execution of the
-**	program.
+**	This file contains is the header file for the xpand directory, which contains
+**	the part of the minishell, that is responsible for expanding the tokens that
+**	are passed to it.
 */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef EXPANDER_H
+# define EXPANDER_H
 
-#include "libft.h"
-#include "lexer.h"
-#include "execution.h"
-#include "parser.h"
-#include "console.h"
-#include "expander.h"
-#include "libraries.h"
+#include "minishell.h"
 
 #endif

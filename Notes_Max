@@ -1,0 +1,25 @@
+https://chatgpt.com/share/03cf7538-0d36-46b9-80c6-d0273f6004a6
+https://docs.google.com/spreadsheets/d/1yPGGUgr_KCWgIIiosC3kEUrhBCtfumYv-_03svY1L4k/edit?usp=sharing
+
+
+To Dos:
+
+Bash Behavior Notes:
+Lexing:
+-> $((Arithmetic expression)):
+	Is going to expand to the result of the arithmetic expression
+$((1 - a4 + 5))	= 6 (a4 is treated as a 0) (as well as a4a, a4a4)
+$((1 - 5/ a1))	= bash: 1 - 5/ a1: division by 0 (error token is "a1") (bash exited with exit code 1)
+$((a - 4a + 5))	= bash: 1 -4a: value too great for base (error token is "4a") (as well as for 4a4a...)
+
+	
+
+-> Inside "$USER ..." (doubles) variable is going to expand
+-> Inside 'USER ... ' (singles) variable is not(!) going to expand
+here_doc:
+-> At reading from here_doc: if "LIMITER" (double quotation marks) inside the here_doc variables do not expand!
+-> 
+
+
+Input: 
+-> Input redirection seems to overwrite an existing pipe
