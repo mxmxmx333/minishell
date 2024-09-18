@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/13 15:41:52 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:56:50 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 #ifndef EXPANDER_H
 # define EXPANDER_H
 
-#include "minishell.h"
+# include "minishell.h"
 
 #endif

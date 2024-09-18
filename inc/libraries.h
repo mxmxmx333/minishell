@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/13 15:42:03 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:07:03 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #ifndef LIBRARIES_H
 # define LIBRARIES_H
 
+/*----------------------------> system libraries <----------------------------*/
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -32,5 +33,17 @@
 # include <dirent.h>
 # include <signal.h>
 # include <sys/wait.h>
+
+/*----------------------------> custom libraries <----------------------------*/
+# include "libft.h"
+# include "lexer.h"
+# include "execution.h"
+# include "parser.h"
+# include "console.h"
+# include "expander.h"
+# include "structures.h"
+# include "errors.h"
+# include "memory.h"
+# include "test.h"
 
 #endif

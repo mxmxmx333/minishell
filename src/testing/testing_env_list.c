@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   testing_env_list.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 16:57:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 15:56:53 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/18 16:07:25 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/18 16:27:41 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	This file contains is the header file for the lex directory, which contains
-**	the part of the minishell, that is responsible for tokenizing the input that
-**	is passed to it.
-*/
+#include "minishell.h"
 
-#ifndef LEXER_H
-# define LEXER_H
+void	test_environment_list(t_msh *msh)
+{
+	t_env	*env;
+	int		i = 0;
 
-# include "minishell.h"
-
-#endif
+	env = msh->env;
+	while (env)
+	{
+		printf("%d: %s=%s\n", i, env->v_name, env->v_value);
+		env = env->next;
+		i++;
+	}
+	printf("Number of environment variables: %zu\n", msh->env_size);
+}

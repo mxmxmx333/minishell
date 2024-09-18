@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:49:46 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/13 15:37:36 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:56:36 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 #ifndef CONSOLE_H
 # define CONSOLE_H
 
-#include "minishell.h"
+# include "minishell.h"
 
 #endif

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 16:57:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 15:56:53 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/16 15:05:04 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/16 15:06:35 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	This file contains is the header file for the lex directory, which contains
-**	the part of the minishell, that is responsible for tokenizing the input that
-**	is passed to it.
-*/
+#include "libft.h"
 
-#ifndef LEXER_H
-# define LEXER_H
-
-# include "minishell.h"
-
-#endif
+void	ft_free(void **ptr)
+{
+	if (!ptr)
+		return ;
+	if (*ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+}

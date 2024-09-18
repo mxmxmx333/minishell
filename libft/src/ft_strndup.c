@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 16:57:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 15:56:53 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/18 15:04:55 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/18 15:19:57 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	This file contains is the header file for the lex directory, which contains
-**	the part of the minishell, that is responsible for tokenizing the input that
-**	is passed to it.
-*/
+#include "libft.h"
 
-#ifndef LEXER_H
-# define LEXER_H
+char	*ft_strndup(const char *s, size_t n)
+{
+	char	*dup;
+	size_t	i;
 
-# include "minishell.h"
-
-#endif
+	if (!s || n < 0)
+		return (ft_strdup(""));
+	if (n > ft_strlen(s))
+		n = ft_strlen(s);
+	dup = (char *)ft_calloc(sizeof(char), n + 1);
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	return (dup);
+}
