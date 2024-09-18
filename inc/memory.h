@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:39:20 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 16:03:00 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:04:44 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "minishell.h"
 
 /*-----------------------------> cleaning memory <----------------------------*/
-void	clean_up_minishell(t_msh *msh);
+
+void	destroy_minishell(t_msh *msh);
 
 #endif

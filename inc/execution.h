@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 15:56:47 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 17:54:28 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,12 @@
 # define EXECUTION_H
 
 # include "minishell.h"
+
+/*------------------------------> perparation <------------------------------*/
+
+// exports the environment list to the execution environment
+void	convert_exp(t_msh *msh);
+// destroys the execution environment
+void	destroy_exp(t_msh *msh);
 
 #endif

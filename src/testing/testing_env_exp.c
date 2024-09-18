@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   testing_env_exp.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 08:24:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 17:56:18 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/18 17:40:44 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/18 18:07:23 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exit_success(t_msh *msh)
+void	test_environment_exp(t_msh *msh)
 {
-	clean_up_minishell(msh);
-	exit(EXIT_SUCCESS);
-}
+	char	**exp;
+	int		i = 0;
 
-int	main(int ac, char **av, char **env)
-{
-	t_msh	*msh;
-
-	msh = initialize_minishell(env);
-	test_environment_list(msh);
-	convert_exp(msh);
-	test_environment_exp(msh);
-	(void)ac;
-	(void)av;
-	exit_success(msh);
-	return (EXIT_SUCCESS);
+	exp = msh->exp;
+	while (exp[i])
+	{
+		printf("%d: %s\n", i, exp[i]);
+		i++;
+	}
+	printf("Number of exported variables: %d\n", i);
+	printf("Number of environment variables: %zu\n", msh->env_size);
 }
