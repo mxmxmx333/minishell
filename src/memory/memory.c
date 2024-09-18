@@ -6,17 +6,21 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:42:01 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 16:11:35 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:07:07 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	clean_up_minishell(t_msh *msh)
+/* 	this function calls all the other destroy functions, and frees minishell, 
+	to prepare a safe exit
+*/
+void	destroy_minishell(t_msh *msh)
 {
 	if (msh)
 	{
-		clear_env(msh);
-		ft_free((void**)&msh);
+		destroy_env(msh);
+		destroy_exp(msh);
+		ft_free((void **)&msh);
 	}
 }

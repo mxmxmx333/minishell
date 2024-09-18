@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 15:01:28 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 16:17:27 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:06:24 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	free_env_node(t_env **node)
 }
 
 /* completely frees the environment list */
-void	clear_env(t_msh *msh)
+void	destroy_env(t_msh *msh)
 {
 	t_env	*tmp;
 
@@ -82,7 +82,7 @@ void	initialize_environment(t_msh *msh, char **env)
 	int	i;
 
 	i = -1;
-	while(env[++i])
+	while (env[++i])
 		add_env_node(msh, create_env_node(msh, env[i]));
 	msh->env_size = i;
 }

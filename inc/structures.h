@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 16:16:23 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:05:04 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_environment
 /*--------------------------> MINISHELL structure <--------------------------*/
 typedef struct s_minishell
 {
+	char	**exp;		//environment variable list for passing to execve
 	t_env	*env;		//env variable list
 	size_t	env_size;	//env varable list size
 	t_var	*var;		//variable list
@@ -50,7 +51,7 @@ typedef struct s_minishell
 /* ENVIRONMENT */
 
 void	free_env_node(t_env **node);
-void	clear_env(t_msh *msh);
+void	destroy_env(t_msh *msh);
 void	add_env_node(t_msh *msh, t_env *node);
 t_env	*create_env_node(t_msh *msh, char *env);
 void	initialize_environment(t_msh *msh, char **env);

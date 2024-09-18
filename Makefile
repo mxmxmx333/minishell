@@ -6,12 +6,12 @@
 #    By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 10:57:59 by mbonengl          #+#    #+#              #
-#    Updated: 2024/09/18 16:21:17 by mbonengl         ###   ########.fr        #
+#    Updated: 2024/09/18 17:48:46 by mbonengl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 Name 		:= 	minishell
-CFLAGS 		:= 	-I./inc -I./libft/inc -Wall -Wextra -Werror
+CFLAGS 		:= 	-g -I./inc -I./libft/inc -Wall -Wextra -Werror
 BFLAGS		:= 	-I./bonus/inc
 LDFLAGS		:= 	-L./libft -lft
 CC 			:= 	cc
@@ -27,9 +27,11 @@ LIBFT		:= 	$(LIBFT_DIR)/libft.a
 SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/initialization/initialization.c \
 				$(SRC_DIR)/initialization/environment.c \
+				$(SRC_DIR)/execution/convert_export.c \
 				$(SRC_DIR)/errors/error_msg.c \
 				$(SRC_DIR)/memory/memory.c \
-				$(SRC_DIR)/testing/testing_env_list.c
+				$(SRC_DIR)/testing/testing_env_list.c \
+				$(SRC_DIR)/testing/testing_env_exp.c
 
 OBJ 		:= 	$(SRC:.c=.o)
 
