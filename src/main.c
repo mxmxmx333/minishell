@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:24:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 17:56:18 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:24:59 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exit_success(t_msh *msh)
 {
-	clean_up_minishell(msh);
+	destroy_minishell(msh);
 	exit(EXIT_SUCCESS);
 }
 
