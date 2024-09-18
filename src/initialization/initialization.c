@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 16:57:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 15:56:53 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/18 10:13:48 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/18 16:14:05 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
+
 /*
-**	This file contains is the header file for the lex directory, which contains
-**	the part of the minishell, that is responsible for tokenizing the input that
-**	is passed to it.
+**	This function initializes the minishell strucure, as well as the necessary
+**	additional structures to run the minishell program.
 */
+t_msh	*initialize_minishell(char **env)
+{
+	t_msh	*msh;
 
-#ifndef LEXER_H
-# define LEXER_H
-
-# include "minishell.h"
-
-#endif
+	msh = (t_msh *)ft_calloc(sizeof(t_msh), 1);
+	if (!msh)
+	{
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+		exit(EXIT_FAILURE);
+	}
+	initialize_environment(msh, env);
+	return (msh);
+}

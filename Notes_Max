@@ -23,3 +23,9 @@ here_doc:
 
 Input: 
 -> Input redirection seems to overwrite an existing pipe
+
+
+Libft updates:
+added:
+-> ft_free
+-> ft_strndup

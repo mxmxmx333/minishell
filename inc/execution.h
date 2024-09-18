@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/13 15:37:30 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:56:47 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 #ifndef EXECUTION_H
 # define EXECUTION_H
 
-#include "minishell.h"
+# include "minishell.h"
 
 #endif

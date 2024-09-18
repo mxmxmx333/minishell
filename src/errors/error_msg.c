@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.h                                            :+:      :+:    :+:   */
+/*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 16:57:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 15:56:53 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/18 13:27:56 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/18 16:20:06 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	This file contains is the header file for the lex directory, which contains
-**	the part of the minishell, that is responsible for tokenizing the input that
-**	is passed to it.
-*/
+#include "minishell.h"
 
-#ifndef LEXER_H
-# define LEXER_H
+void	error_simple(t_msh *msh, char *msg, int exit_code)
 
-# include "minishell.h"
-
-#endif
+{
+	ft_putstr_fd(msg, STDERR_FILENO);
+	clean_up_minishell(msh);
+	exit(exit_code);
+}
