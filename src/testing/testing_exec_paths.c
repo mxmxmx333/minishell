@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory.c                                           :+:      :+:    :+:   */
+/*   testing_exec_paths.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 13:42:01 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 18:07:07 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/19 12:18:45 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/19 12:37:43 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* 	this function calls all the other destroy functions, and frees minishell, 
-	to prepare a safe exit
-*/
-void	destroy_minishell(t_msh *msh)
+void	test_exec_paths(t_msh *msh)
 {
-	if (msh)
+	char	**paths;
+	int		i = 0;
+
+	paths = msh->paths;
+	while (paths[i])
 	{
-		destroy_env(msh);
-		destroy_exp(msh);
-		ft_free((void **)&msh);
+		printf("%d: %s\n", i, paths[i]);
+		i++;
 	}
+	printf("Number of paths: %d\n", i);
 }

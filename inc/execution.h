@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 17:54:28 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/19 12:30:51 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,15 @@
 
 /*------------------------------> perparation <------------------------------*/
 
-// exports the environment list to the execution environment
-void	convert_exp(t_msh *msh);
-// destroys the execution environment
-void	destroy_exp(t_msh *msh);
+void	convert_exp(t_msh *msh); //export
+void	destroy_exp(t_msh *msh); //export
+
+void	extract_paths(t_msh *msh); //paths
+void	destroy_paths(t_msh *msh); //paths
+
+/*------------------------------> structuring <-------------------------------*/
+
+void	prepare_execution(t_msh *msh);
+void	finished_execution(t_msh *msh);
 
 #endif

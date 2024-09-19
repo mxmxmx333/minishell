@@ -6,24 +6,18 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:11:55 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 17:57:20 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/19 12:36:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*destroys the export environment memory, seg-fault, double free safe*/
+/*destroys the export safely*/
 void	destroy_exp(t_msh *msh)
 {
-	int	i;
-
-	i = -1;
-	if (msh->exp)
-	{
-		while (msh->exp[++i])
-			ft_free((void **)&msh->exp[i]);
-		ft_free((void **)&msh->exp);
-	}
+	if (msh->export)
+		destroy_str_array(msh->export);
+	msh->export = NULL;
 }
 
 /*converts the environment list for export environment*/
@@ -37,7 +31,9 @@ void	convert_exp(t_msh *msh)
 	if (!env)
 		error_simple(msh, M_ERR, EXIT_FAILURE);
 	tmp = msh->env;
-	msh->exp = env;
+	if (msh->export)
+		destroy_exp(msh);
+	msh->export = env;
 	i = 0;
 	while (tmp)
 	{
@@ -47,5 +43,5 @@ void	convert_exp(t_msh *msh)
 		tmp = tmp->next;
 		i++;
 	}
-	msh->exp = env;
+	msh->export = env;
 }

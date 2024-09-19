@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:24:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 18:24:59 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/19 12:32:00 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	main(int ac, char **av, char **env)
 
 	msh = initialize_minishell(env);
 	test_environment_list(msh);
-	convert_exp(msh);
+	prepare_execution(msh);
 	test_environment_exp(msh);
+	test_exec_paths(msh);
 	(void)ac;
 	(void)av;
 	exit_success(msh);

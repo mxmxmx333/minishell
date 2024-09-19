@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testing_env_exp.c                                  :+:      :+:    :+:   */
+/*   destruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 17:40:44 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/19 12:37:27 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/18 13:42:01 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/19 12:40:45 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	test_environment_exp(t_msh *msh)
+/*	
+	destroys an array of strings safely, by freeing each string, then the array
+*/
+void	destroy_str_array(char **str)
 {
-	char	**exp;
-	int		i = 0;
+	int	i;
 
-	exp = msh->export;
-	while (exp[i])
+	i = -1;
+	while (str && str[++i])
+		free(str[i]);
+	free(str);
+}
+
+/* 	
+	this function calls all the other destroy functions, and frees minishell, 
+	to prepare a safe exit
+*/
+void	destroy_minishell(t_msh *msh)
+{
+	if (msh)
 	{
-		printf("%d: %s\n", i, exp[i]);
-		i++;
+		destroy_env(msh);
+		destroy_exp(msh);
+		destroy_paths(msh);
+		ft_free((void **)&msh);
 	}
-	printf("Number of exported variables: %d\n", i);
-	printf("Number of environment variables: %zu\n", msh->env_size);
 }
