@@ -17,7 +17,8 @@
 
 void	test_environment_list(t_msh *msh);
 void	test_environment_exp(t_msh *msh);
-void	test_exec_paths(t_msh *msh);
+void	test_paths(t_msh *msh);
+void	test_pathfinder(char *arg);
 
 
 #endif

@@ -36,6 +36,7 @@ void	destroy_minishell(t_msh *msh)
 		destroy_env(msh);
 		destroy_exp(msh);
 		destroy_paths(msh);
+		destroy_exe_path(msh);
 		ft_free((void **)&msh);
 	}
 }

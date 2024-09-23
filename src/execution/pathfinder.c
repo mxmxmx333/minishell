@@ -44,7 +44,7 @@ int	check_relabs_path(t_msh *msh, char *path)
 	if (dir)
 	{
 		closedir(dir);
-		return (error_complex(msh, "is a directory", path, 126), 0);
+		return (error_complex(msh, DIR_ERR, path, 126), 0);
 	}
 	if (access(path, X_OK) == 0)
 	{
@@ -52,8 +52,8 @@ int	check_relabs_path(t_msh *msh, char *path)
 		return (1);
 	}
 	if (access(path, F_OK) == 0)
-		return (error_complex(msh, "Permission denied", path, 126), 0);
-	return (error_complex(msh, "No such file or directory", path, 127), 0);
+		return (error_complex(msh, PER_ERR, path, 126), 0);
+	return (error_complex(msh, NODF_ERR, path, 127), 0);
 }
 
 void	check_f_ok(t_msh *msh, char *path)
@@ -66,11 +66,15 @@ void	check_f_ok(t_msh *msh, char *path)
 	{
 		tmp_path = ft_strjoin_three(msh->paths[i], "/", path);
 		if (access(msh->paths[i], F_OK) == 0)
-			return (error_complex(msh, "Permission denied", path, 126), 0);
+			return (error_complex(msh, PER_ERR, path, 126));
 		free(tmp_path);
 	}
 }
 
+/* 
+	Will set the "msh->exe_path" to the path of the executable, and do the 
+	error handling for the cmd execution
+*/
 int	pathfinder(t_msh *msh, char *path)
 {
 	char	*tmp_path;
@@ -83,7 +87,7 @@ int	pathfinder(t_msh *msh, char *path)
 	{
 		tmp_path = ft_strjoin_three(msh->paths[i], "/", path);
 		if (!tmp_path)
-			return (error(msh, "Malloc failed"), 0);
+			return (error_simple(msh, M_ERR, 1), 0);
 		if (access(tmp_path, X_OK) == 0)
 		{
 			msh->exe_path = tmp_path;
@@ -92,6 +96,6 @@ int	pathfinder(t_msh *msh, char *path)
 		free(tmp_path);
 	}
 	check_f_ok(msh, path);
-	return (error_complex(msh, " :command not found", path, 127), 0);
+	return (error_complex(msh, CMDNF_ERR, path, 127), 0);
 }
 

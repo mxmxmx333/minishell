@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-void	test_exec_paths(t_msh *msh)
+void	test_paths(t_msh *msh)
 {
 	char	**paths;
 	int		i = 0;

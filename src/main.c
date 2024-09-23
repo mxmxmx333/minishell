@@ -23,10 +23,7 @@ int	main(int ac, char **av, char **env)
 	t_msh	*msh;
 
 	msh = initialize_minishell(env);
-	test_environment_list(msh);
-	prepare_execution(msh);
-	test_environment_exp(msh);
-	test_exec_paths(msh);
+	test_pathfinder(env[1]);
 	(void)ac;
 	(void)av;
 	exit_success(msh);

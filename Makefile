@@ -30,11 +30,13 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/execution/convert_export.c \
 				$(SRC_DIR)/execution/paths.c \
 				$(SRC_DIR)/execution/execution.c \
+				$(SRC_DIR)/execution/pathfinder.c \
 				$(SRC_DIR)/errors/error_msg.c \
 				$(SRC_DIR)/memory/destruction.c \
 				$(SRC_DIR)/testing/testing_env_list.c \
 				$(SRC_DIR)/testing/testing_env_exp.c \
-				$(SRC_DIR)/testing/testing_exec_paths.c
+				$(SRC_DIR)/testing/testing_exec_paths.c \
+				$(SRC_DIR)/testing/testing_path_finder.c
 
 OBJ 		:= 	$(SRC:.c=.o)
 

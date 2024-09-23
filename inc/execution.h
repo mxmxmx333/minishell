@@ -29,6 +29,11 @@ void	destroy_exp(t_msh *msh); //export
 void	extract_paths(t_msh *msh); //paths
 void	destroy_paths(t_msh *msh); //paths
 
+/*---------------------------------> utils <----------------------------------*/
+
+int		pathfinder(t_msh *msh, char *path);
+void	destroy_exe_path(t_msh *msh);
+
 /*------------------------------> structuring <-------------------------------*/
 
 void	prepare_execution(t_msh *msh);

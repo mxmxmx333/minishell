@@ -17,10 +17,23 @@
 
 /*-----------------------------> ERROR MESSAGES <-----------------------------*/
 
+/* FATAL ERRORS */
+
 /* Malloc failure */
 # define M_ERR "Fatal Error: Insufficient memory!\n"
+
+/* EXECUTION ERRORS */
+
 /* Permission denied*/
-# define P_ERR ": Permission denied\n"
+# define PER_ERR ": permission denied\n"
+/* Is a directory */
+# define DIR_ERR ": is a directory\n"
+/* No such file or directory */
+# define NODF_ERR ": no such file or directory\n"
+/* Command not found*/
+# define CMDNF_ERR ": command not found\n"
+
+
 /*--------------------------> FUNCTION PROTOTYPES <---------------------------*/
 
 void	error_simple(t_msh *msh, char *msg, int exit_code);
