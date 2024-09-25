@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:05:02 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 17:43:12 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:45:09 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 
 void	test_environment_list(t_msh *msh);
 void	test_environment_exp(t_msh *msh);
+void	test_paths(t_msh *msh);
+void	test_pathfinder(t_msh *msh, char **av);
 
 #endif

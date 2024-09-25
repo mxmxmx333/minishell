@@ -6,7 +6,7 @@
 #    By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 10:57:59 by mbonengl          #+#    #+#              #
-#    Updated: 2024/09/18 17:48:46 by mbonengl         ###   ########.fr        #
+#    Updated: 2024/09/19 12:32:49 by mbonengl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,15 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/initialization/initialization.c \
 				$(SRC_DIR)/initialization/environment.c \
 				$(SRC_DIR)/execution/convert_export.c \
+				$(SRC_DIR)/execution/paths.c \
+				$(SRC_DIR)/execution/execution.c \
+				$(SRC_DIR)/execution/pathfinder.c \
 				$(SRC_DIR)/errors/error_msg.c \
-				$(SRC_DIR)/memory/memory.c \
+				$(SRC_DIR)/memory/destruction.c \
 				$(SRC_DIR)/testing/testing_env_list.c \
-				$(SRC_DIR)/testing/testing_env_exp.c
+				$(SRC_DIR)/testing/testing_env_exp.c \
+				$(SRC_DIR)/testing/testing_exec_paths.c \
+				$(SRC_DIR)/testing/testing_path_finder.c
 
 OBJ 		:= 	$(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 16:03:18 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:23:27 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,29 @@
 
 /*-----------------------------> ERROR MESSAGES <-----------------------------*/
 
-/*------------------------------> malloc error <------------------------------*/
+/* FATAL ERRORS */
+
+/* Malloc failure */
 # define M_ERR "Fatal Error: Insufficient memory!\n"
 
+/* EXECUTION ERRORS */
+
+/* Permission denied*/
+# define PER_ERR ": permission denied\n"
+/* Is a directory */
+# define DIR_ERR ": is a directory\n"
+/* No such file or directory */
+# define NODF_ERR ": no such file or directory\n"
+/* Command not found*/
+# define CMDNF_ERR ": command not found\n"
+
+/* Function specific ERRORS */
+
+/* Error message, if Pathfinder recieves NULL input */
+# define PATHFINDER_ERR "ERROR: Pathfinder failed, you tried to input NULL\n"
 /*--------------------------> FUNCTION PROTOTYPES <---------------------------*/
 
-//simple error message
 void	error_simple(t_msh *msh, char *msg, int exit_code);
+void	error_complex(t_msh *msh, char *msg, char *param, int exit_code);
 
 #endif
