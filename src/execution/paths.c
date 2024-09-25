@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 11:57:32 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/19 13:55:23 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:42:59 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ void	extract_paths(t_msh *msh)
 		destroy_paths(msh);
 	msh->paths = paths;
 }
-
