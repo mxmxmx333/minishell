@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+         #
+#    By: mbonengl <mbonengl@student.42vienna.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/04 12:08:46 by mbonengl          #+#    #+#              #
 #    Updated: 2024/09/18 15:07:52 by mbonengl         ###   ########.fr        #

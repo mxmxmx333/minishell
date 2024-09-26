@@ -3,7 +3,8 @@
 /*                                                        :::      ::::::::   */
 /*   testing_env_exp.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:40:44 by mbonengl          #+#    #+#             */
 /*   Updated: 2024/09/19 12:37:27 by mbonengl         ###   ########.fr       */

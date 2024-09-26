@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   initialize.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:58:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 15:58:23 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:17:52 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,24 @@
 **	are passed to it.
 */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef INITIALIZE_H
+# define INITIALIZE_H
 
 # include "minishell.h"
+
+/* 
+	INIT MINISHELL <-----------------------------------------------------
+*/
+t_msh	*initialize_minishell(char **env);
+void	destroy_minishell(t_msh *msh);
+
+/* 
+	ENV LIST <-----------------------------------------------------------
+*/
+void	free_env_node(t_env **node);
+void	destroy_env(t_msh *msh);
+void	add_env_node(t_msh *msh, t_env *node);
+t_env	*create_env_node(t_msh *msh, char *env);
+void	initialize_environment(t_msh *msh, char **env);
 
 #endif

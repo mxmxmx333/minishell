@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libraries.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 17:46:48 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:16:15 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # include "libft.h"
 # include "structures.h"
 # include "lexer.h"
-# include "parser.h"
+# include "initialize.h"
 # include "console.h"
 # include "expander.h"
 # include "errors.h"

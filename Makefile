@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+         #
+#    By: mbonengl <mbonengl@student.42vienna.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/05 10:57:59 by mbonengl          #+#    #+#              #
 #    Updated: 2024/09/19 12:32:49 by mbonengl         ###   ########.fr        #
@@ -32,7 +32,10 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/execution/execution.c \
 				$(SRC_DIR)/execution/pathfinder.c \
 				$(SRC_DIR)/errors/error_msg.c \
+				$(SRC_DIR)/errors/syntax_error.c \
 				$(SRC_DIR)/memory/destruction.c \
+				$(SRC_DIR)/lexer/interpreting_utils.c \
+				$(SRC_DIR)/lexer/token_list_utils.c \
 				$(SRC_DIR)/testing/testing_env_list.c \
 				$(SRC_DIR)/testing/testing_env_exp.c \
 				$(SRC_DIR)/testing/testing_exec_paths.c \

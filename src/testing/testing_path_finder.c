@@ -3,7 +3,8 @@
 /*                                                        :::      ::::::::   */
 /*   testing_path_finder.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 16:45:30 by mbonengl          #+#    #+#             */
 /*   Updated: 2024/09/25 16:47:46 by mbonengl         ###   ########.fr       */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:36:29 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/08/25 13:33:44 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/26 19:08:03 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

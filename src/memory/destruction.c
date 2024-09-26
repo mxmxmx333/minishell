@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:42:01 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/19 12:40:45 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:07:27 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ void	destroy_str_array(char **str)
 	free(str);
 }
 
+/* 
+	this function will destroy the current command line
+*/
+void	destroy_cmd_line(t_msh *msh)
+{
+	if (msh->cur_cmd_line)
+	{
+		free(msh->cur_cmd_line);
+		msh->cur_cmd_line = NULL;
+	}
+}
+
 /* 	
 	this function calls all the other destroy functions, and frees minishell, 
 	to prepare a safe exit
@@ -37,6 +49,8 @@ void	destroy_minishell(t_msh *msh)
 		destroy_exp(msh);
 		destroy_paths(msh);
 		destroy_exe_path(msh);
+		destroy_tokens(msh);
+		destroy_cmd_line(msh);
 		ft_free((void **)&msh);
 	}
 }

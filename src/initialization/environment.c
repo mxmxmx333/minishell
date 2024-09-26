@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 15:01:28 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/19 14:10:29 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/26 18:56:42 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/26 18:56:57 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

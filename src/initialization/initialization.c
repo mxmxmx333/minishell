@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 10:13:48 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 16:14:05 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/26 18:56:36 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/26 18:57:17 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

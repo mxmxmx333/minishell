@@ -3,7 +3,8 @@
 /*                                                        :::      ::::::::   */
 /*   testing_exec_paths.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 12:18:45 by mbonengl          #+#    #+#             */
 /*   Updated: 2024/09/19 12:37:43 by mbonengl         ###   ########.fr       */

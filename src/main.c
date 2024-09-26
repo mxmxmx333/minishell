@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 08:24:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/19 12:32:00 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/26 18:51:28 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/26 18:55:02 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int	main(int ac, char **av, char **env)
 	t_msh	*msh;
 
 	msh = initialize_minishell(env);
-	test_pathfinder(env[1]);
-	(void)ac;
-	(void)av;
-	exit_success(msh);
-	return (EXIT_SUCCESS);
+	if (ac > 1)
+	{
+		msh->cur_cmd_line = ft_strdup(av[1]);
+		check_syntax_error_quotes(msh);
+		printf("cmd_line: %s\n syntax correct :) \n", msh->cur_cmd_line);
+	}
+	return (exit_success(msh), EXIT_SUCCESS);
 }

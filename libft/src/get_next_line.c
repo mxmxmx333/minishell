@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:36:31 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/08/25 13:38:38 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/26 19:08:03 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,11 @@ char	*get_next_line(int fd)
 	char			*current_line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
-		return ((lstclear(&b_list)), NULL);
+		return (lstclear(&b_list), NULL);
 	if (copycontent(fd, &b_list) == -1)
 		return (lstclear(&b_list), NULL);
 	if (!b_list)
-	{
-		resetlist(&b_list);
-		return (NULL);
-	}
+		return (resetlist(&b_list), NULL);
 	current_line = takeline(b_list);
 	if (!current_line)
 		return (lstclear(&b_list), NULL);

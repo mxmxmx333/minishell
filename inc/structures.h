@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/19 14:12:29 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:16:54 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,35 @@
 
 # include "minishell.h"
 
+/*--------------------------> TOKENS linked list <---------------------------*/
+typedef struct s_tokens
+{
+	char			*content;	//token content
+	char			*file;		//file name
+	int				type;		//type of token
+	int				expand;		//mode for expansion
+	struct s_tokens	*next;
+}	t_tok;
+
 /*-------------------------> VARIABLE linked list <--------------------------*/
+/*
+	*v_name;
+	*v_value;
+	*next;
+*/
 typedef struct s_variables
 {
 	char				*v_name;
 	char				*v_value;
 	struct s_variables	*next;
-}						t_var;
+}	t_var;
 
 /*--------------------> ENVIRONMENT variable linked list <-------------------*/
+/*
+	*v_name;
+	*v_value;
+	*next;
+*/
 typedef struct s_environment
 {
 	char					*v_name;
@@ -36,36 +56,33 @@ typedef struct s_environment
 	struct s_environment	*next;
 }	t_env;
 
-typedef struct s_execution
-{
-	char	**export;
-	char	**paths;
-}	t_exec;
-
 /*--------------------------> MINISHELL structure <--------------------------*/
+/* 
+	**export
+	**paths
+	*exe_path
+	*env
+	env_size
+	*var
+	var_size
+	*cur_dir
+	*prompt
+	*cur_cmd_line
+	*tokens
+*/
 typedef struct s_minishell
 {
-	char	**export;
-	char	**paths;
-	char	*exe_path;	//executable path
-	t_env	*env;		//env variable list
-	size_t	env_size;	//env varable list size
-	t_var	*var;		//variable list
-	size_t	var_size;	//variable list size
-	char	*cur_dir;	//current directory
-	char	*prompt;	//current prompt for console
+	char	**export;		//exported list for execution
+	char	**paths;		//path list
+	char	*exe_path;		//executable path
+	t_env	*env;			//env variable list
+	size_t	env_size;		//env varable list size
+	t_var	*var;			//variable list
+	size_t	var_size;		//variable list size
+	char	*cur_dir;		//current directory
+	char	*prompt;		//current prompt for console
+	char	*cur_cmd_line;	//current input
+	t_tok	*tokens;		//tokens list
 }	t_msh;
-
-/* ENVIRONMENT */
-
-void	free_env_node(t_env **node);
-void	destroy_env(t_msh *msh);
-void	add_env_node(t_msh *msh, t_env *node);
-t_env	*create_env_node(t_msh *msh, char *env);
-void	initialize_environment(t_msh *msh, char **env);
-
-/* MINISHELL */
-
-t_msh	*initialize_minishell(char **env);
 
 #endif

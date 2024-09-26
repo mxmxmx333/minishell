@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   empty_white.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 10:34:22 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/08 10:37:15 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/09/26 18:59:55 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/09/26 19:07:47 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	str_is_empty(char *str)
 {
 	while (*str)
 	{
-		if (*str != ' ' && *str != '\t' && *str != '\n')
+		if (*str != ' ' && *str != '\t' && *str != '\n' && *str != '\v' \
+		&& *str != '\f' && *str != '\r')
 			return (0);
 		str++;
 	}

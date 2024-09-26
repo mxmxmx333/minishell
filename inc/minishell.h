@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/18 16:14:57 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:48:37 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@
 /*-----------------------------> Initialization <-----------------------------*/
 
 t_msh	*initialize_minishell(char **env);
+void	exit_success(t_msh *msh);
+
+void	lexer(t_msh *msh);
+
 
 #endif
