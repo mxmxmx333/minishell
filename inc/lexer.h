@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 19:08:03 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/27 15:22:53 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@
 
 # define END 0
 # define PIPE 1
-# define REDIR 2
-# define HERE_DOC 3
-# define WORD 4
-# define CMD 5
-# define ARG 6
-
+# define REDI_IN 2
+# define REDI_TOUT 3
+# define REDI_AOUT 4
+# define HERE_DOC 5
+# define WORD 6
+# define CMD 7
+# define ARG 8
 
 /*------------------------------> EXPAND TYPES <-------------------------------*/
 
@@ -54,18 +55,21 @@ void	destroy_tokens(t_msh *msh);
 
 int		is_end_token(char c);
 char	*ret_next_twin(char *position);
+char	*skip_whitespace(char *position);
+int		is_redirection(char c);
 
 /* 
 	Error handling <-----------------------------------------------------------
 */
 
-void	check_syntax_error_quotes(t_msh *msh);
+int		check_syntax_error_quotes(t_msh *msh);
 
 /* 
 	Tokenizing <---------------------------------------------------------------
 */
 
 char	*put_token_str(t_msh *msh, char *position);
+char	*handle_redirection(t_msh *msh, char *pos);
 
 
 

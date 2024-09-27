@@ -6,20 +6,26 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:59:55 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 19:07:47 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/27 14:17:40 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int	c_is_white(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' \
+	|| c == '\r');
+}
+
 int	str_is_empty(char *str)
 {
 	while (*str)
 	{
-		if (*str != ' ' && *str != '\t' && *str != '\n' && *str != '\v' \
-		&& *str != '\f' && *str != '\r')
+		if (!c_is_white(*str))
 			return (0);
 		str++;
 	}
 	return (1);
 }
+

@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:55:35 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 14:20:57 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:51:44 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	pathfinder(t_msh *msh, char *path)
 	int		i;
 
 	if (!path || !msh)
-		return (error_simple(msh, PATHFINDER_ERR, 1), 1);
+		return (error_simple(msh, SUFA_ERR_PATHFINDER, 42), 42);
 	if (is_real_path(path))
 		return (check_relabs_path(msh, path));
 	i = -1;

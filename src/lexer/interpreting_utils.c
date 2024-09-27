@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:49:02 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 17:49:53 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:55:22 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	is_end_token(char c)
 /* 
 	This function will return the pointer to the next char in the string, 
 	that is identical with the first character in the string.
+	If it fails, it will return pointer to the null terminator.
 	Useful, to close the quotes.
 */
 char	*ret_next_twin(char *position)

@@ -6,11 +6,18 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:08:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 18:56:16 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/27 15:25:47 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*skip_whitespace(char *position)
+{
+	while (c_is_white(*position))
+		position++;
+	return (position);
+}
 
 /*
 	takes a string fragment and processes it into a token
@@ -33,16 +40,6 @@ void	process_fragment(t_msh *msh, char *fragment)
 	free(fragment);
 }
 
-void	put_end_token(t_msh *msh)
-{
-	t_tok	*new;
-
-	new = create_tok_node(msh);
-	add_tok_node(msh, new);
-	new->content = ft_strdup("");
-	new->type = END;
-}
-
 /* 
 	takes the current position in the processed input string(cmd_line)
 	it will process the next fragment and set token (tokens)
@@ -52,12 +49,13 @@ char	*put_token_str(t_msh *msh, char *position)
 {
 	char	*start;
 
-	if (!position || !*position)
+	if (!position || !*position || str_is_empty(position))
 		return (NULL);
-	if (str_is_empty(position))
-		return (put_end_token(msh), NULL);
+	position = skip_whitespace(position);
+	if (is_redirection(*position))
+		return (handle_redirection(msh, position));
 	start = position;
-	while (*position && !is_token_end(*position))
+	while (*position && !is_end_token(*position))
 	{
 		if (*position == '\"' || *position == '\'')
 			position = ret_next_twin(position);

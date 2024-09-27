@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 18:16:54 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:55:17 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # include "minishell.h"
 
 /*--------------------------> TOKENS linked list <---------------------------*/
+/*
+	*content;
+	*file;
+	type;
+	expand;
+	*next;
+*/
 typedef struct s_tokens
 {
 	char			*content;	//token content
@@ -83,6 +90,7 @@ typedef struct s_minishell
 	char	*prompt;		//current prompt for console
 	char	*cur_cmd_line;	//current input
 	t_tok	*tokens;		//tokens list
+	int		status;			//exit code
 }	t_msh;
 
 #endif
