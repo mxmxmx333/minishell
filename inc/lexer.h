@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/27 15:22:53 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/29 16:33:24 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int		is_redirection(char c);
 	Error handling <-----------------------------------------------------------
 */
 
-int		check_syntax_error_quotes(t_msh *msh);
+void	check_syntax_error_quotes(t_msh *msh);
+void	check_token_err_redi(t_msh *msh);
 
 /* 
 	Tokenizing <---------------------------------------------------------------
@@ -70,9 +71,6 @@ int		check_syntax_error_quotes(t_msh *msh);
 
 char	*put_token_str(t_msh *msh, char *position);
 char	*handle_redirection(t_msh *msh, char *pos);
-
-
-
-
+void	put_content_to_redi(t_msh *msh);
 
 #endif

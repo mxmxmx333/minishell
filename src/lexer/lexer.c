@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:58:43 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/27 15:18:06 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/29 16:34:31 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	lexer(t_msh *msh)
 {
 	char	*position;
 
-	if (check_syntax_error_quotes(msh))
-		return (destroy_cmd_line(msh));
+	check_syntax_error_quotes(msh);
 	position = msh->cur_cmd_line;
 	while (*position)
 	{
@@ -32,5 +31,7 @@ void	lexer(t_msh *msh)
 		if (!position)
 			break ;
 	}
+	put_content_to_redi(msh);
+	check_token_err_redi(msh);
 	destroy_cmd_line(msh);
 }

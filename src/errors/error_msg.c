@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:27:56 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/27 13:57:33 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/29 16:55:55 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,26 @@ void	error_simple(t_msh *msh, char *msg, int exit_code)
 		destroy_minishell(msh);
 		exit(EXIT_FAILURE);
 	}
-	ft_putstr_fd(msg, STDERR_FILENO);
+	ft_putendl_fd(msg, STDERR_FILENO);
 	free(error_msg);
 	destroy_minishell(msh);
 	exit(exit_code);
 }
+
+void	error_complex_tok(t_msh *msh, char *msg, char *param, int exit_code)
+{
+	char	*error_msg;
+
+	ft_putstr_fd("msh: ", STDERR_FILENO);
+	error_msg = ft_strjoin_three(param, msg, "'");
+	if (!error_msg)
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+	ft_putendl_fd(error_msg, STDERR_FILENO);
+	free(error_msg);
+	destroy_minishell(msh);
+	exit(exit_code);
+}
+
 
 void	error_complex(t_msh *msh, char *msg, char *param, int exit_code)
 {
@@ -46,20 +61,8 @@ void	error_complex(t_msh *msh, char *msg, char *param, int exit_code)
 	error_msg = ft_strjoin_three("msh: ", param, msg);
 	if (!error_msg)
 		error_simple(msh, M_ERR, EXIT_FAILURE);
-	ft_putstr_fd(error_msg, STDERR_FILENO);
+	ft_putendl_fd(error_msg, STDERR_FILENO);
 	free(error_msg);
 	destroy_minishell(msh);
 	exit(exit_code);
-}
-
-int	msh_error(t_msh *msh, char *msg, char *param, int ret_value)
-{
-	char	*error_msg;
-
-	msh->status = ret_value;
-	error_msg = ft_strjoin_three("msh: ", param, msg);
-	if (!error_msg)
-		return (error_simple(NULL, M_ERR, EXIT_FAILURE), 1);
-	ft_putstr_fd(msg, STDERR_FILENO);
-	return (ret_value);
 }

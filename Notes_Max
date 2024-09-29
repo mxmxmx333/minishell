@@ -29,3 +29,12 @@ Libft updates:
 added:
 -> ft_free
 -> ft_strndup
+-> is_white(char c)
+
+current commit: 
+
+Made architecture decision: 
+Tokenizer will launch its own child and the child will handle errors and syntax errors and exit with that code. 
+This has positive effect in terms of how erros can be handled in the tokenizer, since it doesnt have to check anymore. On error tokenizer can now exit at anytime. 
+-> Effect: Syntax Error function has been changed. msh_error function is obsolete and can be deleted. 
+

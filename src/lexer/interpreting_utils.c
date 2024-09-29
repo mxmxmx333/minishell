@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:49:02 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/27 13:55:22 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:25:55 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ int	is_end_token(char c)
 	return (0);
 }
 
+int	is_redirection(char c)
+{
+	return (c == '<' || c == '>');
+}
 /* 
 	This function will return the pointer to the next char in the string, 
 	that is identical with the first character in the string.
@@ -43,5 +47,12 @@ char	*ret_next_twin(char *position)
 		if (*position == quote)
 			return (position);
 	}
+	return (position);
+}
+
+char	*skip_whitespace(char *position)
+{
+	while (c_is_white(*position))
+		position++;
 	return (position);
 }
