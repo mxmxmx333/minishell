@@ -25,5 +25,11 @@ int	main(int ac, char **av, char **env)
 	msh = initialize_minishell(env);
 	if (ac > 1)
 		test_lexer(msh, av[1]);
+	while (1)
+	{
+		create_prompt(msh);
+		msh->cur_cmd_line = readline(msh->prompt);
+		printf("%s", msh->cur_cmd_line);
+	}
 	return (exit_success(msh), EXIT_SUCCESS);
 }

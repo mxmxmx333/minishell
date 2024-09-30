@@ -22,4 +22,6 @@
 
 # include "minishell.h"
 
+int create_prompt(t_msh *msh);
+
 #endif
