@@ -6,12 +6,15 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:55:35 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/27 12:51:44 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 10:53:29 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/*
+	Will destroy the exe_path safely.
+*/
 void	destroy_exe_path(t_msh *msh)
 {
 	if (msh->exe_path)
@@ -56,6 +59,9 @@ static int	check_relabs_path(t_msh *msh, char *path)
 	return (error_complex(msh, NODF_ERR, path, 127), 0);
 }
 
+/* 
+	Part of the pathfinder function. 
+*/
 static void	check_f_ok(t_msh *msh, char *path)
 {
 	int		i;

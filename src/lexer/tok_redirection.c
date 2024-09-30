@@ -6,31 +6,41 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:28:31 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/29 16:49:10 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:37:07 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	put_content_to_redi(t_msh *msh)
+/* 
+	will put the redirection content into the token list as a string.
+	( <, >, >>, << )
+*/
+static void	put_redi(t_msh *msh, t_tok *tok, int type)
 {
-	t_tok	*tok;
-
-	tok = msh->tokens;
-	while (tok)
+	if (type == REDI_IN)
 	{
-		if (tok->type == REDI_IN)
 		tok->content = ft_strdup("<");
-		else if (tok->type == REDI_TOUT)
-			tok->content = ft_strdup(">");
-		else if (tok->type == REDI_AOUT)
-			tok->content = ft_strdup(">>");
-		else if (tok->type == HERE_DOC)
-			tok->content = ft_strdup("<<");
-		if (!tok->content)
-			error_simple(msh, M_ERR, EXIT_FAILURE);
-		tok = tok->next;
+		tok->type = REDI_IN;
 	}
+	else if (type == REDI_TOUT)
+	{
+		tok->content = ft_strdup(">");
+		tok->type = REDI_TOUT;
+	}
+	else if (type == REDI_AOUT)
+	{
+		tok->content = ft_strdup(">>");
+		tok->type = REDI_AOUT;
+	}
+	else if (type == HERE_DOC)
+	{
+		tok->content = ft_strdup("<<");
+		tok->type = HERE_DOC;
+	}
+	if (!tok->content)
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+	tok = tok->next;
 }
 
 /* 
@@ -42,26 +52,26 @@ void	put_content_to_redi(t_msh *msh)
 	function will implement that token, and return the position after the file
 
 */
-static int	redi_type(char *pos, t_tok *new)
+static int	redi_type(t_msh *msh, char *pos, t_tok *new)
 {
 	if (*pos == '<')
 	{
 		if (*(pos + 1) == '<')
 		{
-			new->type = HERE_DOC;
+			put_redi(msh, new, HERE_DOC);
 			return (2);
 		}
-		new->type = REDI_IN;
+		put_redi(msh, new, REDI_IN);
 		return (1);
 	}
 	else if (*pos == '>')
 	{
 		if (*(pos + 1) == '>')
 		{
-			new->type = REDI_AOUT;
+			put_redi(msh, new, REDI_AOUT);
 			return (2);
 		}
-		new->type = REDI_TOUT;
+		put_redi(msh, new, REDI_TOUT);
 		return (1);
 	}
 	return (0);
@@ -85,6 +95,14 @@ static int	redi_type(char *pos, t_tok *new)
 // 	return (pos);
 // }
 
+/* 
+	we enter this function, if we are on a < or > character
+
+	syntax should have been checked before, so we can assume, that there will
+	be a file / limiter name after the redirection character
+
+	function will implement that token, and return the position after the file
+*/
 char	*handle_redirection(t_msh *msh, char *pos)
 {
 	t_tok 		*new;
@@ -93,6 +111,6 @@ char	*handle_redirection(t_msh *msh, char *pos)
 	if (!new)
 		return (NULL);
 	add_tok_node(msh, new);
-	pos += redi_type(pos, new);
+	pos += redi_type(msh, pos, new);
 	return (pos);
 }

@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 18:16:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:04:22 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # include <sys/wait.h>
 
 /*----------------------------> custom libraries <----------------------------*/
+# include "minishell.h"
 # include "libft.h"
 # include "structures.h"
 # include "lexer.h"

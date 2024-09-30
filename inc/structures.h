@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/27 13:55:17 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:36:49 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@
 
 # include "minishell.h"
 
+/*------------------------------> TOKEN TYPES <-------------------------------*/
+
+typedef enum e_typ
+{
+	END,
+	PIPE,
+	REDI_IN,
+	REDI_TOUT,
+	REDI_AOUT,
+	HERE_DOC,
+	WORD,
+	CMD,
+	ARG
+}	te_typ;
+
 /*--------------------------> TOKENS linked list <---------------------------*/
 /*
 	*content;
@@ -32,7 +47,7 @@ typedef struct s_tokens
 {
 	char			*content;	//token content
 	char			*file;		//file name
-	int				type;		//type of token
+	te_typ			type;		//type of token
 	int				expand;		//mode for expansion
 	struct s_tokens	*next;
 }	t_tok;

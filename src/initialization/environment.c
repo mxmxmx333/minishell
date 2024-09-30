@@ -6,13 +6,15 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:42 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 18:56:57 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 10:53:29 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* completely frees one node safely */
+/* 
+	completely frees one node safely 
+*/
 void	free_env_node(t_env **node)
 {
 	if (node && *node)
@@ -25,7 +27,9 @@ void	free_env_node(t_env **node)
 	}
 }
 
-/* completely frees the environment list */
+/* 
+	completely frees the environment list
+*/
 void	destroy_env(t_msh *msh)
 {
 	t_env	*tmp;
@@ -39,7 +43,9 @@ void	destroy_env(t_msh *msh)
 	msh->env = NULL;
 }
 
-/* adds a node to the environment list */
+/* 
+**	adds a node to the environment list
+*/
 void	add_env_node(t_msh *msh, t_env *node)
 {
 	t_env	*tmp;
@@ -55,7 +61,9 @@ void	add_env_node(t_msh *msh, t_env *node)
 	tmp->next = node;
 }
 
-/* creates a node for the environment list */
+/* 
+**	creates a node for the environment list
+*/
 t_env	*create_env_node(t_msh *msh, char *env)
 {
 	t_env	*node;
@@ -76,7 +84,9 @@ t_env	*create_env_node(t_msh *msh, char *env)
 	return (node);
 }
 
-/* initializes the environment list */
+/* 
+**	initializes the environment list 
+*/
 void	initialize_environment(t_msh *msh, char **env)
 {
 	int	i;

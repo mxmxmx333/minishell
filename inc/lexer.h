@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/29 16:33:24 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:46:12 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,11 @@
 
 # include "minishell.h"
 
-/*------------------------------> TOKEN TYPES <-------------------------------*/
+/*-------------------------------> EXPAND TYPES <-------------------------------*/
 
-# define END 0
-# define PIPE 1
-# define REDI_IN 2
-# define REDI_TOUT 3
-# define REDI_AOUT 4
-# define HERE_DOC 5
-# define WORD 6
-# define CMD 7
-# define ARG 8
+/*---------------------------> FUNCTION PROTOTYPES <---------------------------*/
 
-/*------------------------------> EXPAND TYPES <-------------------------------*/
-
-/*------------------------------> TOKEN TYPES <-------------------------------*/
-
-
-/*------------------------------> FUNCTION PROTOTYPES <-----------------------*/
-
-/* 
+/*
 	Tokens linked list utils <--------------------------------------------------
 */
 
@@ -49,7 +34,7 @@ void	add_tok_node(t_msh *msh, t_tok *new);
 void	destroy_tok_node(t_tok *prev, t_tok *tok);
 void	destroy_tokens(t_msh *msh);
 
-/* 
+/*
 	Interpret utils <----------------------------------------------------------
 */
 
@@ -57,20 +42,23 @@ int		is_end_token(char c);
 char	*ret_next_twin(char *position);
 char	*skip_whitespace(char *position);
 int		is_redirection(char c);
+int		isredi(int type);
 
-/* 
+/*
 	Error handling <-----------------------------------------------------------
 */
 
 void	check_syntax_error_quotes(t_msh *msh);
 void	check_token_err_redi(t_msh *msh);
+void	check_token_err_pipe(t_msh *msh);
 
-/* 
+/*
 	Tokenizing <---------------------------------------------------------------
 */
 
 char	*put_token_str(t_msh *msh, char *position);
 char	*handle_redirection(t_msh *msh, char *pos);
 void	put_content_to_redi(t_msh *msh);
+int		refining_tokens(t_msh *msh);
 
 #endif

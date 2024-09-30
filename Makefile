@@ -38,6 +38,7 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/lexer/token_list_utils.c \
 				$(SRC_DIR)/lexer/tokenizing.c \
 				$(SRC_DIR)/lexer/tok_redirection.c \
+				$(SRC_DIR)/lexer/token_refining.c \
 				$(SRC_DIR)/lexer/lexer.c \
 				$(SRC_DIR)/testing/testing_env_list.c \
 				$(SRC_DIR)/testing/testing_env_exp.c \

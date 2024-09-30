@@ -6,13 +6,15 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 18:55:43 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 09:54:02 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* destroys the paths safely*/
+/* 
+	destroys the paths safely
+*/
 void	destroy_paths(t_msh *msh)
 {
 	if (msh->paths)
@@ -20,7 +22,9 @@ void	destroy_paths(t_msh *msh)
 	msh->paths = NULL;
 }
 
-/* extracts the path from the environment list */
+/*
+	extracts the path from the environment list 
+*/
 void	extract_paths(t_msh *msh)
 {
 	t_env	*tmp;

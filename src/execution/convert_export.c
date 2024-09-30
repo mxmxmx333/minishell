@@ -6,13 +6,15 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:11:55 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 14:21:06 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 10:53:29 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*destroys the export safely*/
+/*
+	destroys the export safely
+*/
 void	destroy_exp(t_msh *msh)
 {
 	if (msh->export)
@@ -20,7 +22,9 @@ void	destroy_exp(t_msh *msh)
 	msh->export = NULL;
 }
 
-/*converts the environment list for export environment*/
+/*
+	converts the environment list for export environment
+*/
 void	convert_exp(t_msh *msh)
 {
 	char	**env;

@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:27:56 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/29 16:55:55 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:47:32 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 /*
 	This function will display an error message on stderr and exit the program
 	safeley.
-
-	o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o
 
 	msh: minishell structure to destroy at exit
 	msg: error message to display on stderr
@@ -39,6 +37,13 @@ void	error_simple(t_msh *msh, char *msg, int exit_code)
 	exit(exit_code);
 }
 
+/*
+	This function will display an error message on stderr and exit the program
+	safeley.
+	
+	Same as error_complex, but adds a "'" to the end of the error message.
+	Because `param' is how the error is displayed by bash.
+*/
 void	error_complex_tok(t_msh *msh, char *msg, char *param, int exit_code)
 {
 	char	*error_msg;
@@ -53,7 +58,14 @@ void	error_complex_tok(t_msh *msh, char *msg, char *param, int exit_code)
 	exit(exit_code);
 }
 
+/*
+	This function will display an error message on stderr and exit the program
+	safeley.
 
+	Same as error_simple, but adds a param to the error message.
+	e-G "msh: ->abc<-: no such file or directory"
+	Can also be used in different order, since it uses putendl_fd.
+*/
 void	error_complex(t_msh *msh, char *msg, char *param, int exit_code)
 {
 	char	*error_msg;
@@ -65,4 +77,12 @@ void	error_complex(t_msh *msh, char *msg, char *param, int exit_code)
 	free(error_msg);
 	destroy_minishell(msh);
 	exit(exit_code);
+}
+
+void	display_tok_err(char *p1, char *p2)
+{
+	ft_putstr_fd("msh: ", STDERR_FILENO);
+	ft_putstr_fd(p1, STDERR_FILENO);
+	ft_putstr_fd(p2, STDERR_FILENO);
+	ft_putendl_fd("'", STDERR_FILENO);
 }

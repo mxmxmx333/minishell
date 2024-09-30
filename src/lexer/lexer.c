@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:58:43 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/29 16:34:31 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:37:40 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	lexer(t_msh *msh)
 		if (!position)
 			break ;
 	}
-	put_content_to_redi(msh);
-	check_token_err_redi(msh);
+	// check_token_err_redi(msh); //here_doc generation should be inside of loop
+	// check_token_err_pipe(msh);
+	refining_tokens(msh);
 	destroy_cmd_line(msh);
 }

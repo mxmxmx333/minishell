@@ -6,34 +6,38 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:20:52 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/29 16:54:44 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:34:56 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* 
-	This function will check the command line for quotes. 
-	
-	o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o
-	
-	If a quote was not closed, it will display an error message 
-	and exit the program.
-
-	o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o
-	
-	This function has been tested, and it works as expected.
-
-*/
-
-static int isredi(int type)
+/* void	check_token_err_pipe(t_msh *msh)
 {
-	return (type == REDI_IN || type == REDI_TOUT ||
-			type == REDI_AOUT || type == HERE_DOC);
-}
+	t_tok	*tok;
 
+	tok = msh->tokens;
+	while (tok)
+	{
+		if (tok->type == PIPE)
+		{
+			if (!tok->next)
+				return (error_complex_tok(msh, "coming soon", SYN_ERR_UNEXP_TOK, 2), 2);
+			else if (tok->next->type == PIPE)
+				return (error_complex_tok(msh, "|", SYN_ERR_UNEXP_TOK, 2), 2);
+		}
+		tok = tok->next;
+	}
+} */
 
-void	check_token_err_redi(t_msh *msh)
+/* 
+	This function will check the tokens for syntax errors,
+	specificaly for redirections. 
+	
+	If a REDI_ is not followed by a WORD, it will display a 
+	specific error message and exit the process.
+*/
+/* void	check_token_err_redi(t_msh *msh)
 {
 	t_tok	*tok;
 
@@ -49,8 +53,16 @@ void	check_token_err_redi(t_msh *msh)
 		}
 		tok = tok->next;
 	}
-}
+} */
 
+/* 
+	This function will check the command line for quotes. 
+		
+	If a quote was not closed, it will display an error message 
+	and exit the program.
+	
+	This function has been tested, and it works as expected.
+*/
 void	check_syntax_error_quotes(t_msh *msh)
 {
 	char	*temp;

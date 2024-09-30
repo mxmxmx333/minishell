@@ -6,15 +6,15 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:36 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 18:57:17 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:39:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-**	This function initializes the minishell strucure, as well as the necessary
-**	additional structures to run the minishell program.
+	This function initializes the minishell strucure, as well as the necessary
+	additional structures to run the minishell program.
 */
 t_msh	*initialize_minishell(char **env)
 {
