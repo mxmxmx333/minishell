@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:58:08 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/01 16:48:18 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:50:02 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*trim_hostname(char *str)
 	i = 0;
 	while (str[i] != '.')
 		i++;
-	hostname = ft_calloc(i, sizeof(char));
+	hostname = ft_calloc(i + 1, sizeof(char));
 	if (!hostname)
 		return (perror("malloc fail"), NULL);
 	i = 0;
@@ -35,6 +35,7 @@ static char	*trim_hostname(char *str)
 		hostname[i] = str[i];
 		i++;
 	}
+	hostname[i] = '\0';
 	return (hostname);
 }
 
@@ -60,5 +61,6 @@ char	*get_hostname(void)
 	i = ft_strlen(hostname) - 1;
 	hostname[i] = '\0';
 	res = trim_hostname(hostname);
+	free(hostname);
 	return (res);
 }

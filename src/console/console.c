@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:01:35 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 16:47:07 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:54:31 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static char	*concatenate_prompt(t_msh *msh, char *s1, char *s2, char *s3)
 }
 
 /*
-	
+	Function which will create the prompt message.
+	It will update msh->cur_dir each time its run.
 */
 int	create_prompt(t_msh *msh)
 {
