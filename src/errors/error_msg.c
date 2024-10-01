@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:27:56 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 17:29:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 21:32:01 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	error_complex(t_msh *msh, char *msg, char *param, int exit_code)
 
 void	display_tok_err(char *p1, char *p2)
 {
-	
 	ft_putstr_fd(RED, STDERR_FILENO);
 	ft_putstr_fd(BOLD, STDERR_FILENO);
 	ft_putstr_fd("msh: ", STDERR_FILENO);
@@ -98,5 +97,4 @@ void	display_tok_err(char *p1, char *p2)
 	ft_putstr_fd(p2, STDERR_FILENO);
 	ft_putendl_fd("'", STDERR_FILENO);
 	ft_putstr_fd(RESET, STDERR_FILENO);
-
 }

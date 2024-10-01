@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:45:43 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/01 17:20:17 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 21:30:41 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 # define BOLD "\033[1m"
 # define RESET "\033[0m"
 
-#include "minishell.h"
+# include "minishell.h"
 
 #endif
