@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:36 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/30 17:39:48 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:18:13 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ t_msh	*initialize_minishell(char **env)
 
 	msh = (t_msh *)ft_calloc(sizeof(t_msh), 1);
 	if (!msh)
-	{
 		error_simple(msh, M_ERR, EXIT_FAILURE);
-		exit(EXIT_FAILURE);
-	}
 	initialize_environment(msh, env);
+	msh->hostname = get_hostname();
+	msh->username = getenv("USER");
+	msh->home_dir = getenv("HOME");
+	if (create_prompt(msh))
+		error_simple(msh, PR_ERR, 1);
 	return (msh);
 }

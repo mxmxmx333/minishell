@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   libraries.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/09/30 12:04:22 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/01 16:50:10 by nicvrlja         ###   ########.fr       */
+>>>>>>> dev_ni
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +25,8 @@
 
 /*----------------------------> system libraries <----------------------------*/
 # include <stdio.h>
-// # include <readline/readline.h>
-// # include <readline/history.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
@@ -46,5 +50,6 @@
 # include "memory.h"
 # include "test.h"
 # include "execution.h"
+# include "colors.h"
 
 #endif

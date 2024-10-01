@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 18:51:28 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 17:10:01 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/10/01 16:45:43 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/01 17:09:20 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef COLORS_H
+# define COLORS_H
+
+# define GREEN "\033[32m"
+# define CYAN "\033[36m"
+# define RED "\033[31m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[34m"
+# define MAGENTA "\033[35m"
+# define WHITE "\033[37m"
+# define BGREEN "\033[92m"
+# define BOLD "\033[1m"
+# define RESET "\033[0m"
+
 #include "minishell.h"
 
-void	exit_success(t_msh *msh)
-{
-	destroy_minishell(msh);
-	exit(EXIT_SUCCESS);
-}
-
-int	main(int ac, char **av, char **env)
-{
-	t_msh	*msh;
-
-	msh = initialize_minishell(env);
-	if (ac > 1)
-		test_lexer(msh, av[1]);
-	while (1)
-	{
-		msh->cur_cmd_line = readline(msh->prompt);
-	}
-	return (exit_success(msh), EXIT_SUCCESS);
-}
+#endif

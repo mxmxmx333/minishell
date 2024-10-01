@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:27:56 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 16:51:25 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:18:01 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	error_simple(t_msh *msh, char *msg, int exit_code)
 {
 	char	*error_msg;
 
+	ft_putstr_fd(RED, STDERR_FILENO);
+	ft_putstr_fd(BOLD, STDERR_FILENO);
 	error_msg = ft_strjoin("msh: ", msg);
 	if (!error_msg)
 	{
@@ -31,8 +33,9 @@ void	error_simple(t_msh *msh, char *msg, int exit_code)
 		destroy_minishell(msh);
 		exit(EXIT_FAILURE);
 	}
-	ft_putendl_fd(msg, STDERR_FILENO);
+	ft_putstr_fd(error_msg, STDERR_FILENO);
 	free(error_msg);
+	ft_putstr_fd(RESET, STDERR_FILENO);
 	destroy_minishell(msh);
 	exit(exit_code);
 }
@@ -70,11 +73,14 @@ void	error_complex(t_msh *msh, char *msg, char *param, int exit_code)
 {
 	char	*error_msg;
 
+	ft_putstr_fd(RED, STDERR_FILENO);
+	ft_putstr_fd(BOLD, STDERR_FILENO);
 	error_msg = ft_strjoin_three("msh: ", param, msg);
 	if (!error_msg)
 		error_simple(msh, M_ERR, EXIT_FAILURE);
 	ft_putendl_fd(error_msg, STDERR_FILENO);
 	free(error_msg);
+	ft_putstr_fd(RESET, STDERR_FILENO);
 	destroy_minishell(msh);
 	exit(exit_code);
 }

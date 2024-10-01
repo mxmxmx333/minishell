@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/01 16:02:44 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/01 17:05:56 by nicvrlja         ###   ########.fr       */
+>>>>>>> dev_ni
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +25,9 @@
 	FATAL ERRORS <-----------------------------------------------------
 */
 
+/* Prompt error*/
+# define PR_ERR "Fatal Error: Failed to create prompt!\n"
+
 /* Malloc failure */
 # define M_ERR "Fatal Error: Insufficient memory!"
 
@@ -29,6 +36,7 @@
 */
 
 /* Permission denied*/
+<<<<<<< HEAD
 # define PER_ERR ": permission denied"
 /* Is a directory */
 # define DIR_ERR ": is a directory"
@@ -36,6 +44,15 @@
 # define NODF_ERR ": no such file or directory"
 /* Command not found*/
 # define CMDNF_ERR ": command not found"
+=======
+# define PER_ERR "permission denied\n"
+/* Is a directory */
+# define DIR_ERR "is a directory\n"
+/* No such file or directory */
+# define NODF_ERR "no such file or directory\n"
+/* Command not found*/
+# define CMDNF_ERR "command not found\n"
+>>>>>>> dev_ni
 
 /* 
 	SYNTAX ERRORS <-----------------------------------------------------

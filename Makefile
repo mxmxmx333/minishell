@@ -13,7 +13,7 @@
 Name 		:= 	minishell
 CFLAGS 		:= 	-g -I./inc -I./libft/inc -Wall -Wextra -Werror
 BFLAGS		:= 	-I./bonus/inc
-LDFLAGS		:= 	-L./libft -lft
+LDFLAGS		:= 	-L./libft -lft -lreadline
 CC 			:= 	cc
 SRC_DIR 	:= 	./src
 OBJ_DIR 	:= 	./obj
@@ -40,6 +40,8 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/lexer/tok_redirection.c \
 				$(SRC_DIR)/lexer/token_refining.c \
 				$(SRC_DIR)/lexer/lexer.c \
+				$(SRC_DIR)/console/console.c \
+				$(SRC_DIR)/console/get_hostname.c \
 				$(SRC_DIR)/testing/testing_env_list.c \
 				$(SRC_DIR)/testing/testing_env_exp.c \
 				$(SRC_DIR)/testing/testing_exec_paths.c \

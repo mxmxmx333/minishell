@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/01 16:52:47 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/01 16:47:06 by nicvrlja         ###   ########.fr       */
+>>>>>>> dev_ni
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +92,9 @@ typedef struct s_environment
 	*var
 	var_size
 	*cur_dir
+	*username
+	*hostname
+	*home_dir
 	*prompt
 	*cur_cmd_line
 	*tokens
@@ -102,7 +109,10 @@ typedef struct s_minishell
 	t_var	*var;			//variable list
 	size_t	var_size;		//variable list size
 	char	*cur_dir;		//current directory
-	char	*prompt;		//current prompt for console
+	char	*username;		//username
+	char	*hostname;		//hostname
+	char	*home_dir;		//home directory
+	char	*prompt;		// current prompt for console
 	char	*cur_cmd_line;	//current input
 	t_tok	*tokens;		//tokens list
 	int		status;			//exit code
