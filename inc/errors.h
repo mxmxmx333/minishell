@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/30 16:37:22 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:02:44 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	error_complex(t_msh *msh, char *msg, char *param, int exit_code);
 void	error_complex_tok(t_msh *msh, char *msg, char *param, int exit_code);
 void	display_tok_err(char *p1, char *p2);
 
-void	check_syntax_error_quotes(t_msh *msh);
+int		check_syntax_error_quotes(t_msh *msh);
 void	check_token_err_redi(t_msh *msh);
 void	check_token_err_pipe(t_msh *msh);
 

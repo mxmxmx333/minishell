@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:33:45 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/27 15:20:30 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:07:31 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,32 @@ char	*ret_type(t_tok *tok)
 	return ("UNKNOWN");
 }
 
+/* 
+
+*/
 void	test_lexer(t_msh *msh, char *argv)
 {
 	t_tok	*tok;
-	
+
 	msh->cur_cmd_line = ft_strdup(argv);
 	if (!msh->cur_cmd_line)
 		error_simple(msh, M_ERR, EXIT_FAILURE);
-	lexer(msh);
+	msh->status = lexer(msh);
+	if (msh->status)
+	{
+		free(msh->cur_cmd_line);
+		msh->cur_cmd_line = NULL;
+		printf("Lexer returned with status: %i\n", msh->status);
+		exit_success(msh);
+	}
+	printf("\nLexer returned with status: %i\n\n", msh->status);
 	free(msh->cur_cmd_line);
 	tok = msh->tokens;
 	int i = 0;
 	while (tok)
 	{
-		printf("Tokennumber: %i\nToken: %s\nType: %s\nFile: %s\nExpand: %i\n\n",i,  tok->content, ret_type(tok), tok->file, tok->expand);
+		printf("Tokennumber: %i\nToken: %s\nType: %s\nFile: %s\nExpand: %i\
+		\n----------------\n",i,  tok->content, ret_type(tok), tok->file, tok->expand);
 		tok = tok->next;
 		i++;
 	}

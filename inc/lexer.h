@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/30 17:46:12 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:52:27 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 # include "minishell.h"
 
-/*-------------------------------> EXPAND TYPES <-------------------------------*/
+/*-------------------------------> EXPAND TYPES <-----------------------------*/
 
-/*---------------------------> FUNCTION PROTOTYPES <---------------------------*/
+/*---------------------------> FUNCTION PROTOTYPES <--------------------------*/
 
 /*
 	Tokens linked list utils <--------------------------------------------------
@@ -48,7 +48,7 @@ int		isredi(int type);
 	Error handling <-----------------------------------------------------------
 */
 
-void	check_syntax_error_quotes(t_msh *msh);
+int		check_syntax_error_quotes(t_msh *msh);
 void	check_token_err_redi(t_msh *msh);
 void	check_token_err_pipe(t_msh *msh);
 

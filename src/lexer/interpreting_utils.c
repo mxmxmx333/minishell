@@ -6,19 +6,18 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:49:02 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/30 12:03:35 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:49:11 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 /* 
 	Utility function to check if a token is a redirection token.
 */
 int	isredi(int type)
 {
-	return (type == REDI_IN || type == REDI_TOUT ||
+	return (type == REDI_IN || type == REDI_TOUT || \
 			type == REDI_AOUT || type == HERE_DOC);
 }
 
@@ -45,6 +44,7 @@ int	is_redirection(char c)
 {
 	return (c == '<' || c == '>');
 }
+
 /* 
 	This function will return the pointer to the next char in the string, 
 	that is identical with the first character in the string.

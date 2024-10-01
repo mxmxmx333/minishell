@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/27 14:01:11 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:51:46 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 t_msh	*initialize_minishell(char **env);
 void	exit_success(t_msh *msh);
 
-void	lexer(t_msh *msh);
-
+int		lexer(t_msh *msh);
 
 #endif

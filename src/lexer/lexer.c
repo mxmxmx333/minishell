@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:58:43 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/30 17:37:40 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:51:07 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 	2. 	iterates over the command line and put the tokens into the list
 	3. 	destroys the command line
 */
-void	lexer(t_msh *msh)
+int	lexer(t_msh *msh)
 {
 	char	*position;
 
-	check_syntax_error_quotes(msh);
+	if (check_syntax_error_quotes(msh))
+		return (2);
 	position = msh->cur_cmd_line;
 	while (*position)
 	{
@@ -31,8 +32,8 @@ void	lexer(t_msh *msh)
 		if (!position)
 			break ;
 	}
-	// check_token_err_redi(msh); //here_doc generation should be inside of loop
-	// check_token_err_pipe(msh);
-	refining_tokens(msh);
+	if (refining_tokens(msh))
+		return (2);
 	destroy_cmd_line(msh);
+	return (0);
 }

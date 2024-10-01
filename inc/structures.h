@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/30 11:36:49 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:52:47 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum e_typ
 	WORD,
 	CMD,
 	ARG
-}	te_typ;
+}	t_e_typ;
 
 /*--------------------------> TOKENS linked list <---------------------------*/
 /*
@@ -47,7 +47,7 @@ typedef struct s_tokens
 {
 	char			*content;	//token content
 	char			*file;		//file name
-	te_typ			type;		//type of token
+	t_e_typ			type;		//type of token
 	int				expand;		//mode for expansion
 	struct s_tokens	*next;
 }	t_tok;

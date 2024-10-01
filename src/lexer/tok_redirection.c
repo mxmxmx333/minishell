@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:28:31 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/30 17:37:07 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:49:51 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	put_redi(t_msh *msh, t_tok *tok, int type)
 	function will implement that token, and return the position after the file
 
 */
-static int	redi_type(t_msh *msh, char *pos, t_tok *new)
+static int	handle_redirection_type(t_msh *msh, char *pos, t_tok *new)
 {
 	if (*pos == '<')
 	{
@@ -77,24 +77,6 @@ static int	redi_type(t_msh *msh, char *pos, t_tok *new)
 	return (0);
 }
 
-// static char	*redir_file(t_msh *msh, char *pos, t_tok *new)
-// {
-// 	char 	*start;
-
-// 	pos = skip_whitespace(pos);
-// 	start = pos;
-// 	while (*pos && !is_end_token(*pos))
-// 	{
-// 		if (*pos == '\"' || *pos == '\'') 
-// 			pos = ret_next_twin(pos);
-// 		pos++;
-// 	}
-// 	new->file = ft_strndup(start, pos - start);
-// 	if (!new->file)
-// 		return (error_simple(msh, M_ERR, EXIT_FAILURE), NULL);
-// 	return (pos);
-// }
-
 /* 
 	we enter this function, if we are on a < or > character
 
@@ -105,12 +87,12 @@ static int	redi_type(t_msh *msh, char *pos, t_tok *new)
 */
 char	*handle_redirection(t_msh *msh, char *pos)
 {
-	t_tok 		*new;
-	
+	t_tok	*new;
+
 	new = create_tok_node(msh);
 	if (!new)
 		return (NULL);
 	add_tok_node(msh, new);
-	pos += redi_type(msh, pos, new);
+	pos += handle_redirection_type(msh, pos, new);
 	return (pos);
 }
