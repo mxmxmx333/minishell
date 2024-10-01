@@ -6,8 +6,13 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:53 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 18:55:56 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 19:09:26 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expander.h"
+
+char	*expand(char *str, int mode)
+{
+	
+}

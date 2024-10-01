@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 17:20:04 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:40:33 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef enum e_typ
 }	t_e_typ;
 
 /*--------------------------> TOKENS linked list <---------------------------*/
-/*
+/*git 
 	*content;
 	*file;
 	type;
