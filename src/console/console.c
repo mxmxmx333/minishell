@@ -3,86 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   console.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:01:35 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 14:21:18 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:47:07 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "console.h"
 
-char *get_host_name()
+/*
+	Checks if the path starts with /home/username
+*/
+static int	check_home_dir(t_msh *msh, char *str)
 {
-    char    *hostname;
-    int     fd;
-    int     i;
+	int	len;
 
-    fd = open("/etc/hostname", O_RDONLY);
-    if (fd == -1)
-       return (perror("Failed to open hostname file."), NULL);
-    i = 0;
-    hostname = get_next_line(fd);
-    if (!hostname)
-        return (NULL);
-    i = ft_strlen(hostname) - 1;
-    hostname[i] = '\0';
-    return (hostname);
+	len = ft_strlen(msh->home_dir);
+	if (ft_strncmp(msh->home_dir, str, len) == 0)
+		return (1);
+	return (0);
 }
 
-int check_home_dir(char *str)
+/*
+	Concatenate username@hostname:~/current_work_dir$ 
+	~ represents home directory
+*/
+static char	*concatenate_prompt(t_msh *msh, char *s1, char *s2, char *s3)
 {
-    char    *home;
-    int     len;
-    
-    home = getenv("HOME");
-    len = ft_strlen(home);
-    if (ft_strncmp(home, str, len) == 0)
-        return (1);
-    return (0);
+	char	*prompt;
+	int		i;
+	int		homelen;
+
+	i = 0;
+	homelen = ft_strlen(msh->home_dir);
+	if (check_home_dir(msh, s3))
+		s3 = s3 + homelen;
+	prompt = ft_calloc(ft_strlen(s1) + ft_strlen(s2)
+			+ ft_strlen(s3) + 6, sizeof(char));
+	if (!prompt)
+		perror("malloc fail");
+	while (*s1)
+		prompt[i++] = *s1++;
+	prompt[i++] = '@';
+	while (*s2)
+		prompt[i++] = *s2++;
+	prompt[i++] = ':';
+	prompt[i++] = '~';
+	while (*s3)
+		prompt[i++] = *s3++;
+	prompt[i++] = '$';
+	prompt[i++] = ' ';
+	prompt[i++] = '\0';
+	return (prompt);
 }
 
-char    *concatenate_prompt(char *s1, char *s2, char *s3)
+/*
+	
+*/
+int	create_prompt(t_msh *msh)
 {
-    char    *prompt;
-    char    *home;
-    int     i;
-    int     homelen;
+	char	*line;
 
-    i = 0;
-    home = getenv("HOME");
-    homelen = ft_strlen(home);
-    if (check_home_dir(s3))
-        s3 = s3 + homelen;
-    prompt = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + ft_strlen(s3) + 6, sizeof(char));
-    if (!prompt)
-        perror("malloc fail");
-    while (*s1)
-        prompt[i++] = *s1++;
-    prompt[i++] = '@';
-    while (*s2)
-        prompt[i++] = *s2++;
-    prompt[i++] = ':';
-    prompt[i++] = '~';
-    while (*s3)
-        prompt[i++] = *s3++;
-    prompt[i++] = '$';
-    prompt[i++] = ' ';
-    prompt[i++] = '\0';
-    return (prompt);
-}
-
-int create_prompt(t_msh *msh)
-{
-    char    *line;
-    char    *username;
-    char    *hostname;
-
-    username = getenv("USER");
-    msh->cur_dir = getenv("PWD");
-    hostname = get_host_name();
-    line = concatenate_prompt(username, hostname, msh->cur_dir);
-    msh->prompt = line;
-
-    return (0);
+	msh->cur_dir = getenv("PWD");
+	if (!msh->cur_dir || !msh->username || !msh->hostname)
+		return (1);
+	line = concatenate_prompt(msh, msh->username, msh->hostname, msh->cur_dir);
+	msh->prompt = line;
+	return (0);
 }

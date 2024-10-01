@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/27 13:57:56 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:05:56 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 	FATAL ERRORS <-----------------------------------------------------
 */
 
+/* Prompt error*/
+# define PR_ERR "Fatal Error: Failed to create prompt!\n"
+
 /* Malloc failure */
 # define M_ERR "Fatal Error: Insufficient memory!\n"
 
@@ -29,13 +32,13 @@
 */
 
 /* Permission denied*/
-# define PER_ERR ": permission denied\n"
+# define PER_ERR "permission denied\n"
 /* Is a directory */
-# define DIR_ERR ": is a directory\n"
+# define DIR_ERR "is a directory\n"
 /* No such file or directory */
-# define NODF_ERR ": no such file or directory\n"
+# define NODF_ERR "no such file or directory\n"
 /* Command not found*/
-# define CMDNF_ERR ": command not found\n"
+# define CMDNF_ERR "command not found\n"
 
 /* 
 	SYNTAX ERRORS <-----------------------------------------------------

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   console.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:49:46 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 14:22:26 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 16:14:06 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # include "minishell.h"
 
-int create_prompt(t_msh *msh);
+int		create_prompt(t_msh *msh);
+char	*get_hostname(void);
 
 #endif
