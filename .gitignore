@@ -1,4 +1,5 @@
-Notes_Max
-Notes_Nikola
 .vscode/
 .editorconfig
+*.o
+*.a
+minishell
