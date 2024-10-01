@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/10/01 16:02:44 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/10/01 17:05:56 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
+/*   Updated: 2024/10/01 17:23:18 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +32,6 @@
 */
 
 /* Permission denied*/
-<<<<<<< HEAD
-# define PER_ERR ": permission denied"
-/* Is a directory */
-# define DIR_ERR ": is a directory"
-/* No such file or directory */
-# define NODF_ERR ": no such file or directory"
-/* Command not found*/
-# define CMDNF_ERR ": command not found"
-=======
 # define PER_ERR "permission denied\n"
 /* Is a directory */
 # define DIR_ERR "is a directory\n"
@@ -52,7 +39,6 @@
 # define NODF_ERR "no such file or directory\n"
 /* Command not found*/
 # define CMDNF_ERR "command not found\n"
->>>>>>> dev_ni
 
 /* 
 	SYNTAX ERRORS <-----------------------------------------------------

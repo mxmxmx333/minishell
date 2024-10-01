@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libraries.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/09/30 12:04:22 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/10/01 16:50:10 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
+/*   Updated: 2024/10/01 17:23:22 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

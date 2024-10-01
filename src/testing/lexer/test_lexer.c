@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:33:45 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 16:07:31 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:35:56 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,13 @@ void	test_lexer(t_msh *msh, char *argv)
 {
 	t_tok	*tok;
 
-	msh->cur_cmd_line = ft_strdup(argv);
+	(void)argv;	
 	if (!msh->cur_cmd_line)
 		error_simple(msh, M_ERR, EXIT_FAILURE);
 	msh->status = lexer(msh);
-	if (msh->status)
-	{
-		free(msh->cur_cmd_line);
-		msh->cur_cmd_line = NULL;
-		printf("Lexer returned with status: %i\n", msh->status);
-		exit_success(msh);
-	}
 	printf("\nLexer returned with status: %i\n\n", msh->status);
 	free(msh->cur_cmd_line);
+	msh->cur_cmd_line = NULL;
 	tok = msh->tokens;
 	int i = 0;
 	while (tok)

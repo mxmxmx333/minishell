@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:45:43 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/01 17:09:20 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:20:17 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
