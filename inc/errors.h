@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 17:23:18 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/02 16:41:13 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@
 # define PR_ERR "Fatal Error: Failed to create prompt!\n"
 
 /* Malloc failure */
-# define M_ERR "Fatal Error: Insufficient memory!"
+# define M_ERR "Fatal Error: Insufficient memory!\n"
+
+/* File descriptor error */
+# define FD_ERR "Fatal Error: Unable to open file!\n"
 
 /* 
 	EXECUTION ERRORS <-----------------------------------------------------
