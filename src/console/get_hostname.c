@@ -24,13 +24,13 @@ static char	*trim_hostname(char *str)
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (str[i] != '.')
+	while (str[i] && str[i] != '.')
 		i++;
 	hostname = ft_calloc(i, sizeof(char));
 	if (!hostname)
 		return (perror("malloc fail"), NULL);
 	i = 0;
-	while (str[i] != '.')
+	while (str[i] && str[i] != '.')
 	{
 		hostname[i] = str[i];
 		i++;

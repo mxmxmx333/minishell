@@ -42,51 +42,23 @@ char	*variable_finder(t_msh *msh, char *str)
 			return (env->v_value);
 		env = env->next;
 	}
-	return (NULL);
+	return ("");
 }
-
-/* char	*exp_d_general(t_msh *msh, char *str, char **expanded)
-{
-	char	*tmp;
-	char	*start;
-
-	start = str;
-	while (*str && *str != '$' && *str != '\"')
-		str++;
-	tmp = ft_substr(start, 0, str - start);
-	if (!tmp)
-		return (error_simple(msh, M_ERR, EXIT_FAILURE), NULL);
-	*expanded = ft_strjoin(*expanded, tmp);
-	if (!*expanded)
-		return (error_simple(msh, M_ERR, EXIT_FAILURE), NULL);
-	free(tmp);
-	return (str);
-} */
-
-
-/* char	*expand_d_quote(t_msh *msh, char *str, char **expanded)
-{
-		char	*start;
-		t_env	*var;
-
-		str++;
-		start = str;
-		while (*str && *str != '\"')
-		{
-			if (*str != '$')
-				str = exp_d_general(msh, str, expanded);
-			else
-				str = exp_d_variable(msh, str, expanded);
-		}char	*expand(t_msh *msh, t_tok *tok, char *str)
-
-	return (str);
-} */
 
 int	get_quote_len(t_msh *msh, char *str, char quote)
 {
 	int len;
 
 	len = 0;
+	if (quote == '\'')
+	{
+		while (*str && *str != quote)
+		{
+			str++;
+			len++;
+		}
+		return (len);
+	}
 	while (*str && *str != quote)
 	{
 		if (*str == '$')
@@ -139,6 +111,7 @@ int	get_expander_len(t_msh *msh, char *str)
 		{
 			len += get_quote_len(msh, str + 1, *str);
 			str = ret_next_twin(str);
+			str++;
 		}
 		else 
 		{
