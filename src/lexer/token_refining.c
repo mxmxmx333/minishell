@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 19:07:21 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/02 19:05:15 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ int	refining_tokens(t_msh *msh)
 	{
 		if (ref_redir(msh, tok) || ref_pipe(tok))
 			return (2);
-		//expand
+		expand(msh, tok, tok->content);
+		if (tok->file && tok->type != HERE_DOC)
+			expand(msh, tok, tok->file);
 		//here_doc
 		tok = tok->next;
 	}
