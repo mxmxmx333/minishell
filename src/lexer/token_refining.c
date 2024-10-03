@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/02 19:05:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:03:36 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,26 @@ int	ref_redir(t_msh *msh, t_tok *current)
 int	refining_tokens(t_msh *msh)
 {
 	t_tok	*tok;
+	char	*temp;
 
 	tok = msh->tokens;
+	if (tok->type == PIPE)
+		return (display_tok_err(SYN_ERR_UNEXP_TOK, "|"), 2);
 	while (tok)
 	{
 		if (ref_redir(msh, tok) || ref_pipe(tok))
 			return (2);
-		expand(msh, tok, tok->content);
+		tok->content = expand(msh, tok->content);
+		if (!tok->content)
+			error_simple(msh, M_ERR, EXIT_FAILURE);
 		if (tok->file && tok->type != HERE_DOC)
-			expand(msh, tok, tok->file);
+		{
+			temp = tok->file;
+			tok->file = expand(msh, tok->file);
+			free(temp);
+			if (!tok->file)
+				error_simple(msh, M_ERR, EXIT_FAILURE);
+		}
 		//here_doc
 		tok = tok->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:51:28 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/02 18:38:36 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/03 16:17:49 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	exit_success(t_msh *msh)
 int	main(int ac, char **av, char **env)
 {
 	t_msh	*msh;
-	
+
 	(void)ac;
 	(void)av;
 	msh = initialize_minishell(env);

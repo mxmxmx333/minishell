@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/02 18:32:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:06:34 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,18 @@ typedef	enum e_expander_mode
 	SGL
 }	t_exmode;
 
-char	*variable_finder(t_msh *msh, char *str);
-char	*expand(t_msh *msh, t_tok *tok, char *str);
+
+/*-----------------------------> Expander utils <-----------------------------*/
+int 	is_varname_break(char c);
+char	*variable_finder_value(t_msh *msh, char *str);
+int		get_quote_len(t_msh *msh, char *str, char quote);
+int 	get_len_not_var_in_quote(char *str, char quote);
+int		get_len_not_var_in_part(char *str);
+int		get_part_len(t_msh *msh, char *str);
+int		get_single_len(char *str);
+
+/*-------------------------> Expander main function <-------------------------*/
+
+char	*expand(t_msh *msh, char *str);
 
 #endif

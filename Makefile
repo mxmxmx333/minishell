@@ -41,6 +41,8 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/lexer/token_refining.c \
 				$(SRC_DIR)/lexer/lexer.c \
 				$(SRC_DIR)/expander/expander.c \
+				$(SRC_DIR)/expander/expander_utils.c \
+				$(SRC_DIR)/expander/get_length.c \
 				$(SRC_DIR)/console/console.c \
 				$(SRC_DIR)/console/get_hostname.c \
 				$(SRC_DIR)/testing/testing_env_list.c \
