@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:03:28 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/03 15:56:21 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:57:22 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ int	read_history_custom(t_msh *msh, char *filename)
 	i = 0;
 	history = add_history_custom(msh, filename);
 	splitted_history = ft_split(history, 3);
+	if (!splitted_history)
+		return (error_simple(msh, M_ERR, EXIT_FAILURE), 0);
 	ft_free((void *)&history);
 	while (splitted_history[i])
 	{

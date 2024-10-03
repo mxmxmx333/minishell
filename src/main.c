@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:51:28 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/03 17:40:17 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:59:52 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,15 @@ int	main(int ac, char **av, char **env)
 			printf("exit\n");
 			break ;
 		}
-		if (msh->cur_cmd_line[0] != '\0')
+		if (msh->cur_cmd_line && msh->cur_cmd_line[0] != '\0')
 		{
 			add_history(msh->cur_cmd_line);
 			write_history_custom(msh, ".msh_history.txt", msh->cur_cmd_line);
+		}
+		if (msh->cur_cmd_line)
+		{
+			test_lexer(msh, av[0]);
+			destroy_tokens(msh);
 		}
 	}
 	return (exit_success(msh), EXIT_SUCCESS);
