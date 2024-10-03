@@ -6,7 +6,11 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:51:28 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/02 17:52:48 by nicvrlja         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/02 18:38:36 by mbonengl         ###   ########.fr       */
+>>>>>>> c47596e2a7153475684fae513657643b0911ac8f
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +25,12 @@ void	exit_success(t_msh *msh)
 int	main(int ac, char **av, char **env)
 {
 	t_msh	*msh;
+<<<<<<< HEAD
 
+=======
+	
+	(void)ac;
+>>>>>>> c47596e2a7153475684fae513657643b0911ac8f
 	(void)av;
 	msh = initialize_minishell(env);
 	if (ac > 1)
@@ -31,6 +40,7 @@ int	main(int ac, char **av, char **env)
 	while (1)
 	{
 		msh->cur_cmd_line = readline(msh->prompt);
+<<<<<<< HEAD
 		if (msh->cur_cmd_line == NULL)
 		{
 			printf("exit\n");
@@ -41,6 +51,10 @@ int	main(int ac, char **av, char **env)
 			add_history(msh->cur_cmd_line);
 			write_history_custom(msh, ".msh_history.txt", msh->cur_cmd_line);
 		}
+=======
+		test_lexer(msh, msh->cur_cmd_line);
+		destroy_tokens(msh);
+>>>>>>> c47596e2a7153475684fae513657643b0911ac8f
 	}
 	return (exit_success(msh), EXIT_SUCCESS);
 }

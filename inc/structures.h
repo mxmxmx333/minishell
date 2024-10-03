@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 17:20:04 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:50:56 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,16 @@ typedef enum e_typ
 	ARG
 }	t_e_typ;
 
-/*--------------------------> TOKENS linked list <---------------------------*/
-/*
+/*--------------------------> Expander Linked List <--------------------------*/
+
+typedef struct s_expander
+{
+	char				*content;
+	struct s_expander	*next;
+}	t_expand;
+
+/*--------------------------> TOKENS linked list <----------------------------*/
+/*git 
 	*content;
 	*file;
 	type;
