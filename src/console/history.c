@@ -6,11 +6,31 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:03:28 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/02 17:58:22 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:56:21 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "console.h"
+
+
+/*
+	Free the array of arrays.
+*/
+static void	free_arr(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (array)
+	{
+		while (array[i])
+		{
+			free(array[i]);
+			i++;
+		}
+		free(array);
+	}
+}
 
 /*
 	Create the file name so that it includes the home directory
@@ -20,14 +40,21 @@ static char	*create_filename(t_msh *msh, char *filename)
 {
 	char	*res;
 	char	*home;
+	char	*temp;
 
 	res = ft_strdup("");
 	if (!res)
 		return (NULL);
 	home = msh->home_dir;
+	temp = res;
 	res = ft_strjoin(res, home);
+	ft_free((void *)&temp);
+	temp = res;
 	res = ft_strjoin(res, "/");
+	ft_free((void *)&temp);
+	temp = res;
 	res = ft_strjoin(res, filename);
+	ft_free((void *)&temp);
 	if (!res)
 		return (NULL);
 	return (res);
@@ -51,6 +78,7 @@ int	write_history_custom(t_msh *msh, char *filename, char *line)
 	ft_putstr_fd(line, fd);
 	ft_putchar_fd(delim, fd);
 	close(fd);
+	ft_free((void *)&path);
 	return (1);
 }
 
@@ -79,9 +107,10 @@ static char	*add_history_custom(t_msh *msh, char *filename)
 			break ;
 		temp = history;
 		history = ft_strjoin(history, line);
-		free(temp);
-		free(line);
+		ft_free((void *)&temp);
+		ft_free((void *)&line);
 	}
+	ft_free((void *)&path);
 	return (close(fd), history);
 }
 
@@ -98,10 +127,12 @@ int	read_history_custom(t_msh *msh, char *filename)
 	i = 0;
 	history = add_history_custom(msh, filename);
 	splitted_history = ft_split(history, 3);
+	ft_free((void *)&history);
 	while (splitted_history[i])
 	{
 		add_history(splitted_history[i]);
 		i++;
 	}
+	free_arr(splitted_history);
 	return (1);
 }
