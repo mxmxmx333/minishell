@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:45:43 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/03 11:52:37 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:40:45 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 # define BOLD "\033[1m"
 # define RESET "\033[0m"
 
-#include "minishell.h"
+# include "minishell.h"
 
 #endif

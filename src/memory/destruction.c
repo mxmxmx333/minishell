@@ -6,11 +6,31 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:42:01 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/03 16:14:59 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/03 17:38:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+/*
+	Function to free the prompt.
+*/
+void	destroy_prompt(t_msh *msh)
+{
+	if (msh)
+	{
+		if (msh->prompt)
+		{
+			free(msh->prompt);
+			msh->prompt = NULL;
+		}
+		if (msh->hostname)
+		{
+			free(msh->hostname);
+			msh->hostname = NULL;
+		}
+	}
+}
 
 /*	
 	destroys an array of strings safely, by freeing each string, then the array
@@ -51,6 +71,7 @@ void	destroy_minishell(t_msh *msh)
 		destroy_exe_path(msh);
 		destroy_tokens(msh);
 		destroy_cmd_line(msh);
+		destroy_prompt(msh);
 		ft_free((void **)&msh);
 	}
 }
