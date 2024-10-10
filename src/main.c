@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:51:28 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/10 16:02:57 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:49:33 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av, char **env)
 		}
 		if (msh->cur_cmd_line)
 		{
-			printf("%s\n", expand(msh, msh->cur_cmd_line));
+			test_lexer(msh, av[0]);
 			destroy_tokens(msh);
 		}
 	}

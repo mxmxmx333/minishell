@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_refining.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/03 15:03:36 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:50:53 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	refining_tokens(t_msh *msh)
 	char	*temp;
 
 	tok = msh->tokens;
+	if (!tok)
+		return (0);
 	if (tok->type == PIPE)
 		return (display_tok_err(SYN_ERR_UNEXP_TOK, "|"), 2);
 	while (tok)
