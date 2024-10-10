@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:51:28 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/03 17:59:52 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:02:57 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av, char **env)
 		}
 		if (msh->cur_cmd_line)
 		{
-			test_lexer(msh, av[0]);
+			printf("%s\n", expand(msh, msh->cur_cmd_line));
 			destroy_tokens(msh);
 		}
 	}

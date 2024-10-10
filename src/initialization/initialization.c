@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:36 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/03 17:58:16 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:13:03 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_msh	*initialize_minishell(char **env)
 	if (!msh->username)
 		error_simple(msh, PR_ERR, 1);
 	msh->home_dir = getenv("HOME");
+	if (!msh->home_dir)
+		error_simple(msh, PR_ERR, 1);
 	if (create_prompt(msh))
 		error_simple(msh, PR_ERR, 1);
 	return (msh);

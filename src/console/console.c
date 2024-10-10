@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:01:35 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/02 15:46:49 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:12:08 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*concatenate_prompt(t_msh *msh, char *s1, char *s2, char *s3)
 	prompt = ft_calloc(ft_strlen(s1) + ft_strlen(s2)
 			+ ft_strlen(s3) + 5 + 4, sizeof(char));
 	if (!prompt)
-		perror("malloc fail");
+		return (perror("malloc fail"), NULL);
 	while (*s1)
 		prompt[i++] = *s1++;
 	prompt[i++] = '@';
