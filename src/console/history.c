@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:03:28 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/03 17:57:22 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:13:11 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "console.h"
-
 
 /*
 	Free the array of arrays.

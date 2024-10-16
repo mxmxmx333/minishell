@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_length.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:55:44 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/03 17:31:44 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:12:42 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 int	get_len_not_var_in_part(char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*str && *str != '\'' && *str != '\"' && *str != '$')
@@ -32,9 +32,9 @@ int	get_len_not_var_in_part(char *str)
 /* 
 	returns the length of a string that is not a variable inside a quote
 */
-int get_len_not_var_in_quote(char *str, char quote)
+int	get_len_not_var_in_quote(char *str, char quote)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*str && *str != quote && *str != '$')
@@ -50,7 +50,7 @@ int get_len_not_var_in_quote(char *str, char quote)
 */
 int	get_single_len(char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*str && *str != '\'')
@@ -66,7 +66,7 @@ int	get_single_len(char *str)
 */
 int	get_quote_len(t_msh *msh, char *str, char quote)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (quote == '\'')
@@ -95,7 +95,7 @@ int	get_quote_len(t_msh *msh, char *str, char quote)
 */
 int	get_part_len(t_msh *msh, char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*str && *str != '\'' && *str != '\"')

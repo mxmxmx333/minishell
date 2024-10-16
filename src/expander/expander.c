@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:53 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/03 17:25:43 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:11:53 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 static int	get_expander_len(t_msh *msh, char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*str)
@@ -28,7 +28,7 @@ static int	get_expander_len(t_msh *msh, char *str)
 			str = ret_next_twin(str);
 			str++;
 		}
-		else 
+		else
 		{
 			len += get_part_len(msh, str);
 			while (*str && *str != '\'' && *str != '\"')
@@ -128,5 +128,5 @@ char	*expand(t_msh *msh, char *str)
 	if (!exp)
 		return (error_simple(msh, M_ERR, 1), NULL);
 	put_expanded(msh, str, exp);
-		return (exp);
+	return (exp);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:47:45 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/03 16:38:45 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:12:12 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int is_varname_break(char c)
+int	is_varname_break(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\'' || c == '\"' || c == '$');
 }
@@ -34,7 +34,7 @@ static int	ft_strnrealcmp(char *s1, char *s2, int n)
 char	*variable_finder_value(t_msh *msh, char *str)
 {
 	t_env	*env;
-	char 	*start;
+	char	*start;
 
 	if (*str != '$')
 		return (error_complex(msh, ": is not a variable", str, 1), NULL);

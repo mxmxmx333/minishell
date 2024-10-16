@@ -46,12 +46,7 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/console/console.c \
 				$(SRC_DIR)/console/get_hostname.c \
 				$(SRC_DIR)/console/history.c \
-				$(SRC_DIR)/signal/signal.c \
-				$(SRC_DIR)/testing/testing_env_list.c \
-				$(SRC_DIR)/testing/testing_env_exp.c \
-				$(SRC_DIR)/testing/testing_exec_paths.c \
-				$(SRC_DIR)/testing/testing_path_finder.c \
-				$(SRC_DIR)/testing/lexer/test_lexer.c
+				$(SRC_DIR)/signal/signal.c 
 
 OBJ 		:= 	$(SRC:.c=.o)
 

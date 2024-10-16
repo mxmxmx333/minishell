@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:58:43 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/03 14:15:44 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:08:45 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	lexer(t_msh *msh)
 		if (!position)
 			break ;
 	}
-	if (refining_tokens(msh))
-		return (2);
+	if (msh->tokens)
+		if (refining_tokens(msh))
+			return (2);
 	destroy_cmd_line(msh);
 	return (0);
 }
