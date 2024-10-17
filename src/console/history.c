@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:03:28 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/16 16:13:11 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:34:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ static char	*add_history_custom(t_msh *msh, char *filename)
 	Split the joined string with ft_split and user add_history()
 	to load the commands from the file to the program's memory.
 */
-int	read_history_custom(t_msh *msh, char *filename)
+int	load_history(t_msh *msh, char *filename)
 {
 	char	**splitted_history;
 	char	*history;

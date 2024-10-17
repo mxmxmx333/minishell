@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:36 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/10 15:13:03 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:34:46 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,8 @@ t_msh	*initialize_minishell(char **env)
 		error_simple(msh, PR_ERR, 1);
 	if (create_prompt(msh))
 		error_simple(msh, PR_ERR, 1);
+	signal(SIGINT, handle_sigint);
+	signal(SIGQUIT, handle_sigquit);
+	load_history(msh, ".msh_history.txt");
 	return (msh);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/16 16:17:32 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:23:50 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

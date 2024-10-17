@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:53 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/16 16:11:53 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:01:55 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ char	*expand(t_msh *msh, char *str)
 	if (!exp)
 		return (error_simple(msh, M_ERR, 1), NULL);
 	put_expanded(msh, str, exp);
+	free(str);
 	return (exp);
 }

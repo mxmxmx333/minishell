@@ -25,6 +25,7 @@ B_OBJ_DIR	:= 	./bonus/obj
 LIBFT_DIR	:= 	./libft
 LIBFT		:= 	$(LIBFT_DIR)/libft.a
 SRC 		:=	$(SRC_DIR)/main.c \
+				$(SRC_DIR)/interface.c \
 				$(SRC_DIR)/initialization/initialization.c \
 				$(SRC_DIR)/initialization/environment.c \
 				$(SRC_DIR)/execution/convert_export.c \

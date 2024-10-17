@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 16:52:27 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:45:35 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,10 @@ char	*put_token_str(t_msh *msh, char *position);
 char	*handle_redirection(t_msh *msh, char *pos);
 void	put_content_to_redi(t_msh *msh);
 int		refining_tokens(t_msh *msh);
+
+/*
+	Testing <---------------------------------------------------------------
+*/
+void	print_tokens(t_msh *msh);
 
 #endif

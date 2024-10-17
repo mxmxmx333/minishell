@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:39:20 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 20:01:14 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:05:40 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

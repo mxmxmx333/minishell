@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libraries.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 19:12:34 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:41:42 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # include <dirent.h>
 # include <signal.h>
 # include <sys/wait.h>
+# include <stdbool.h>
 
 /*----------------------------> custom libraries <----------------------------*/
 # include "minishell.h"
@@ -48,5 +49,6 @@
 # include "execution.h"
 # include "colors.h"
 # include "sig.h"
+# include "parser.h"
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   console.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:49:46 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/02 16:09:48 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:34:46 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@
 int		create_prompt(t_msh *msh);
 char	*get_hostname(void);
 int		write_history_custom(t_msh *msh, char *filename, char *line);
-int		read_history_custom(t_msh *msh, char *filename);
+int		load_history(t_msh *msh, char *filename);
 
 #endif
