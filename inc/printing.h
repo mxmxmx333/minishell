@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   printing.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 18:51:28 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 15:11:49 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/10/19 16:31:28 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/10/19 16:34:49 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef PRINTING_H
+# define PRINTING_H
 
-void	exit_success(t_msh *msh)
-{
-	destroy_minishell(msh);
-	exit(EXIT_SUCCESS);
-}
+# include "minishell.h"
 
-int	main(int ac, char **av, char **env)
-{
-	t_msh	*msh;
+char	*get_type(int type);
+void	print_tokens(t_msh *msh);
+void	print_token(t_tok *token);
+void	print_words_and_rest(t_msh *msh);
 
-	(void)ac;
-	(void)av;
-	if (ac > 1)
-		return (0);
-	msh = initialize_minishell(env);
-	minishell_interface(msh);
-	return (exit_success(msh), EXIT_SUCCESS);
-}
+#endif

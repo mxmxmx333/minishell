@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:53 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/17 14:01:55 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:12:29 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,11 @@ char	*expand(t_msh *msh, char *str)
 
 	len = get_expander_len(msh, str);
 	if (!len)
+	{
+		if (str)
+			free(str);
 		return (ft_strdup(""));
+	}
 	exp = (char *)ft_calloc(sizeof(char), len + 1);
 	if (!exp)
 		return (error_simple(msh, M_ERR, 1), NULL);

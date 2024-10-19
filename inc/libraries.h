@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/17 12:41:42 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/19 16:32:23 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@
 # include "colors.h"
 # include "sig.h"
 # include "parser.h"
+# include "printing.h"
 
 #endif

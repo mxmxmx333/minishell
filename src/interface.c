@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:26:32 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/17 14:06:35 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/19 18:08:39 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 /// getting from main: 
 /// cmd_line
-///:Process Tokens
-///:Print Tokens
-///:Parse Tokens
-///:Execute Execute:Table
-///:Destroy History
-///:Update History
-///:Destroy cmd line
-///:Destroy Tokens
+///:>Process Tokens
+///:>Print Tokens
+///:>Parse Tokens
+///:>Execute Execute:>Table
+///:>Destroy History
+///:>Update History
+///:>Destroy cmd line
+///:>Destroy Tokens
+
+
+///TODO: I have to update the expander to handle the tokens correctly: 
 
 /* 
 **	This function is the interface of the minishell connecting the modules of 
@@ -39,6 +42,13 @@ static void	minishell_interaction(t_msh *msh)
 {
 	msh->status = lexer(msh);
 	printf("Lexer exited with status: %d\n", msh->status);
+	print_tokens(msh);
+
+	printf("\nParsing Tokens...\n");
+	parse_tokens(msh);
+	print_words_and_rest(msh);
+	destroy_word_and_rest(msh);
+	printf("Remaining Tokens:\n");
 	print_tokens(msh);
 	destroy_tokens(msh);
 }

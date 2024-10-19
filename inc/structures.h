@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/17 13:44:45 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/19 14:57:35 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_tokens
 	char			*content;	//token content
 	char			*file;		//file name
 	t_e_typ			type;		//type of token
-	int				expand;		//mode for expansion
+	int				splitme;		//mode for expansion
 	struct s_tokens	*next;
 }	t_tok;
 
@@ -111,6 +111,9 @@ typedef struct s_environment
 */
 typedef struct s_minishell
 {
+	t_tok	*rest;			//rest of the tokens
+	t_tok	*words;			//words list
+	t_exec	*exec_table;		//execution table
 	char	**export;		//exported list for execution
 	char	**paths;		//path list
 	char	*exe_path;		//executable path
