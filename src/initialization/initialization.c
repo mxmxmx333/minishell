@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:36 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/10/21 14:30:17 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/10/17 15:25:42 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
+/*   Updated: 2024/10/21 15:21:46 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

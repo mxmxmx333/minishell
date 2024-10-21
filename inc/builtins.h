@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:46:39 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/21 15:02:16 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:17:54 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

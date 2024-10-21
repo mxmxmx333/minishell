@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:34:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/21 14:28:24 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:22:05 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	put_words(t_msh *msh, char **args, t_tok *words, size_t i)
 int	get_args_size(t_tok *words)
 {
 	int		count;
-	t_tok	*tmp;
 
 	count = 0;
 	while (words)

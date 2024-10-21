@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:51:28 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/10/19 15:11:49 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/10/17 15:27:46 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
+/*   Updated: 2024/10/21 15:20:59 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
