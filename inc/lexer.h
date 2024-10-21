@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/17 13:45:35 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/19 16:33:46 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ int		refining_tokens(t_msh *msh);
 /*
 	Testing <---------------------------------------------------------------
 */
-void	print_tokens(t_msh *msh);
 
 #endif

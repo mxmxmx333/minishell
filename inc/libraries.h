@@ -6,7 +6,11 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/17 17:39:12 by nicvrlja         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/21 15:11:40 by nicvrlja         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +54,10 @@
 # include "colors.h"
 # include "sig.h"
 # include "parser.h"
+<<<<<<< HEAD
+=======
+# include "printing.h"
+>>>>>>> main
 # include "builtins.h"
 
 #endif

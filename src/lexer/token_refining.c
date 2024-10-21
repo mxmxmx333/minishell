@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   token_refining.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/16 16:07:09 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:22:03 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	add_expander_flags(t_msh *msh)
+{
+	t_tok	*tok;
+
+	tok = msh->tokens;
+	while (tok)
+	{
+		if (tok->type == WORD && (strchr(tok->content, '"' ) || \
+			strchr(tok->content, '\'')))
+			tok->splitme = 0;
+	}
+}
 
 /* 
 	refine pipes: 
@@ -53,7 +66,6 @@ int	ref_redir(t_msh *msh, t_tok *current)
 int	refining_tokens(t_msh *msh)
 {
 	t_tok	*tok;
-	char	*temp;
 
 	tok = msh->tokens;
 	if (tok->type == PIPE)
@@ -67,9 +79,7 @@ int	refining_tokens(t_msh *msh)
 			error_simple(msh, M_ERR, EXIT_FAILURE);
 		if (tok->file && tok->type != HERE_DOC)
 		{
-			temp = tok->file;
 			tok->file = expand(msh, tok->file);
-			free(temp);
 			if (!tok->file)
 				error_simple(msh, M_ERR, EXIT_FAILURE);
 		}

@@ -6,7 +6,15 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/17 15:27:50 by nicvrlja         ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2024/10/21 11:42:26 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/17 15:27:50 by nicvrlja         ###   ########.fr       */
+>>>>>>> dev_ni
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +56,21 @@ typedef struct s_tokens
 	char			*content;	//token content
 	char			*file;		//file name
 	t_e_typ			type;		//type of token
-	int				expand;		//mode for expansion
+	int				splitme;		//mode for expansion
 	struct s_tokens	*next;
 }	t_tok;
 
 /*-----------------------------> EXECUTE TABLE <------------------------------*/
 
+/*
+	*cmd;
+	*builtin;
+	**args;
+	*redirections;
+	out_pipe[2];
+	*next;
+	*prev;
+*/
 typedef struct s_execute_table
 {
 	char					*cmd;
@@ -111,6 +128,9 @@ typedef struct s_environment
 */
 typedef struct s_minishell
 {
+	t_tok	*rest;			//rest of the tokens
+	t_tok	*words;			//words list
+	t_exec	*exec_table;		//execution table
 	char	**export;		//exported list for execution
 	char	**paths;		//path list
 	char	*exe_path;		//executable path
