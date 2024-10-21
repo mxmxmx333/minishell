@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:56:00 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/21 15:17:32 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:56:54 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	argument_len(t_exec *exec)
+static int	argument_len(t_exec *exec)
 {
 	int		i;
 	int		len;
 
-	i = -1;
+	i = 0;
 	len = 0;
 	while (exec->args[++i])
 		len += ft_strlen(exec->args[i]);
@@ -25,14 +25,14 @@ int	argument_len(t_exec *exec)
 	return (len);
 }
 
-char	*argument_join(t_msh *msh, t_exec *exec)
+static char	*argument_join__no_newline(t_msh *msh, t_exec *exec)
 {
 	char	*str;
 	int		i;
 	int		j;
 	int		p;
 
-	i = -1;
+	i = 1;
 	j = 0;
 	p = 0;
 	str = malloc(argument_len(exec) + 1);
@@ -46,18 +46,48 @@ char	*argument_join(t_msh *msh, t_exec *exec)
 		if (exec->args[i + 1] != NULL)
 			str[p++] = ' ';
 	}
+	str[p] = '\0';
 	return (str);
 }
 
-int	echo(t_msh *msh, t_exec *exec)
+static char	*argument_join_newline(t_msh *msh, t_exec *exec)
+{
+	char	*str;
+	int		i;
+	int		j;
+	int		p;
+
+	i = 0;
+	j = 0;
+	p = 0;
+	str = malloc(argument_len(exec) + 1 + 1);
+	if (!str)
+		return (error_simple(msh, M_ERR, 1), NULL);
+	while (exec->args[++i])
+	{
+		j = 0;
+		while (exec->args[i][j])
+			str[p++] = exec->args[i][j++];
+		if (exec->args[i + 1] != NULL)
+			str[p++] = ' ';
+	}
+	str[p++] = '\n';
+	str[p] = '\0';
+	return (str);
+}
+
+int	command_echo(t_msh *msh, t_exec *exec)
 {
 	char	*args;
 
-	args = argument_join(msh, exec);
+	if (exec->args[1] && ft_strncmp(exec->args[1], "-n", ft_strlen(exec->args[1])) == 0)
+		args = argument_join__no_newline(msh, exec);
+	else
+		args = argument_join_newline(msh, exec);
 	if (exec->next)
 		ft_putstr_fd(args, exec->out_pipe[1]);
-	printf("%s", args);
-	if (strcmp(exec->args[1], "-n") != 0)
-		printf("\n");
+	else
+		printf("%s", args);
+	free(args);
 	return (0);
 }

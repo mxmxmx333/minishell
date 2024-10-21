@@ -3,18 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 17:26:32 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/10/21 14:04:57 by nicvrlja         ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2024/10/21 14:21:15 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/10/21 14:04:57 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
->>>>>>> main
+/*   Created: 2024/10/21 15:28:21 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/21 17:57:44 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +52,7 @@ static void	minishell_interaction(t_msh *msh)
 	printf("Executable Table:\n");
 	print_executable(msh);
 	destroy_word_and_rest(msh);
+	command_env(msh, msh->exec_table);
 	destroy_executable(msh);
 }
 

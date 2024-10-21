@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 16:46:39 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/21 17:56:48 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/21 18:00:12 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#include "minishell.h"
 
-# include "minishell.h"
-
-int	command_echo(t_msh *msh, t_exec *exec);
-int	command_cd(t_msh *msh, t_exec *exec);
-int	command_pwd(t_msh *msh, t_exec *exec);
-int	command_env(t_msh *msh, t_exec *exec);
-
-#endif
+int	command_export(t_msh *msh, t_exec *exec)
+{
+	
+}

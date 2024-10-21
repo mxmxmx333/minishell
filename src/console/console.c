@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:01:35 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/10 15:12:08 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:39:51 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	create_prompt(t_msh *msh)
 {
 	char	*line;
 
-	msh->cur_dir = getenv("PWD");
+	msh->cur_dir = getcwd(NULL, 0);
 	if (!msh->cur_dir || !msh->username || !msh->hostname)
 		return (1);
 	line = concatenate_prompt(msh, msh->username, msh->hostname, msh->cur_dir);

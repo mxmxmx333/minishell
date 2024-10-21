@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 16:46:39 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/21 17:56:48 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/10/21 17:53:04 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/21 17:58:13 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#include "minishell.h"
 
-# include "minishell.h"
+int	command_env(t_msh *msh, t_exec *exec)
+{
+	t_env	*temp;
 
-int	command_echo(t_msh *msh, t_exec *exec);
-int	command_cd(t_msh *msh, t_exec *exec);
-int	command_pwd(t_msh *msh, t_exec *exec);
-int	command_env(t_msh *msh, t_exec *exec);
-
-#endif
+	(void)exec;
+	temp = msh->env;
+	while (temp)
+	{
+		printf("%s=%s\n", temp->v_name, temp->v_value);
+		temp = temp->next;
+	}
+	return (0);
+}

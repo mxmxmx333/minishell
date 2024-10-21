@@ -3,18 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/10/17 15:27:50 by nicvrlja         ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2024/10/21 11:42:26 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/10/17 15:27:50 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
->>>>>>> main
+/*   Created: 2024/10/21 15:28:48 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/21 15:28:58 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

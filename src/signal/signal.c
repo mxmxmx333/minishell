@@ -3,18 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 17:57:11 by nicvrlja          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/10/17 15:27:55 by nicvrlja         ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2024/10/19 15:08:04 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/10/17 15:27:55 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
->>>>>>> main
+/*   Created: 2024/10/21 15:28:12 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/21 15:28:16 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

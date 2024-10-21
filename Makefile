@@ -52,13 +52,11 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/console/get_hostname.c \
 				$(SRC_DIR)/console/history.c \
 				$(SRC_DIR)/signal/signal.c \
-<<<<<<< HEAD
-=======
-				$(SRC_DIR)/printing/printing.c
->>>>>>> main
+				$(SRC_DIR)/printing/printing.c \
 				$(SRC_DIR)/builtins/echo.c \
 				$(SRC_DIR)/builtins/cd.c \
-				$(SRC_DIR)/testing/test_echo.c
+				$(SRC_DIR)/builtins/pwd.c \
+				$(SRC_DIR)/builtins/env.c
 OBJ 		:= 	$(SRC:.c=.o)
 
 all: $(Name)

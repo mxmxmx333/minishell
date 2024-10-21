@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 16:46:39 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/21 17:56:48 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/10/21 17:43:33 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/21 17:49:25 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#include "minishell.h"
 
-# include "minishell.h"
-
-int	command_echo(t_msh *msh, t_exec *exec);
-int	command_cd(t_msh *msh, t_exec *exec);
-int	command_pwd(t_msh *msh, t_exec *exec);
-int	command_env(t_msh *msh, t_exec *exec);
-
-#endif
+int	command_pwd(t_msh *msh, t_exec *exec)
+{
+	(void)exec;
+	printf("%s\n", msh->cur_dir);
+	return (0);
+}

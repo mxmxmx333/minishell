@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:42:01 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 16:39:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:41:15 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	destroy_prompt(t_msh *msh)
 {
 	if (msh)
 	{
+		if (msh->cur_dir)
+		{
+			free(msh->cur_dir);
+			msh->cur_dir = NULL;
+		}
 		if (msh->prompt)
 		{
 			free(msh->prompt);

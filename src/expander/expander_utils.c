@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:47:45 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/16 16:12:12 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:51:06 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_varname_break(char c)
 	return (c == ' ' || c == '\t' || c == '\'' || c == '\"' || c == '$');
 }
 
-static int	ft_strnrealcmp(char *s1, char *s2, int n)
+int	ft_strnrealcmp(char *s1, char *s2, int n)
 {
 	if (n != (int)ft_strlen(s1))
 		return (1);
