@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 16:51:53 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/17 18:40:47 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/10/16 16:46:39 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/21 15:02:16 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
 # include "minishell.h"
 
-t_exec *test_echo();
+int	echo(t_msh *msh, t_exec *exec);
+int	command_cd(t_msh *msh, t_exec *exec);
 
 #endif

@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:26:32 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/21 14:21:15 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/21 14:04:57 by nicvrlja         ###   ########.fr       */
+>>>>>>> dev_ni
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +59,7 @@ static void	minishell_interaction(t_msh *msh)
 	destroy_executable(msh);
 }
 
-void	minishell_interface(t_msh *msh )
+void	minishell_interface(t_msh *msh)
 {
 	while (1)
 	{
