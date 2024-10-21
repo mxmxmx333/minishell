@@ -58,8 +58,7 @@ SRC 		:=	$(SRC_DIR)/main.c \
 >>>>>>> main
 				$(SRC_DIR)/builtins/echo.c \
 				$(SRC_DIR)/builtins/cd.c \
-				$(SRC_DIR)/testing/test_echo.c \
-
+				$(SRC_DIR)/testing/test_echo.c
 OBJ 		:= 	$(SRC:.c=.o)
 
 all: $(Name)
