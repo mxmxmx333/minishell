@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:23 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 17:57:31 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:24:41 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	destroy_token_part(t_msh *msh, t_tok *tmp)
 {
 	t_tok	*delete;
-	
+
 	if (!tmp)
 		return (destroy_tokens(msh));
 	while (msh->tokens != tmp)
@@ -47,12 +47,19 @@ void	get_words_and_rest(t_msh *msh)
 
 void	parse_tokens(t_msh *msh)
 {
-	get_words_and_rest(msh);
-	/* while (1)
+	t_tok	*tmp;
+
+	while (1)
 	{
+		if (msh->tokens->type == PIPE)
+		{
+			tmp = msh->tokens;
+			msh->tokens = msh->tokens->next;
+			destroy_tok_node(NULL, tmp);
+		}
 		get_words_and_rest(msh);
 		add_exeutable(msh);
 		if (!msh->tokens || msh->tokens->type == NEWL)
 			break ;
-	} */
+	}
 }

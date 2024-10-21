@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:23:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 15:06:07 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:24:11 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,17 @@ void	add_tok_node(t_msh *msh, t_tok *new)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
+}
+
+int	tok_list_size(t_tok *tok)
+{
+	int		i;
+
+	i = 0;
+	while (tok)
+	{
+		i++;
+		tok = tok->next;
+	}
+	return (i);
 }

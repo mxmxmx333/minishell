@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:36 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 12:21:40 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:30:17 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	*get_status(int *msh_status)
 {
-	static int *stat = NULL;
+	static int	*stat = NULL;
 
 	if (msh_status)
 		stat = msh_status;

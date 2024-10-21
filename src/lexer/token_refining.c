@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 15:26:52 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:22:03 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	add_expander_flags(t_msh *msh)
 	tok = msh->tokens;
 	while (tok)
 	{
-		if (tok->type == WORD && (strchr(tok->content, '"' ) || strchr(tok->content, '\'')))
+		if (tok->type == WORD && (strchr(tok->content, '"' ) || \
+			strchr(tok->content, '\'')))
 			tok->splitme = 0;
 	}
 }

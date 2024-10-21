@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 14:57:35 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:42:26 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ typedef struct s_tokens
 
 /*-----------------------------> EXECUTE TABLE <------------------------------*/
 
+/*
+	*cmd;
+	*builtin;
+	**args;
+	*redirections;
+	out_pipe[2];
+	*next;
+	*prev;
+*/
 typedef struct s_execute_table
 {
 	char					*cmd;

@@ -46,6 +46,8 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/expander/get_length.c \
 				$(SRC_DIR)/parser/parser.c \
 				$(SRC_DIR)/parser/words_and_rest.c \
+				$(SRC_DIR)/parser/executable.c \
+				$(SRC_DIR)/parser/executable_utils.c \
 				$(SRC_DIR)/console/console.c \
 				$(SRC_DIR)/console/get_hostname.c \
 				$(SRC_DIR)/console/history.c \

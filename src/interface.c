@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:26:32 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 18:08:39 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:21:15 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 ///:>Destroy cmd line
 ///:>Destroy Tokens
 
-
 ///TODO: I have to update the expander to handle the tokens correctly: 
 
 /* 
@@ -33,8 +32,11 @@
 
 static void	history_update(t_msh *msh)
 {
-	add_history(msh->cur_cmd_line);
-	write_history_custom(msh, ".msh_history.txt", msh->cur_cmd_line);
+	if (msh->cur_cmd_line[0])
+	{
+		add_history(msh->cur_cmd_line);
+		write_history_custom(msh, ".msh_history.txt", msh->cur_cmd_line);
+	}
 	destroy_cmd_line(msh);
 }
 
@@ -43,14 +45,14 @@ static void	minishell_interaction(t_msh *msh)
 	msh->status = lexer(msh);
 	printf("Lexer exited with status: %d\n", msh->status);
 	print_tokens(msh);
-
 	printf("\nParsing Tokens...\n");
 	parse_tokens(msh);
-	print_words_and_rest(msh);
-	destroy_word_and_rest(msh);
 	printf("Remaining Tokens:\n");
 	print_tokens(msh);
-	destroy_tokens(msh);
+	printf("Executable Table:\n");
+	print_executable(msh);
+	destroy_word_and_rest(msh);
+	destroy_executable(msh);
 }
 
 void	minishell_interface(t_msh *msh )
@@ -63,9 +65,9 @@ void	minishell_interface(t_msh *msh )
 			printf("exit\n");
 			break ;
 		}
-		if (msh->cur_cmd_line)
+		if (msh->cur_cmd_line && !str_is_empty(msh->cur_cmd_line))
 			minishell_interaction(msh);
-		if (msh->cur_cmd_line && msh->cur_cmd_line[0] != '\0')
+		if (msh->cur_cmd_line)
 			history_update(msh);
 	}
 }

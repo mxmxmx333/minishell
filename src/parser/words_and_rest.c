@@ -6,14 +6,13 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:37:43 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 17:59:38 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:26:32 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-void destroy_word_and_rest(t_msh *msh)
+void	destroy_word_and_rest(t_msh *msh)
 {
 	if (msh->words)
 		destroy_word(msh);
@@ -25,9 +24,9 @@ void destroy_word_and_rest(t_msh *msh)
 	destroys the words list, which contains the word tokens for the current 
 	command
 */
-void destroy_word(t_msh *msh)
+void	destroy_word(t_msh *msh)
 {
-	t_tok *tmp;
+	t_tok	*tmp;
 
 	while (msh->words)
 	{
@@ -41,8 +40,10 @@ void destroy_word(t_msh *msh)
 /* 
 	Adds a word token to the words list
 */
-void add_word(t_msh *msh, t_tok *word)
+void	add_word(t_msh *msh, t_tok *word)
 {
+	t_tok	*tmp;
+
 	word->next = NULL;
 	if (!msh->words)
 	{
@@ -50,8 +51,6 @@ void add_word(t_msh *msh, t_tok *word)
 	}
 	else
 	{
-		t_tok *tmp;
-
 		tmp = msh->words;
 		while (tmp->next)
 			tmp = tmp->next;
@@ -63,9 +62,9 @@ void add_word(t_msh *msh, t_tok *word)
 	destroys the rest list, which contains the redirection tokens for
 	the current command
 */
-void destroy_rest(t_msh *msh)
+void	destroy_rest(t_msh *msh)
 {
-	t_tok *tmp;
+	t_tok	*tmp;
 
 	while (msh->rest)
 	{
@@ -79,8 +78,10 @@ void destroy_rest(t_msh *msh)
 /* 
 	Adds a redirection token to the rest list
 */
-void add_rest(t_msh *msh, t_tok *rest)
+void	add_rest(t_msh *msh, t_tok *rest)
 {
+	t_tok	*tmp;
+
 	rest->next = NULL;
 	if (!msh->rest)
 	{
@@ -88,8 +89,6 @@ void add_rest(t_msh *msh, t_tok *rest)
 	}
 	else
 	{
-		t_tok *tmp;
-
 		tmp = msh->rest;
 		while (tmp->next)
 			tmp = tmp->next;
