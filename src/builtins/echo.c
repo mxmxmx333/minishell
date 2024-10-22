@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:56:00 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/21 17:56:54 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:44:17 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	*argument_join_newline(t_msh *msh, t_exec *exec)
 	return (str);
 }
 
-int	command_echo(t_msh *msh, t_exec *exec)
+int	command_echo(t_msh *msh, t_exec *exec, int fd)
 {
 	char	*args;
 
@@ -84,10 +84,7 @@ int	command_echo(t_msh *msh, t_exec *exec)
 		args = argument_join__no_newline(msh, exec);
 	else
 		args = argument_join_newline(msh, exec);
-	if (exec->next)
-		ft_putstr_fd(args, exec->out_pipe[1]);
-	else
-		printf("%s", args);
+	ft_putstr_fd(args, fd);
 	free(args);
 	return (0);
 }

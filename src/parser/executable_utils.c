@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executable_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:34:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/21 15:22:05 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:22:53 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	destroy_executable(t_msh *msh)
 		}
 		if (tmp->cmd)
 			free(tmp->cmd);
-		if (tmp->builtin)
-			free(tmp->builtin);
+		//if (tmp->builtin)
+		//	free(tmp->builtin);
 		free(tmp);
 	}
 	msh->exec_table = NULL;

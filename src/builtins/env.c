@@ -6,13 +6,13 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:53:04 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/21 17:58:13 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:26:25 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	command_env(t_msh *msh, t_exec *exec)
+int	command_env(t_msh *msh, t_exec *exec, int fd)
 {
 	t_env	*temp;
 
@@ -20,7 +20,10 @@ int	command_env(t_msh *msh, t_exec *exec)
 	temp = msh->env;
 	while (temp)
 	{
-		printf("%s=%s\n", temp->v_name, temp->v_value);
+		ft_putstr_fd(temp->v_name, fd);
+		ft_putstr_fd("=", fd);
+		ft_putstr_fd(temp->v_value, fd);
+		ft_putstr_fd("\n", fd);
 		temp = temp->next;
 	}
 	return (0);

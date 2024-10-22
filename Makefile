@@ -32,6 +32,7 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/execution/paths.c \
 				$(SRC_DIR)/execution/execution.c \
 				$(SRC_DIR)/execution/pathfinder.c \
+				$(SRC_DIR)/execution/set_builtin_function.c \
 				$(SRC_DIR)/errors/error_msg.c \
 				$(SRC_DIR)/errors/syntax_error.c \
 				$(SRC_DIR)/memory/destruction.c \
@@ -56,7 +57,8 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/builtins/echo.c \
 				$(SRC_DIR)/builtins/cd.c \
 				$(SRC_DIR)/builtins/pwd.c \
-				$(SRC_DIR)/builtins/env.c
+				$(SRC_DIR)/builtins/env.c \
+				$(SRC_DIR)/builtins/export.c
 OBJ 		:= 	$(SRC:.c=.o)
 
 all: $(Name)

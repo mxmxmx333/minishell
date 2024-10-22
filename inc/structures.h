@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:28:48 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/21 15:28:58 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:45:36 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define STRUCTURES_H
 
 # include "minishell.h"
+
+typedef struct s_minishell t_msh;
 
 /*------------------------------> TOKEN TYPES <-------------------------------*/
 
@@ -66,7 +68,7 @@ typedef struct s_tokens
 typedef struct s_execute_table
 {
 	char					*cmd;
-	char					*builtin;
+	int						(*builtin)(t_msh *, struct s_execute_table *, int);
 	char					**args;
 	t_tok					*redirections;
 	int						out_pipe[2];

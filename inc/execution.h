@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 19:08:03 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:30:22 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ void	destroy_exe_path(t_msh *msh);
 
 void	prepare_execution(t_msh *msh);
 void	finished_execution(t_msh *msh);
+
+void	set_builtin_function(t_msh *msh, t_exec *exec);
+
 
 #endif
