@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:42:01 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/19 16:39:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:49:25 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	destroy_minishell(t_msh *msh)
 		destroy_cmd_line(msh);
 		destroy_prompt(msh);
 		destroy_word_and_rest(msh);
+		destroy_executable(msh);
 		ft_free((void **)&msh);
 	}
 }

@@ -32,6 +32,12 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/execution/paths.c \
 				$(SRC_DIR)/execution/execution.c \
 				$(SRC_DIR)/execution/pathfinder.c \
+				$(SRC_DIR)/execution/wrappers_exec.c \
+				$(SRC_DIR)/execution/wrappers_open.c \
+				$(SRC_DIR)/execution/close_pipes.c \
+				$(SRC_DIR)/execution/conditions.c \
+				$(SRC_DIR)/execution/execute_command.c \
+				$(SRC_DIR)/execution/redirections.c \
 				$(SRC_DIR)/errors/error_msg.c \
 				$(SRC_DIR)/errors/syntax_error.c \
 				$(SRC_DIR)/memory/destruction.c \
@@ -44,6 +50,7 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/expander/expander.c \
 				$(SRC_DIR)/expander/expander_utils.c \
 				$(SRC_DIR)/expander/get_length.c \
+				$(SRC_DIR)/parser/destroy_executables.c \
 				$(SRC_DIR)/parser/parser.c \
 				$(SRC_DIR)/parser/words_and_rest.c \
 				$(SRC_DIR)/parser/executable.c \
