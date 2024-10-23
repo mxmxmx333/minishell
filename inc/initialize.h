@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:58:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 18:17:52 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/23 14:29:41 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	destroy_env(t_msh *msh);
 void	add_env_node(t_msh *msh, t_env *node);
 t_env	*create_env_node(t_msh *msh, char *env);
 void	initialize_environment(t_msh *msh, char **env);
+size_t	env_size(t_msh *msh);
 
 #endif

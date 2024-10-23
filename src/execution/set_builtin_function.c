@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:29:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/22 13:31:07 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/23 14:18:43 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	set_builtin_function(t_msh *msh, t_exec *exec)
 		exec->builtin = &command_pwd;
 	if (ft_strnrealcmp(cmdname, "export", ft_strlen(cmdname)) == 0)
 		exec->builtin = &command_export;
-	//if (ft_strnrealcmp(cmdname, "unset", ft_strlen(cmdname)) == 0)
-		//exec->builtin = &command_echo;
+	if (ft_strnrealcmp(cmdname, "unset", ft_strlen(cmdname)) == 0)
+		exec->builtin = &command_unset;
 	if (ft_strnrealcmp(cmdname, "env", ft_strlen(cmdname)) == 0)
 		exec->builtin = &command_env;
-	//if (ft_strnrealcmp(cmdname, "exit", ft_strlen(cmdname)) == 0)
-	//	exec->builtin = &command_echo;
+	if (ft_strnrealcmp(cmdname, "exit", ft_strlen(cmdname)) == 0)
+		exec->builtin = &command_exit;
 }

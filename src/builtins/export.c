@@ -6,11 +6,31 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/22 15:16:47 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:36:22 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	print_export_array(t_msh *msh, int fd)
+{
+	int	i;
+
+	i = -1;
+	if (!msh->export)
+	{
+		convert_exp(msh);
+		sort_export_array(msh);
+	}
+	while (msh->export[++i])
+	{
+		if (msh->export[i][0] == '_')
+			continue ;
+		ft_putstr_fd("declare -x ", fd);
+		ft_putstr_fd(msh->export[i], fd);
+		ft_putstr_fd("\n", fd);
+	}
+}
 
 /*
 	Check if there is already a variable with the name,if there is then
@@ -34,6 +54,10 @@ static int	search_and_replace(t_msh *msh, char *v_name, char *v_value)
 	return (-1);
 }
 
+/*
+	In the case where an existing variable name was not found, just
+	create a new node with v_name and v_value.
+*/
 static void	add_node_env(t_msh *msh, char *v_name, char *v_value)
 {
 	t_env	*env;
@@ -51,6 +75,9 @@ static void	add_node_env(t_msh *msh, char *v_name, char *v_value)
 	env->next = node;
 }
 
+/*
+	Allocate memory and copy from args to v_name and v_value.
+*/
 static int	allocate_and_copy(t_msh *msh, char *arg, char **v_name, char **v_value)
 {
 	int		i;
@@ -63,30 +90,16 @@ static int	allocate_and_copy(t_msh *msh, char *arg, char **v_name, char **v_valu
 			break ;
 		i++;
 	}
-	*v_name = ft_calloc(i + 1, sizeof(char));
-	if (!*v_name)
-		return (-1);
-	i = -1;
-	while (arg[++i] != '=')
-		(*v_name)[i] = arg[i];
-	*v_value = ft_strdup(arg + i + 1);
-	if (!v_value)
-		return (free(*v_name), -1);
+	*v_name = ft_strndup(arg, i);
+	if (!ft_strchr(arg, '='))
+		*v_value = NULL;
+	else
+	{
+		*v_value = ft_strdup(arg + i + 1);
+		if (!v_value)
+			return (free(*v_name), -1);
+	}
 	return (0);
-}
-
-int	check_value(char *arg)
-{
-	int	i;
-
-	i = -1;
-	while (arg[++i])
-		if (arg[i] == '=')
-			break ;
-	i = 0;
-	while (arg[i])
-		i++;
-	return (i);
 }
 
 int	command_export(t_msh *msh, t_exec *exec, int fd)
@@ -97,25 +110,21 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 
 	i = 0;
 	if (!exec->args[1])
-		command_env(msh, exec, fd);
+		print_export_array(msh, fd);
 	while (exec->args[++i])
 	{
-		if (!ft_strchr(exec->args[i], '='))
+		allocate_and_copy(msh, exec->args[i], &v_name, &v_value);
+		if (search_and_replace(msh, v_name, v_value) == 1)
 		{
-			v_name = ft_strdup(exec->args[i]);
-			v_value = ft_strdup("");
-			break ;
+			free(v_name);
+			continue ;
 		}
 		else
-			allocate_and_copy(msh, exec->args[i], &v_name, &v_value);
-		if (search_and_replace(msh, v_name, v_value) == 1)
-			continue ;
-		else
-			add_node_env(msh, v_name, v_value);		
+		{
+			add_node_env(msh, v_name, v_value);
+			destroy_exp(msh);
+		}
 	}
-	if (v_name)
-		free(v_name);
-	if (v_value)
-		free(v_value);
+	msh->env_size = env_size(msh);
 	return (0);
 }

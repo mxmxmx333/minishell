@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:11:55 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/17 11:37:55 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:22:41 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ void	convert_exp(t_msh *msh)
 	i = 0;
 	while (tmp)
 	{
+		if (!tmp->v_value)
+		{
+			env[i] = ft_strdup(tmp->v_name);
+			tmp = tmp->next;
+			i++;
+			continue ;
+		}
 		env[i] = ft_strjoin_three(tmp->v_name, "=", tmp->v_value);
 		if (!env[i])
 			error_simple(msh, M_ERR, EXIT_FAILURE);

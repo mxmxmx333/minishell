@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   env_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 17:53:04 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 15:17:33 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/10/23 14:27:27 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/23 14:29:31 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	command_env(t_msh *msh, t_exec *exec, int fd)
+size_t	env_size(t_msh *msh)
 {
-	t_env	*temp;
+	t_env	*env;
+	size_t		i;
 
-	(void)exec;
-	temp = msh->env;
-	while (temp)
+	i = 0;
+	env = msh->env;
+	while (env)
 	{
-		if (!temp->v_value)
-		{
-			temp = temp->next;
-			continue ;
-		}
-		ft_putstr_fd(temp->v_name, fd);
-		ft_putstr_fd("=", fd);
-		ft_putstr_fd(temp->v_value, fd);
-		ft_putstr_fd("\n", fd);
-		temp = temp->next;
+		i++;
+		env = env->next;
 	}
-	return (0);
+	return (i);
 }

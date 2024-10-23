@@ -28,6 +28,7 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/interface.c \
 				$(SRC_DIR)/initialization/initialization.c \
 				$(SRC_DIR)/initialization/environment.c \
+				$(SRC_DIR)/initialization/env_size.c \
 				$(SRC_DIR)/execution/convert_export.c \
 				$(SRC_DIR)/execution/paths.c \
 				$(SRC_DIR)/execution/execution.c \
@@ -58,7 +59,10 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/builtins/cd.c \
 				$(SRC_DIR)/builtins/pwd.c \
 				$(SRC_DIR)/builtins/env.c \
-				$(SRC_DIR)/builtins/export.c
+				$(SRC_DIR)/builtins/export.c \
+				$(SRC_DIR)/builtins/unset.c \
+				$(SRC_DIR)/builtins/exit.c \
+				$(SRC_DIR)/builtins/export_utils.c
 OBJ 		:= 	$(SRC:.c=.o)
 
 all: $(Name)
