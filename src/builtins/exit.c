@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:31:05 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 15:40:24 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:02:04 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	command_exit(t_msh *msh, t_exec *exec, int fd)
 
 	(void)fd;
 	i = 1;
+	if (exec->next)
+		return (0);
 	printf("exit\n");
 	while (exec->args[i])
 		i++;
