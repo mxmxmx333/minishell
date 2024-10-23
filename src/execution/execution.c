@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/22 17:54:17 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:04:52 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	finished_execution(t_msh *msh)
 {
 	destroy_exp(msh);
 	destroy_paths(msh);
+	destroy_executable(msh);
 }
 
 /* 
@@ -26,6 +27,7 @@ void	finished_execution(t_msh *msh)
 */
 void	prepare_execution(t_msh *msh)
 {
+	destroy_exp(msh);
 	convert_exp(msh);
 	extract_paths(msh);
 }
@@ -47,7 +49,8 @@ int	execution(t_msh *msh)
 			execute_command(msh, current);
 		current = current->next;
 	}
-	// TODO: EXITED WIFE
+	while (wait(NULL) >	0)
+		;
 	finished_execution(msh);
 	return (0);
 }

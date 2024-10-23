@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/22 18:06:28 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:39:56 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	close_both_pipes(t_msh *msh, t_exec *current);
 
 int		is_parent(int pid);
 
-/*------------------------------> error handling <------------------------------*/
+/*------------------------------> execution <------------------------------*/
+
+int		execution(t_msh *msh);
 
 #endif
