@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:26:32 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 15:00:04 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:34:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ static void	minishell_interaction(t_msh *msh)
 	printf("Executable Table:\n");
 	print_executable(msh);
 	destroy_word_and_rest(msh);
-	command_export(msh, msh->exec_table, 1);
-	destroy_executable(msh);
 	execution(msh);
 }
 
