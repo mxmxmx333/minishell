@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 15:28:48 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 13:29:47 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/10/24 16:12:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_execute_table
 	int						(*builtin)(t_msh *, struct s_execute_table *, int);
 	char					**args;
 	t_tok					*redirections;
+	bool					pipe;
 	int						out_pipe[2];
 	struct s_execute_table	*next;
 	struct s_execute_table	*prev;
@@ -124,7 +125,7 @@ typedef struct s_minishell
 {
 	t_tok	*rest;			//rest of the tokens
 	t_tok	*words;			//words list
-	t_exec	*exec_table;		//execution table
+	t_exec	*exec_table;	//execution table
 	char	**export;		//exported list for execution
 	char	**paths;		//path list
 	char	*exe_path;		//executable path
@@ -140,6 +141,7 @@ typedef struct s_minishell
 	char	*cur_cmd_line;	//current input
 	t_tok	*tokens;		//tokens list
 	int		status;			//exit code
+	int		last_pid;		//last process id
 }	t_msh;
 
 #endif

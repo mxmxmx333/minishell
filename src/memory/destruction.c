@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destruction.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:42:01 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/23 13:43:30 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:16:57 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	destroy_minishell(t_msh *msh)
 		destroy_cmd_line(msh);
 		destroy_prompt(msh);
 		destroy_word_and_rest(msh);
+		destroy_executable(msh);
 		ft_free((void **)&msh);
 	}
 }

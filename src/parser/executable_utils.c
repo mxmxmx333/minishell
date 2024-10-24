@@ -3,43 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   executable_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:34:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 13:56:35 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:17:55 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "minishell.h"
-
-void	destroy_executable(t_msh *msh)
-{
-	t_exec	*tmp;
-	t_tok	*deleteme;
-
-	while (msh->exec_table)
-	{
-		tmp = msh->exec_table;
-		msh->exec_table = msh->exec_table->next;
-		if (tmp->args)
-			destroy_str_array(tmp->args);
-		if (tmp->redirections)
-		{
-			while (tmp->redirections)
-			{
-				deleteme = tmp->redirections;
-				tmp->redirections = tmp->redirections->next;
-				destroy_tok_node(NULL, deleteme);
-			}
-		}
-		if (tmp->cmd)
-			free(tmp->cmd);
-		if (tmp->builtin)
-			free(tmp->builtin);
-		free(tmp);
-	}
-	msh->exec_table = NULL;
-}
 
 t_exec	*create_executable(t_msh *msh)
 {

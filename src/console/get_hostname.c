@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_hostname.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:58:08 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 16:57:55 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:55:51 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*get_hostname(void)
 	i = 0;
 	hostname = get_next_line(fd);
 	if (!hostname)
-		return (close(fd), NULL);
+		return (close(fd), close(fd), NULL);
 	i = ft_strlen(hostname) - 1;
 	hostname[i] = '\0';
 	res = trim_hostname(hostname);

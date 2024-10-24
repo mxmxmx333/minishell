@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 17:43:33 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/22 13:45:57 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/10/24 14:53:50 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/10/24 14:54:55 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "minishell.h"
 

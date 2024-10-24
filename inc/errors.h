@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:06:17 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:51:29 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,20 @@
 */
 
 /* Permission denied*/
-# define PER_ERR "permission denied\n"
+# define PER_ERR ": permission denied\n"
+/* Open Permission denied*/
+# define O_PER_ERR ": permission denied\n"
 /* Is a directory */
 # define DIR_ERR "is a directory\n"
 /* No such file or directory */
-# define NODF_ERR "no such file or directory\n"
+# define NODF_ERR ": no such file or directory\n"
 /* Command not found*/
-# define CMDNF_ERR "command not found\n"
+# define CMDNF_ERR ": command not found\n"
+/* Fatal: Failed to create Pipe */
+# define FATAL_ERR_PIPE "Fatal Error: Failed to create Pipe!\n"
 
+/* Fatal: Failed to create child process */
+# define FATAL_ERR_FORK "Fatal Error: Failed to create child process!\n"
 /* 
 	SYNTAX ERRORS <-----------------------------------------------------
 */

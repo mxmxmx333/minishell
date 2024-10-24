@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/17 11:31:08 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:40:06 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	finished_execution(t_msh *msh)
 {
 	destroy_exp(msh);
 	destroy_paths(msh);
+	destroy_executable(msh);
 }
 
 /* 
@@ -26,6 +27,30 @@ void	finished_execution(t_msh *msh)
 */
 void	prepare_execution(t_msh *msh)
 {
+	destroy_exp(msh);
 	convert_exp(msh);
 	extract_paths(msh);
+}
+
+/*
+
+*/
+int	execution(t_msh *msh)
+{
+	t_exec	*current;
+
+	prepare_execution(msh);
+	current = msh->exec_table;
+	while (current)
+	{
+		// if (current->builtin)
+		// 	builtin(msh, current);
+		// else
+			execute_command(msh, current);
+		current = current->next;
+	}
+	while (wait(NULL) >	0) //FIXME: this is a temporary solution
+		;
+	finished_execution(msh);
+	return (0);
 }

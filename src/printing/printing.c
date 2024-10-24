@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:32:11 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:48:23 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:18:56 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,9 @@ void	print_executable(t_msh *msh)
 		printf("  Redirections:-------------------- \n");
 		while (tmp->redirections)
 		{
-			printf("Type: %s\n", get_type(tmp->redirections->type));
-			printf("File: %s\n", tmp->redirections->file);
-			tmp->redirections = tmp->redirections->next;
+			printf("Type: %s\n", get_type(tempredirect->type));
+			printf("File: %s\n", tempredirect->file);
+			tempredirect = tempredirect->next;
 		}
 		printf("\n");
 		tmp = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:42:57 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:45:59 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:18:08 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,18 @@ void	convert_word_list(t_msh *msh, t_exec *table)
 void	add_exeutable(t_msh *msh)
 {
 	t_exec	*table;
+	t_exec	*tmp;
 
 	table = create_executable(msh);
+	tmp = msh->exec_table;
 	if (!msh->exec_table)
 		msh->exec_table = table;
 	else
 	{
-		while (msh->exec_table->next)
-			msh->exec_table = msh->exec_table->next;
-		msh->exec_table->next = table;
-		table->prev = msh->exec_table;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = table;
+		table->prev = tmp;
 	}
 	table->redirections = msh->rest;
 	msh->rest = NULL;

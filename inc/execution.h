@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 13:28:53 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:57:01 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,49 @@ void	destroy_exp(t_msh *msh); //export
 void	extract_paths(t_msh *msh); //paths
 void	destroy_paths(t_msh *msh); //paths
 
-/*---------------------------------> utils <----------------------------------*/
+/*---------------------------------> utils <---------------------------------*/
 
 int		pathfinder(t_msh *msh, char *path);
 void	destroy_exe_path(t_msh *msh);
 
-/*------------------------------> structuring <-------------------------------*/
+/*------------------------------> structuring <------------------------------*/
 
 void	prepare_execution(t_msh *msh);
 void	finished_execution(t_msh *msh);
 
 void	set_builtin_function(t_msh *msh, t_exec *exec);
+
+/*-----------------------------> implementation <-----------------------------*/
+
+int		execute_command(t_msh *msh, t_exec *current);
+
+/*--------------------------------> wrappers <--------------------------------*/
+
+void	wrppd_dup2(t_msh *msh, int old_fd, int new_fd);
+void	wrppd_close(t_msh *msh, int fd);
+void	wrppd_pipe(t_msh *msh, int *fd);
+int		wrppd_fork(t_msh *msh);
+int		wrppd_open(t_msh *msh, char *path, int flags);
+
+/*------------------------------> redirections <------------------------------*/
+
+//handlers: are on top level of a single execution
+
+void	create_out_pipe(t_msh *msh, t_exec *current);
+void	redirect_outpipe(t_msh *msh, t_exec *current);
+void	redirect_inpipe(t_msh *msh, t_exec *current);
+void	redirect_output(t_msh *msh, t_tok *redirections);
+void	redirect_input(t_msh *msh, t_tok *redirections);
+void	close_pipe(t_msh *msh, int fd[2]);
+void	close_previous_pipe(t_msh *msh, t_exec *current);
+void	close_both_pipes(t_msh *msh, t_exec *current);
+
+/*--------------------------------> conditions <------------------------------*/
+
+int		is_parent(int pid);
+
+/*------------------------------> execution <------------------------------*/
+
+int		execution(t_msh *msh);
 
 #endif

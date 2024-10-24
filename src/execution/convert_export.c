@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:11:55 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 13:55:46 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:15:57 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static char	**allocate_memory(t_msh *msh, t_env **tmp)
 	return (env);
 }
 
-/*
+/* //TODO: needs to work properly with export --> even if value is NULL (export spiderman (with not = sign )
+	// ALso : check expander and any other functions that use t_env
 	converts the environment list for export environment
 */
 void	convert_exp(t_msh *msh)
