@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   set_builtin_function.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:29:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 14:44:37 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:51:32 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	set_builtin_function(t_msh *msh, t_exec *exec)
+void	set_builtin_function(t_exec *exec)
 {
 	char	*cmdname;
 
-	(void)msh;
 	cmdname = exec->args[0];
 	if (ft_strnrealcmp(cmdname, "echo", ft_strlen("echo")) == 0)
 		exec->builtin = &command_echo;

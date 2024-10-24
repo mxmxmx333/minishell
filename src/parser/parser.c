@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:23 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/21 14:24:41 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:46:02 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,5 @@ void	parse_tokens(t_msh *msh)
 		if (!msh->tokens || msh->tokens->type == NEWL)
 			break ;
 	}
+	destroy_word_and_rest(msh);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 16:32:29 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 16:32:33 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/10/24 17:44:27 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ static void	minishell_interaction(t_msh *msh)
 	print_tokens(msh);
 	printf("Executable Table:\n");
 	print_executable(msh);
-	destroy_word_and_rest(msh);
-	command_env(msh, msh->exec_table, 1);
-	destroy_executable(msh);
 	execution(msh);
 }
 
