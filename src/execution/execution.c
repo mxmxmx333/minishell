@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/23 17:04:52 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:40:06 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	execution(t_msh *msh)
 			execute_command(msh, current);
 		current = current->next;
 	}
-	while (wait(NULL) >	0)
+	while (wait(NULL) >	0) //FIXME: this is a temporary solution
 		;
 	finished_execution(msh);
 	return (0);

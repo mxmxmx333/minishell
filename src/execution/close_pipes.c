@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:16:58 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/23 15:49:53 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:41:14 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	close_previous_pipe(t_msh *msh, t_exec *current)
 		close_pipe(msh, current->prev->out_pipe);
 		current->prev->pipe = false;
 	}
-		
 }
 
 void	close_both_pipes(t_msh *msh, t_exec *current)

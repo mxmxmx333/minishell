@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/23 15:39:56 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:37:08 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,21 @@ void	destroy_exp(t_msh *msh); //export
 void	extract_paths(t_msh *msh); //paths
 void	destroy_paths(t_msh *msh); //paths
 
-/*---------------------------------> utils <----------------------------------*/
+/*---------------------------------> utils <---------------------------------*/
 
 int		pathfinder(t_msh *msh, char *path);
 void	destroy_exe_path(t_msh *msh);
 
-/*------------------------------> structuring <-------------------------------*/
+/*------------------------------> structuring <------------------------------*/
 
 void	prepare_execution(t_msh *msh);
 void	finished_execution(t_msh *msh);
 
-/*-----------------------------> implementation <------------------------------*/
+/*-----------------------------> implementation <-----------------------------*/
 
 int		execute_command(t_msh *msh, t_exec *current);
 
-
-/*--------------------------------> wrappers <---------------------------------*/
+/*--------------------------------> wrappers <--------------------------------*/
 
 void	wrppd_dup2(t_msh *msh, int old_fd, int new_fd);
 void	wrppd_close(t_msh *msh, int fd);
@@ -52,7 +51,7 @@ void	wrppd_pipe(t_msh *msh, int *fd);
 int		wrppd_fork(t_msh *msh);
 int		wrppd_open(t_msh *msh, char *path, int flags);
 
-/*------------------------------> redirections <-------------------------------*/
+/*------------------------------> redirections <------------------------------*/
 
 //handlers: are on top level of a single execution
 
@@ -65,7 +64,7 @@ void	close_pipe(t_msh *msh, int fd[2]);
 void	close_previous_pipe(t_msh *msh, t_exec *current);
 void	close_both_pipes(t_msh *msh, t_exec *current);
 
-/*--------------------------------> conditions <--------------------------------*/
+/*--------------------------------> conditions <------------------------------*/
 
 int		is_parent(int pid);
 

@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:30:03 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/23 15:32:05 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:29:11 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	redirect_input(t_msh *msh, t_tok *redirections)
 {
 	int	fd;
 
-	fd = wrppd_open(msh, redirections->content, O_RDONLY);
+	fd = wrppd_open(msh, redirections->file, O_RDONLY);
 	wrppd_dup2(msh, fd, STDIN_FILENO);
 	wrppd_close(msh, fd);
 }
@@ -26,9 +26,9 @@ void	redirect_output(t_msh *msh, t_tok *redirections)
 	int	fd;
 
 	if (redirections->type == REDI_TOUT)
-		fd = wrppd_open(msh, redirections->content, O_TRUNC);
+		fd = wrppd_open(msh, redirections->file, O_TRUNC);
 	else
-		fd = wrppd_open(msh, redirections->content, O_APPEND);
+		fd = wrppd_open(msh, redirections->file, O_APPEND);
 	wrppd_dup2(msh, fd, STDOUT_FILENO);
 	wrppd_close(msh, fd);
 }

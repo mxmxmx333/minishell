@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:41:47 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/22 17:03:20 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:41:01 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	wrppd_pipe(t_msh *msh, int *fd)
 
 int	wrppd_fork(t_msh *msh)
 {
-	pid_t pid;
+	pid_t	pid;
 
 	pid = fork();
 	if (pid == -1)

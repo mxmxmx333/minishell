@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:54:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/23 15:47:58 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:40:30 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	handle_redirections(t_msh *msh, t_exec *current)
 	while (redirections)
 	{
 		if (redirections->type == REDI_IN || redirections->type == HERE_DOC)
+		{
 			redirect_input(msh, redirections);
+		}
 		else
 			redirect_output(msh, redirections);
 		redirections = redirections->next;
@@ -42,7 +44,6 @@ void	implement_command(t_msh *msh, t_exec *current)
 int	execute_command(t_msh *msh, t_exec *current)
 {
 	pid_t	pid;
-	// int		status;
 
 	create_out_pipe(msh, current);
 	pid = wrppd_fork(msh);
