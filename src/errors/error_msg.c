@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:27:56 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/22 11:48:49 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:06:02 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	display_tok_err(char *p1, char *p2)
 	Function to display error message, useful for erros in builtin functions 
 	it prints in format msh: $cmdname: $arg: $errmsg
 */
-void	display_function_error(char *cmdname, char *arg, char *errmsg)
+void	dis_func_err(char *cmdname, char *arg, char *errmsg)
 {
 	ft_putstr_fd(RED, STDERR_FILENO);
 	ft_putstr_fd(BOLD, STDERR_FILENO);

@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/21 15:29:18 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:43:59 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@
 # include "expander.h"
 # include "errors.h"
 # include "memory.h"
-# include "test.h"
 # include "execution.h"
 # include "colors.h"
 # include "sig.h"

@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/22 13:43:41 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:05:26 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 static void	cd_errors(int errcode, char *arg)
 {
 	if (errcode == ENOTDIR)
-		display_function_error("cd: ", arg, "Not a directory");
+		dis_func_err("cd: ", arg, "Not a directory");
 	else if (errcode == ENOENT)
-		display_function_error("cd: " , arg, "No such file or directory");
+		dis_func_err("cd: ", arg, "No such file or directory");
 	else if (errcode == EACCES)
-		display_function_error("cd: ", arg, "Permission denied");
+		dis_func_err("cd: ", arg, "Permission denied");
 	else if (errcode == EFAULT)
-		display_function_error("cd: ", arg, "Bad address");
+		dis_func_err("cd: ", arg, "Bad address");
 	else if (errcode == EIO)
-		display_function_error("cd: ", arg, "Input/output error");
+		dis_func_err("cd: ", arg, "Input/output error");
 	else if (errcode == ELOOP)
-		display_function_error("cd: ", arg, "Too many simbolic links");
+		dis_func_err("cd: ", arg, "Too many simbolic links");
 	else if (errcode == ENAMETOOLONG)
-		display_function_error("cd: ", arg, "Name too long");
+		dis_func_err("cd: ", arg, "Name too long");
 	else if (errcode == EROFS)
-		display_function_error("cd: ", arg, "Read-only file system");
+		dis_func_err("cd: ", arg, "Read-only file system");
 	else if (errcode == ENOMEM)
-		display_function_error("cd: ", arg, "Out of memory");
+		dis_func_err("cd: ", arg, "Out of memory");
 }
 
 static void	update_env(t_msh *msh, char *pwd, char *oldpwd)
@@ -41,12 +41,12 @@ static void	update_env(t_msh *msh, char *pwd, char *oldpwd)
 	temp = msh->env;
 	while (temp)
 	{
-		if (ft_strnrealcmp(temp->v_name, "PWD", ft_strlen(temp->v_name)) == 0)
+		if (ft_strnrealcmp(temp->v_name, "PWD", ft_strlen("PWD")) == 0)
 		{
 			free(temp->v_value);
 			temp->v_value = ft_strdup(pwd);
 		}
-		if (ft_strnrealcmp(temp->v_name, "OLDPWD", ft_strlen(temp->v_name)) == 0)
+		if (ft_strnrealcmp(temp->v_name, "OLDPWD", ft_strlen("OLDPWD")) == 0)
 		{
 			free(temp->v_value);
 			temp->v_value = ft_strdup(oldpwd);
@@ -58,7 +58,7 @@ static void	update_env(t_msh *msh, char *pwd, char *oldpwd)
 int	command_cd(t_msh *msh, t_exec *exec, int fd)
 {
 	char	*oldpwd;
-	
+
 	(void)fd;
 	oldpwd = getcwd(NULL, 0);
 	if (!oldpwd)
@@ -66,7 +66,8 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 	if (!exec->args[1])
 	{
 		if (chdir(msh->home_dir) == -1)
-			return (perror("chdir"), free(oldpwd), cd_errors(errno, msh->home_dir), -1);
+			return (perror("chdir"), free(oldpwd),
+				cd_errors(errno, msh->home_dir), -1);
 		free(msh->cur_dir);
 		free(msh->prompt);
 		create_prompt(msh);

@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:31:05 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 17:02:04 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:11:19 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@ static int	check_digits(char *str)
 	return (1);
 }
 
+static void	error_numeric(t_msh *msh, t_exec *exec)
+{
+	destroy_minishell(msh);
+	dis_func_err("exit: ", exec->args[1], "numeric argument required");
+	exit(2);
+}
+
+static void	exit_with_code(t_msh *msh, t_exec *exec)
+{
+	int	ex_code;
+
+	destroy_minishell(msh);
+	ex_code = ft_atoi(exec->args[1]);
+	exit(ex_code);
+}
+
 int	command_exit(t_msh *msh, t_exec *exec, int fd)
 {
 	int		i;
@@ -38,23 +54,15 @@ int	command_exit(t_msh *msh, t_exec *exec, int fd)
 	while (exec->args[i])
 		i++;
 	if (i > 2)
-		return (display_function_error("exit: ", NULL, "too many arguments\n"), -1);
+		return (dis_func_err("exit: ", NULL, "too many arguments\n"), -1);
 	if (!exec->args[1])
 	{
 		destroy_minishell(msh);
 		exit(0);
 	}
 	if (check_digits(exec->args[1]))
-	{
-		destroy_minishell(msh);
-		ex_code = ft_atoi(exec->args[1]);
-		exit(ex_code);
-	}
+		exit_with_code(msh, exec);
 	else
-	{
-		destroy_minishell(msh);
-		display_function_error("exit: ", exec->args[1], "numeric argument required");
-		exit(2);
-	}
+		error_numeric(msh, exec);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/22 11:40:30 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:06:17 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	error_simple(t_msh *msh, char *msg, int exit_code);
 void	error_complex(t_msh *msh, char *msg, char *param, int exit_code);
 void	error_complex_tok(t_msh *msh, char *msg, char *param, int exit_code);
 void	display_tok_err(char *p1, char *p2);
-void	display_function_error(char *cmdname, char *arg, char *errmsg);
+void	dis_func_err(char *cmdname, char *arg, char *errmsg);
 
 int		check_syntax_error_quotes(t_msh *msh);
 void	check_token_err_redi(t_msh *msh);

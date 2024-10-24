@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/22 13:30:22 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:28:53 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ void	prepare_execution(t_msh *msh);
 void	finished_execution(t_msh *msh);
 
 void	set_builtin_function(t_msh *msh, t_exec *exec);
-
 
 #endif

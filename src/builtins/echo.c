@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:56:00 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/22 13:44:17 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:59:09 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ int	command_echo(t_msh *msh, t_exec *exec, int fd)
 {
 	char	*args;
 
-	if (exec->args[1] && ft_strncmp(exec->args[1], "-n", ft_strlen(exec->args[1])) == 0)
+	if (exec->args[1]
+		&& ft_strncmp(exec->args[1], "-n", ft_strlen(exec->args[1])) == 0)
 		args = argument_join__no_newline(msh, exec);
 	else
 		args = argument_join_newline(msh, exec);

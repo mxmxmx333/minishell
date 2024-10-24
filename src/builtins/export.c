@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 15:36:22 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:00:00 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	search_and_replace(t_msh *msh, char *v_name, char *v_value)
 	temp = msh->env;
 	while (temp)
 	{
-		if (ft_strnrealcmp(temp->v_name, v_name, ft_strlen(temp->v_name)) == 0)
+		if (ft_strnrealcmp(temp->v_name, v_name, ft_strlen(v_name)) == 0)
 		{
 			free(temp->v_value);
 			temp->v_value = v_value;
@@ -78,7 +78,8 @@ static void	add_node_env(t_msh *msh, char *v_name, char *v_value)
 /*
 	Allocate memory and copy from args to v_name and v_value.
 */
-static int	allocate_and_copy(t_msh *msh, char *arg, char **v_name, char **v_value)
+static int	allocate_and_copy(t_msh *msh, char *arg,
+	char **v_name, char **v_value)
 {
 	int		i;
 
@@ -91,6 +92,8 @@ static int	allocate_and_copy(t_msh *msh, char *arg, char **v_name, char **v_valu
 		i++;
 	}
 	*v_name = ft_strndup(arg, i);
+	if (!*v_name)
+		return (-1);
 	if (!ft_strchr(arg, '='))
 		*v_value = NULL;
 	else
@@ -113,7 +116,8 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 		print_export_array(msh, fd);
 	while (exec->args[++i])
 	{
-		allocate_and_copy(msh, exec->args[i], &v_name, &v_value);
+		if (allocate_and_copy(msh, exec->args[i], &v_name, &v_value) == -1)
+			return (-1);
 		if (search_and_replace(msh, v_name, v_value) == 1)
 		{
 			free(v_name);

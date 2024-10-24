@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:28:48 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 12:09:16 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:29:47 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # include "minishell.h"
 
-typedef struct s_minishell t_msh;
+typedef struct s_minishell	t_msh;
 
 /*------------------------------> TOKEN TYPES <-------------------------------*/
 
