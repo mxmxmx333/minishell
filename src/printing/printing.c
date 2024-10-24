@@ -6,7 +6,11 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:32:11 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/24 16:25:20 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/24 14:38:57 by nicvrlja         ###   ########.fr       */
+>>>>>>> dev_ni
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +114,6 @@ void	print_executable(t_msh *msh)
 		i = -1;
 		printf("Executable:----------------------------------\n");
 		printf("    CMD: %s\n", tmp->cmd);
-		if (tmp->builtin)
-			printf("Builtin: = true\n");
-		else
-			printf("Builtin: = false\n");
 		printf("   Args: ");
 		while (tmp->args[++i])
 			printf("   Arg %i:%s ", i, tmp->args[i]);

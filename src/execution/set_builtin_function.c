@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:29:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 14:18:43 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:44:37 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void	set_builtin_function(t_msh *msh, t_exec *exec)
 
 	(void)msh;
 	cmdname = exec->args[0];
-	if (ft_strnrealcmp(cmdname, "echo", ft_strlen(cmdname)) == 0)
+	if (ft_strnrealcmp(cmdname, "echo", ft_strlen("echo")) == 0)
 		exec->builtin = &command_echo;
-	if (ft_strnrealcmp(cmdname, "cd", ft_strlen(cmdname)) == 0)
+	if (ft_strnrealcmp(cmdname, "cd", ft_strlen("cd")) == 0)
 		exec->builtin = &command_cd;
-	if (ft_strnrealcmp(cmdname, "pwd", ft_strlen(cmdname)) == 0)
+	if (ft_strnrealcmp(cmdname, "pwd", ft_strlen("pwd")) == 0)
 		exec->builtin = &command_pwd;
-	if (ft_strnrealcmp(cmdname, "export", ft_strlen(cmdname)) == 0)
+	if (ft_strnrealcmp(cmdname, "export", ft_strlen("export")) == 0)
 		exec->builtin = &command_export;
-	if (ft_strnrealcmp(cmdname, "unset", ft_strlen(cmdname)) == 0)
+	if (ft_strnrealcmp(cmdname, "unset", ft_strlen("unset")) == 0)
 		exec->builtin = &command_unset;
-	if (ft_strnrealcmp(cmdname, "env", ft_strlen(cmdname)) == 0)
+	if (ft_strnrealcmp(cmdname, "env", ft_strlen("env")) == 0)
 		exec->builtin = &command_env;
-	if (ft_strnrealcmp(cmdname, "exit", ft_strlen(cmdname)) == 0)
+	if (ft_strnrealcmp(cmdname, "exit", ft_strlen("exit")) == 0)
 		exec->builtin = &command_exit;
 }

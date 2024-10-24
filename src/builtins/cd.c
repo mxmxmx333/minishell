@@ -6,7 +6,11 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/24 16:28:18 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/24 16:28:47 by nicvrlja         ###   ########.fr       */
+>>>>>>> dev_ni
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +49,15 @@ static void	update_env(t_msh *msh, char *pwd, char *oldpwd)
 		{
 			free(temp->v_value);
 			temp->v_value = ft_strdup(pwd);
+			if (!temp->v_value)
+				error_simple(msh, M_ERR, EXIT_FAILURE);
 		}
 		if (ft_strnrealcmp(temp->v_name, "OLDPWD", ft_strlen("OLDPWD")) == 0)
 		{
 			free(temp->v_value);
 			temp->v_value = ft_strdup(oldpwd);
+			if (!temp->v_value)
+				error_simple(msh, M_ERR, EXIT_FAILURE);
 		}
 		temp = temp->next;
 	}
@@ -66,8 +74,7 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 	if (!exec->args[1])
 	{
 		if (chdir(msh->home_dir) == -1)
-			return (perror("chdir"), free(oldpwd),
-				cd_errors(errno, msh->home_dir), -1);
+			return (free(oldpwd), cd_errors(errno, msh->home_dir), -1);
 		free(msh->cur_dir);
 		free(msh->prompt);
 		create_prompt(msh);
