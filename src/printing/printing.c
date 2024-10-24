@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:32:11 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:13:29 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:48:23 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,15 @@ void	print_executable(t_msh *msh)
 		i = -1;
 		printf("Executable:----------------------------------\n");
 		printf("    CMD: %s\n", tmp->cmd);
-		printf("Builtin: %s\n", tmp->builtin);
+		if (tmp->builtin)
+			printf("Builtin: = true\n");
+		else
+			printf("Builtin: = false\n");
 		printf("   Args: ");
 		while (tmp->args[++i])
 			printf("   Arg %i:%s ", i, tmp->args[i]);
 		printf("\n");
-		printf("  Redirections:-------------------- ");
+		printf("  Redirections:-------------------- \n");
 		while (tmp->redirections)
 		{
 			printf("Type: %s\n", get_type(tmp->redirections->type));

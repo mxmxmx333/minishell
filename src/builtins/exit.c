@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:31:05 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 14:11:19 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:49:26 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	exit_with_code(t_msh *msh, t_exec *exec)
 int	command_exit(t_msh *msh, t_exec *exec, int fd)
 {
 	int		i;
-	int		ex_code;
 
 	(void)fd;
 	i = 1;
