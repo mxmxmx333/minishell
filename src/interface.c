@@ -3,15 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2024/10/16 17:26:32 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 15:00:04 by mbonengl         ###   ########.fr       */
-=======
-/*   Created: 2024/10/21 15:28:21 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 14:39:37 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
+/*   Created: 2024/10/24 16:32:29 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/10/24 16:32:33 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
