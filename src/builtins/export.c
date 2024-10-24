@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 14:00:00 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:45:45 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	add_node_env(t_msh *msh, char *v_name, char *v_value)
 		env = env->next;
 	node = (t_env *)ft_calloc(sizeof(t_env), 1);
 	if (!node)
-		return ;
+		error_simple(msh, M_ERR, EXIT_FAILURE);
 	node->v_name = v_name;
 	node->v_value = v_value;
 	node->next = NULL;
