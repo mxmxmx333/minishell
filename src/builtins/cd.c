@@ -6,11 +6,11 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 14:42:42 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:28:47 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "minishell.h"
 
 static void	cd_errors(int errcode, char *arg)
 {
