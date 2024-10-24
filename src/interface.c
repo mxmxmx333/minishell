@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:28:21 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 19:51:47 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:39:37 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	minishell_interaction(t_msh *msh)
 	printf("Executable Table:\n");
 	print_executable(msh);
 	destroy_word_and_rest(msh);
-	command_export(msh, msh->exec_table, 1);
+	command_env(msh, msh->exec_table, 1);
 	destroy_executable(msh);
 }
 

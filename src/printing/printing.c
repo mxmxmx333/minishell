@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:32:11 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:13:29 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:38:57 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void	print_executable(t_msh *msh)
 		i = -1;
 		printf("Executable:----------------------------------\n");
 		printf("    CMD: %s\n", tmp->cmd);
-		printf("Builtin: %s\n", tmp->builtin);
 		printf("   Args: ");
 		while (tmp->args[++i])
 			printf("   Arg %i:%s ", i, tmp->args[i]);
