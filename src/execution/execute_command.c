@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:54:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:40:30 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:31:36 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	execute_command(t_msh *msh, t_exec *current)
 {
 	pid_t	pid;
 
-	create_out_pipe(msh, current);
 	pid = wrppd_fork(msh);
 	if (is_parent(pid))
 	{

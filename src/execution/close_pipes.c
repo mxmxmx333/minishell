@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:16:58 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:41:14 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:37:42 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	close_pipe(t_msh *msh, int fd[2])
 
 void	close_previous_pipe(t_msh *msh, t_exec *current)
 {
-	if (current->prev && current->prev->pipe == true)
+	if (current->prev && current->prev->pipe == true && !current->prev->builtin)
 	{
 		close_pipe(msh, current->prev->out_pipe);
 		current->prev->pipe = false;
@@ -31,7 +31,7 @@ void	close_previous_pipe(t_msh *msh, t_exec *current)
 
 void	close_both_pipes(t_msh *msh, t_exec *current)
 {
-	if (current->prev && current->prev->pipe == true)
+	if (current->prev && current->prev->pipe == true && !current->prev->builtin)
 	{
 		close_pipe(msh, current->prev->out_pipe);
 		current->prev->pipe = false;

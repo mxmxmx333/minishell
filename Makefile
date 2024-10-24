@@ -39,6 +39,7 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/execution/close_pipes.c \
 				$(SRC_DIR)/execution/conditions.c \
 				$(SRC_DIR)/execution/execute_command.c \
+				$(SRC_DIR)/execution/execute_builtin.c \
 				$(SRC_DIR)/execution/redirections.c \
 				$(SRC_DIR)/errors/error_msg.c \
 				$(SRC_DIR)/errors/syntax_error.c \

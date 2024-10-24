@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 17:10:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/23 15:22:05 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:11:59 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	destroy_executable_2(t_msh *msh)
 		}
 		if (tmp->cmd)
 			free(tmp->cmd);
-		if (tmp->builtin)
-			free(tmp->builtin);
 		free(tmp);
 	}
 	msh->exec_table = NULL;

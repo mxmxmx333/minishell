@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:40:06 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:32:20 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,13 @@ int	execution(t_msh *msh)
 	current = msh->exec_table;
 	while (current)
 	{
-		// if (current->builtin)
-		// 	builtin(msh, current);
-		// else
+		create_out_pipe(msh, current);
+		set_builtin_function(current);
+		if (current->builtin && current->prev && current->prev->builtin)
+			wrppd_close(msh, current->prev->out_pipe[0]);
+		if (current->builtin)
+			execute_builtin(msh, current);
+ 		else
 			execute_command(msh, current);
 		current = current->next;
 	}

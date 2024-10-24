@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:57:01 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:20:02 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	destroy_exe_path(t_msh *msh);
 
 void	prepare_execution(t_msh *msh);
 void	finished_execution(t_msh *msh);
-
-void	set_builtin_function(t_msh *msh, t_exec *exec);
 
 /*-----------------------------> implementation <-----------------------------*/
 
@@ -73,5 +71,7 @@ int		is_parent(int pid);
 /*------------------------------> execution <------------------------------*/
 
 int		execution(t_msh *msh);
+void	set_builtin_function(t_exec *exec);
+void	execute_builtin(t_msh *msh, t_exec *exec);
 
 #endif
