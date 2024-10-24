@@ -69,8 +69,7 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/builtins/export.c \
 				$(SRC_DIR)/builtins/unset.c \
 				$(SRC_DIR)/builtins/exit.c \
-				$(SRC_DIR)/builtins/export_utils.c
-				$(SRC_DIR)/builtins/cd.c
+				$(SRC_DIR)/builtins/export_utils.c 
 OBJ 		:= 	$(SRC:.c=.o)
 
 all: $(Name)
