@@ -46,7 +46,6 @@ void	execute_builtin(t_msh *msh, t_exec *exec)
 	if (exec->next)
 	{
 		msh->status = exec->builtin(msh, exec, exec->out_pipe[1]);
-		close(exec->out_pipe[1]);
 	}
 	else
 		msh->status = exec->builtin(msh, exec, fd);
