@@ -44,11 +44,12 @@ int	execution(t_msh *msh)
 	while (current)
 	{
 		create_out_pipe(msh, current);
-		set_builtin_function(current);
-		if (current->builtin && current->prev && current->prev->builtin)
-			wrppd_close(msh, current->prev->out_pipe[0]);
+		set_builtin_function(current);			
 		if (current->builtin)
+		{
+			close_previous_pipe(msh, current);
 			execute_builtin(msh, current);
+		}
  		else
 			execute_command(msh, current);
 		current = current->next;
