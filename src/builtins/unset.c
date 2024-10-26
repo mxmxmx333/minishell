@@ -20,6 +20,8 @@ static void	remove_env_node(t_msh *msh, t_env *node)
 	while (tmp->next != node)
 		tmp = tmp->next;
 	tmp->next = node->next;
+	free(node->v_name);
+	free(node->v_value);
 	free(node);
 }
 

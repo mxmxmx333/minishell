@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "minishell.h"
 
 int	command_pwd(t_msh *msh, t_exec *exec, int fd)

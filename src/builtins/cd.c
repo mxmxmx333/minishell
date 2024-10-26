@@ -62,6 +62,7 @@ static void	update_env(t_msh *msh, char *pwd, char *oldpwd)
 int	command_cd(t_msh *msh, t_exec *exec, int fd)
 {
 	char	*oldpwd;
+	char	*newpwd;
 
 	(void)fd;
 	oldpwd = getcwd(NULL, 0);
@@ -71,15 +72,15 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 	{
 		if (chdir(msh->home_dir) == -1)
 			return (free(oldpwd), cd_errors(errno, msh->home_dir), -1);
-		free(msh->cur_dir);
-		free(msh->prompt);
-		create_prompt(msh);
-		return (update_env(msh, msh->home_dir, oldpwd), free(oldpwd), 1);
+		return (free(msh->cur_dir), free(msh->prompt), create_prompt(msh),
+			update_env(msh, msh->home_dir, oldpwd), free(oldpwd), 1);
 	}
 	if (chdir(exec->args[1]) == -1)
 		return (free(oldpwd), cd_errors(errno, exec->args[1]), -1);
-	update_env(msh, exec->args[1], oldpwd);
+	newpwd = getcwd(NULL, 0);
+	update_env(msh, newpwd, oldpwd);
 	free(oldpwd);
+	free(newpwd);
 	free(msh->cur_dir);
 	free(msh->prompt);
 	create_prompt(msh);

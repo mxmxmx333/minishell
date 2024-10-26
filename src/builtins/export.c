@@ -68,7 +68,11 @@ static void	add_node_env(t_msh *msh, char *v_name, char *v_value)
 		env = env->next;
 	node = (t_env *)ft_calloc(sizeof(t_env), 1);
 	if (!node)
+	{
+		free(v_name);
+		free(v_value);
 		error_simple(msh, M_ERR, EXIT_FAILURE);
+	}
 	node->v_name = v_name;
 	node->v_value = v_value;
 	node->next = NULL;
