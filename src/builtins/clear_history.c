@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sig.h                                              :+:      :+:    :+:   */
+/*   clear_history.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 17:57:24 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/04 15:41:36 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/11/04 16:23:35 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/11/04 16:24:25 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIG_H
-# define SIG_H
+#include "minishell.h"
 
-# include "minishell.h"
-
-void	handle_sigint(int signum);
-void	handle_sigquit(int signum);
-void	handle_sigint_child(int signum);
-
-#endif
+int	clear_history(t_msh *msh, t_exec *exec, int fd)
+{
+	if (access)
+}

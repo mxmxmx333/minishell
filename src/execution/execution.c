@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/30 16:26:27 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:21:03 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ void	wait_for_child(t_msh *msh)
 	status = &msh->status;
 	while (wait(status) != msh->last_pid)
 		;
+	if (WIFSIGNALED(*status))
+	{
+		if(WTERMSIG(*status) == SIGINT)
+			handle_sigint_child(0);
+		if(WTERMSIG(*status) == SIGQUIT)
+			handle_sigquit(0);
+	}
 	if (WIFEXITED(*status))
 		*status = WEXITSTATUS(*status);
 }
@@ -31,6 +38,7 @@ void	finished_execution(t_msh *msh)
 	destroy_exp(msh);
 	destroy_paths(msh);
 	destroy_executable(msh);
+	signal(SIGINT, handle_sigint);
 }
 
 /* 
