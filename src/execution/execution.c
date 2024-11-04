@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 18:32:20 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:26:27 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
+
+void	wait_for_child(t_msh *msh)
+{
+	int	*status;
+
+	status = &msh->status;
+	while (wait(status) != msh->last_pid)
+		;
+	if (WIFEXITED(*status))
+		*status = WEXITSTATUS(*status);
+}
 
 /* 
 	exit point for the execution, destroys all the generated assets 
@@ -52,9 +63,13 @@ int	execution(t_msh *msh)
 		}
  		else
 			execute_command(msh, current);
+		if (!current->next)
+			break ;
 		current = current->next;
 	}
-	while (wait(NULL) >	0) //FIXME: this is a temporary solution
+	if (!current->builtin)
+		wait_for_child(msh);
+	while (wait(NULL) > 0)
 		;
 	finished_execution(msh);
 	return (0);

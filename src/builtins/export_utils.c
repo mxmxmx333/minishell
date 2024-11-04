@@ -6,11 +6,37 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:59:34 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 14:00:18 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:45:56 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	check_valid(char *v_name)
+{
+	int	i;
+
+	i = 0;
+	if (ft_isdigit(v_name[i]))
+		return (0);
+	while (v_name[i])
+	{
+		if (ft_isalpha(v_name[i]))
+			break ;
+		i++;
+	}
+	if ((int)ft_strlen(v_name) == i)
+		return (0);
+	i = 0;
+	while (v_name[i])
+	{
+		if (!ft_isalnum(v_name[i]) && v_name[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 
 static void	swap_two(char **s1, char **s2)
 {

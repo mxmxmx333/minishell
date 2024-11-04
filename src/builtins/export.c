@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 14:45:45 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:19:45 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,17 @@ static int	allocate_and_copy(t_msh *msh, char *arg,
 	}
 	*v_name = ft_strndup(arg, i);
 	if (!*v_name)
-		return (-1);
+		error_simple(msh, M_ERR, EXIT_FAILURE);
 	if (!ft_strchr(arg, '='))
 		*v_value = NULL;
 	else
 	{
 		*v_value = ft_strdup(arg + i + 1);
 		if (!v_value)
-			return (free(*v_name), -1);
+		{
+			free(*v_name);
+			error_simple(msh, M_ERR, EXIT_FAILURE);
+		}
 	}
 	return (0);
 }
@@ -114,14 +117,23 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 	int		i;
 	char	*v_name;
 	char	*v_value;
-
+	int		status;
+	
+	status = 0;
 	i = 0;
 	if (!exec->args[1])
 		print_export_array(msh, fd);
 	while (exec->args[++i])
 	{
-		if (allocate_and_copy(msh, exec->args[i], &v_name, &v_value) == -1)
-			return (-1);
+		allocate_and_copy(msh, exec->args[i], &v_name, &v_value);
+		if (!check_valid(v_name))
+		{
+			dis_func_err("export: ", v_name, "not a valid identifier ");
+			free(v_name);
+			free(v_value);
+			status = 1;
+			continue;
+		}
 		if (search_and_replace(msh, v_name, v_value) == 1)
 		{
 			free(v_name);
@@ -134,5 +146,5 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 		}
 	}
 	msh->env_size = env_size(msh);
-	return (0);
+	return (status);
 }

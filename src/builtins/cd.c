@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 16:36:57 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/31 19:22:22 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,10 @@ static void	update_env(t_msh *msh, char *pwd, char *oldpwd)
 		temp = temp->next;
 	}
 }
-
-int	command_cd(t_msh *msh, t_exec *exec, int fd)
+static void	free_stuff(t_msh *msh, char *oldpwd)
 {
-	char	*oldpwd;
 	char	*newpwd;
-
-	(void)fd;
-	oldpwd = getcwd(NULL, 0);
-	if (!oldpwd)
-		return (perror("getcwd error"), -1);
-	if (!exec->args[1])
-	{
-		if (chdir(msh->home_dir) == -1)
-			return (free(oldpwd), cd_errors(errno, msh->home_dir), -1);
-		return (free(msh->cur_dir), free(msh->prompt), create_prompt(msh),
-			update_env(msh, msh->home_dir, oldpwd), free(oldpwd), 1);
-	}
-	if (chdir(exec->args[1]) == -1)
-		return (free(oldpwd), cd_errors(errno, exec->args[1]), -1);
+	
 	newpwd = getcwd(NULL, 0);
 	update_env(msh, newpwd, oldpwd);
 	free(oldpwd);
@@ -84,5 +69,27 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 	free(msh->cur_dir);
 	free(msh->prompt);
 	create_prompt(msh);
+}
+
+int	command_cd(t_msh *msh, t_exec *exec, int fd)
+{
+	char	*oldpwd;
+
+	(void)fd;
+	if (exec->args[2])
+		return(dis_func_err("cd", "", "too many arguments"), 1);
+	oldpwd = getcwd(NULL, 0);
+	if (!oldpwd)
+		return (perror("getcwd error"), -1);
+	if (!exec->args[1])
+	{
+		if (chdir(msh->home_dir) == -1)
+			return (free(oldpwd), cd_errors(errno, msh->home_dir), 1);
+		return (free(msh->cur_dir), free(msh->prompt), create_prompt(msh),
+			update_env(msh, msh->home_dir, oldpwd), free(oldpwd), 0);
+	}
+	if (chdir(exec->args[1]) == -1)
+		return (free(oldpwd), cd_errors(errno, exec->args[1]), 1);
+	free_stuff(msh, oldpwd);
 	return (0);
 }

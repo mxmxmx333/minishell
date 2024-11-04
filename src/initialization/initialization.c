@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:29:49 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 14:19:28 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:24:11 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ t_msh	*initialize_minishell(char **env)
 	if (create_prompt(msh))
 		error_simple(msh, PR_ERR, 1);
 	signal(SIGINT, handle_sigint);
-	signal(SIGQUIT, handle_sigquit);
+	signal(SIGQUIT, SIG_IGN);
 	load_history(msh, ".msh_history.txt");
-	get_status(&msh->status);
 	return (msh);
 }

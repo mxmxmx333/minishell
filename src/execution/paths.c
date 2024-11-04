@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/30 09:54:02 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/31 19:13:46 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ void	extract_paths(t_msh *msh)
 
 	tmp = msh->env;
 	while (strncmp(tmp->v_name, "PATH", 4))
+	{
+		if (tmp->next == NULL)
+			return ;
 		tmp = tmp->next;
+	}
 	paths = ft_split(tmp->v_value, ':');
 	if (!paths)
 		error_simple(msh, M_ERR, EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:58:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/23 14:29:41 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/30 14:08:23 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 */
 t_msh	*initialize_minishell(char **env);
 void	destroy_minishell(t_msh *msh);
+int		*get_status(int *msh_status);
 
 /* 
 	ENV LIST <-----------------------------------------------------------

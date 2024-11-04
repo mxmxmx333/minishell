@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 17:44:27 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:15:23 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,16 @@ static void	history_update(t_msh *msh)
 static void	minishell_interaction(t_msh *msh)
 {
 	msh->status = lexer(msh);
-	printf("Lexer exited with status: %d\n", msh->status);
-	print_tokens(msh);
-	printf("\nParsing Tokens...\n");
+	//printf("Lexer exited with status: %d\n", msh->status);
+	//print_tokens(msh);
+	//printf("\nParsing Tokens...\n");
 	parse_tokens(msh);
-	printf("Remaining Tokens:\n");
-	print_tokens(msh);
-	printf("Executable Table:\n");
-	print_executable(msh);
+	//printf("Remaining Tokens:\n");
+	//print_tokens(msh);
+	//printf("Executable Table:\n");
+	//print_executable(msh);
 	execution(msh);
+	//printf("Exit status:%d\n", msh->status);
 }
 
 void	minishell_interface(t_msh *msh)

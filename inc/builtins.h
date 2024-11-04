@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:46:39 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/23 13:40:58 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:00:23 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		command_env(t_msh *msh, t_exec *exec, int fd);
 int		command_export(t_msh *msh, t_exec *exec, int fd);
 int		command_unset(t_msh *msh, t_exec *exec, int fd);
 int		command_exit(t_msh *msh, t_exec *exec, int fd);
+int		check_valid(char *v_name);
 void	sort_export_array(t_msh *msh);
 
 #endif

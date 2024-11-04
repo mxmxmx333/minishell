@@ -6,11 +6,44 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:47:45 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/21 15:51:06 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/10/31 17:37:40 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	checkdivides(int n)
+{
+	int	count;
+
+	count = 0;
+	while (n)
+	{
+		n /= 10;
+		count++;
+	}
+	return (count);
+}
+
+static void	ft_itoa_custom(int n, char *array)
+{
+	int		i;
+
+	i = checkdivides(n);
+	i--;
+	ft_bzero(array, 4);
+	if (n == 0)
+	{
+		array[0] = '0';
+		return ;
+	}
+	while (n)
+	{
+		array[i] = n % 10 + '0';
+		n /= 10;
+		i--;
+	}
+}
 
 int	is_varname_break(char c)
 {
@@ -44,6 +77,11 @@ char	*variable_finder_value(t_msh *msh, char *str)
 	start = str;
 	while (*str && !is_varname_break(*str))
 		str++;
+	if (*start == '?')
+	{
+		ft_itoa_custom(msh->status, msh->status_char);
+		return (msh->status_char);
+	}
 	env = msh->env;
 	while (env)
 	{

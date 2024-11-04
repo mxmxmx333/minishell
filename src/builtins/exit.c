@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:31:05 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 16:37:07 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/10/30 16:27:51 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	command_exit(t_msh *msh, t_exec *exec, int fd)
 	while (exec->args[i])
 		i++;
 	if (i > 2)
-		return (dis_func_err("exit: ", NULL, "too many arguments\n"), -1);
+		return (dis_func_err("exit: ", NULL, "too many arguments\n"), 1);
 	if (!exec->args[1])
 	{
 		destroy_minishell(msh);
