@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:47:45 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 16:56:52 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:00:15 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static void	ft_itoa_custom(int n, char *array)
 
 int	is_varname_break(char c)
 {
-	return (c == ' ' || c == '\t' || c == '\'' || c == '\"' || c == '$' || c == '/');
+	return (c == ' ' || c == '\t' || c == '\'' || c == '\"' || c == '$' || \
+			 c == '/' || c == '.');
 }
 
 int	ft_strnrealcmp(char *s1, char *s2, int n)

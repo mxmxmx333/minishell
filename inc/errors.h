@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 17:06:47 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:10:39 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 /* Syntax Error: Unmached quotes */
 # define SYN_QUO_ERR "syntax error: unmatched quotes: "
 /* Syntax Error: Unexpected Token (e.g. <<> or || ) */
-# define SYN_ERR_UNEXP_TOK "syntax error near unexpected token: `"
+# define SYN_ERR_UNEXP_TOK "syntax error near unexpected token `"
 /* 
 	Function specific 
 		exit with 42!

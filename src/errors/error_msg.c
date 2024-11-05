@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:27:56 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 17:01:00 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:06:16 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	display_tok_err(char *p1, char *p2)
 	ft_putstr_fd("msh: ", STDERR_FILENO);
 	ft_putstr_fd(p1, STDERR_FILENO);
 	ft_putstr_fd(p2, STDERR_FILENO);
-	//ft_putendl_fd("'", STDERR_FILENO);
+	ft_putendl_fd("'", STDERR_FILENO);
 	//ft_putstr_fd(RESET, STDERR_FILENO);
 }
 
