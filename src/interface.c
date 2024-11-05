@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:50:00 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:34:44 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,15 @@ void	minishell_interface(t_msh *msh)
 {
 	while (1)
 	{
-		msh->cur_cmd_line = readline(msh->prompt);
+		if (isatty(fileno(stdin)))
+			msh->cur_cmd_line = readline(msh->prompt);
+		else
+		{
+			char *line;
+			line = get_next_line(fileno(stdin));
+			msh->cur_cmd_line = ft_strtrim(line, "\n");
+			free(line);
+		}
 		if (msh->cur_cmd_line == NULL)
 		{
 			printf("exit\n");
