@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:56:00 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 14:06:50 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:39:06 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,21 @@
 static int	count_args(t_exec *exec)
 {
 	int	i;
+	int	j;
 
 	i = 1;
-	while (ft_strnrealcmp(exec->args[i], "-n", 2) == 0)
+	while (exec->args[i][0] == '-')
+	{
+		j = 1;
+		while (exec->args[i][j])
+		{
+			if (exec->args[i][j] == 'n')
+				j++;
+			else
+				return (i);
+		}
 		i++;
+	}
 	return (i);
 }
 
@@ -67,7 +78,7 @@ static char	*argument_join_newline(t_msh *msh, t_exec *exec)
 	int		j;
 	int		p;
 
-	i = 1;
+	i = 0;
 	j = 0;
 	p = 0;
 	str = malloc(argument_len(exec) + 1 + 1);

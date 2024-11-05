@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:07:13 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:49:00 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
+# define DISABLE_HISTORY 1
 # include "libraries.h"
 
 /*-----------------------------> Initialization <-----------------------------*/

@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   exit_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/06 19:19:30 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 15:24:57 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/11/05 15:21:29 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/11/05 15:30:41 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-static int	checkoverflow(long res, int num, int sign)
+static int	checkoverflow(long long res, int num, int sign)
 {
 	if (sign == 1)
 	{
-		if (res > (LONG_MAX - num) / 10)
+		if (res > (LLONG_MAX - num) / 10)
 			return (-1);
 	}
 	else
 	{
-		if (-res < (LONG_MIN + num) / 10)
+		if (-res < (-LLONG_MIN + num) / 10)
 			return (0);
 	}
 	return (1);
 }
 
-int	ft_atoi(const char *nptr)
+long long	ft_atoi_custom(const char *nptr)
 {
-	int		sign;
-	long	res;
-	int		of;
+	int			sign;
+	long long	res;
+	int			of;
 
 	res = 0;
 	sign = 1;
@@ -51,5 +51,5 @@ int	ft_atoi(const char *nptr)
 		res = res * 10 + *nptr - 48;
 		nptr++;
 	}
-	return ((int)res * sign);
+	return (res * sign);
 }

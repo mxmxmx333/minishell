@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 14:06:32 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:49:26 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	minishell_interface(t_msh *msh)
 		if (msh->cur_cmd_line && !str_is_empty(msh->cur_cmd_line))
 			minishell_interaction(msh);
 		if (msh->cur_cmd_line)
-			history_update(msh);
+			if (!DISABLE_HISTORY)
+				history_update(msh);
 	}
 }

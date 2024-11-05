@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:28:31 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/04 18:08:38 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:17:19 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	exit_success(t_msh *msh)
 {
 	destroy_minishell(msh);
-	exit(EXIT_SUCCESS);
+	exit(msh->status);
 }
 
 int	main(int ac, char **av, char **env)
