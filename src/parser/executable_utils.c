@@ -6,10 +6,9 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:34:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 13:47:04 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:39:01 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minishell.h"
 
@@ -49,17 +48,18 @@ int	put_words(t_msh *msh, char **args, t_tok *words, size_t i)
 			str = skip_whitespace(str);
 			while (str[j] && !c_is_white(str[j]))
 				++j;
-			args[i] = ft_strndup(str, j);
-			if (!args[i])
-				error_simple(msh, M_ERR, EXIT_FAILURE);
+			args[i] = wrpped_ft_strndup(msh, str, j);
 			i++;
 			str += j;
+			if (str_is_empty(str))
+				break ;
 		}
 	}
 	else
 		i += put_words2(msh, args, words, i);
 	return (i - start);
 }
+
 
 int	get_args_size(t_tok *words)
 {

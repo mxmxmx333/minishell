@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:08 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/21 15:19:25 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:36:41 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,8 @@ void	destroy_executable(t_msh *msh);
 
 void	print_words_and_rest(t_msh *msh);
 void	print_token(t_tok *token);
+
+/*--------------------------------> Wrappers <--------------------------------*/
+char	*wrpped_ft_strndup(t_msh *msh, char *str, int n);
 
 #endif
