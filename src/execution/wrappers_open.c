@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:48:34 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 16:35:53 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:00:37 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,27 @@ static void	open_error(t_msh *msh, int errorcode, char *path)
 	if (errorcode == EACCES)
 		error_complex(msh, O_PER_ERR, path, 1);
 	else if (errorcode == EEXIST)
-		error_complex(msh, ": File exists ", path, 1);
+		error_complex(msh, ": File exists", path, 1);
 	else if (errorcode == EISDIR)
-		error_complex(msh, ": Is a directory ", path, 1);
+		error_complex(msh, ": Is a directory", path, 1);
 	else if (errorcode == ENOMEM)
 		error_simple(msh, M_ERR, 1);
 	else if (errorcode == EROFS)
-		error_complex(msh, ": Read-only file system ", path, 1);
+		error_complex(msh, ": Read-only file system", path, 1);
 	else if (errorcode == ELOOP)
-		error_complex(msh, ": Too many levels of symbolic links ", path, 1);
+		error_complex(msh, ": Too many levels of symbolic links", path, 1);
 	else if (errorcode == ENAMETOOLONG)
-		error_complex(msh, ": File name too long ", path, 1);
+		error_complex(msh, ": File name too long", path, 1);
 	else if (errorcode == EMFILE)
-		error_complex(msh, ": Too many open files ", path, 1);
+		error_complex(msh, ": Too many open files", path, 1);
 	else if (errorcode == EFAULT)
 		error_complex(msh, ": Bad address", path, 1);
 	else if (errorcode == EINTR)
-		error_complex(msh, ": Interrupted function call ", path, 1);
+		error_complex(msh, ": Interrupted function call", path, 1);
 	else if (errorcode == ENOSPC)
-		error_complex(msh, ": No space left on device ", path, 1);
+		error_complex(msh, ": No space left on device", path, 1);
 	else
-		error_complex(msh, ": No such file or directory ", path, 1);
+		error_complex(msh, ": No such file or directory", path, 1);
 }
 
 static void	open_error_builtin(t_msh *msh, int errorcode, char *path)
