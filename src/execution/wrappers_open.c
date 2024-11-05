@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:48:34 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:38:21 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:22:26 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,34 @@ static void	open_error(t_msh *msh, int errorcode, char *path)
 		error_complex(msh, ": no such file or directory", path, 1);
 }
 
+static void	open_error_builtin(t_msh *msh, int errorcode, char *path)
+{
+	if (errorcode == EACCES)
+		dis_func_err("", path, O_PER_ERR);
+	else if (errorcode == EEXIST)
+		dis_func_err("", path, ": file exists");
+	else if (errorcode == EISDIR)
+		dis_func_err("", path, ": is a directory");
+	else if (errorcode == ENOMEM)
+		error_simple(msh, M_ERR, 1);
+	else if (errorcode == EROFS)
+		dis_func_err("", path, ": read-only file system");
+	else if (errorcode == ELOOP)
+		dis_func_err("", path, ": too many levels of symbolic links");
+	else if (errorcode == ENAMETOOLONG)
+		dis_func_err("", path, ": file name too long");
+	else if (errorcode == EMFILE)
+		dis_func_err("", path, ": too many open files");
+	else if (errorcode == EFAULT)
+		dis_func_err("", path, ": bad address");
+	else if (errorcode == EINTR)
+		dis_func_err("", path, ": interrupted function call");
+	else if (errorcode == ENOSPC)
+		dis_func_err("", path, ": no space left on device");
+	else
+		dis_func_err("", path, ": no such file or directory");
+}
+
 int	wrppd_open(t_msh *msh, char *path, int flags)
 {
 	int	fd;
@@ -52,5 +80,20 @@ int	wrppd_open(t_msh *msh, char *path, int flags)
 		fd = open(path, O_TRUNC | O_WRONLY | O_CREAT, 0644);
 	if (fd == -1)
 		open_error(msh, errno, path);
+	return (fd);
+}
+
+int	wrppd_open_builtin(t_msh *msh, char *path, int flags)
+{
+	int	fd;
+
+	if (flags == O_RDONLY)
+		fd = open(path, O_RDONLY);
+	else if (flags == O_APPEND)
+		fd = open(path, O_APPEND | O_WRONLY | O_CREAT, 0644);
+	else
+		fd = open(path, O_TRUNC | O_WRONLY | O_CREAT, 0644);
+	if (fd == -1)
+		open_error_builtin(msh, errno, path);
 	return (fd);
 }

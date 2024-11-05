@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:29:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/24 17:51:32 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:20:42 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	set_builtin_function(t_exec *exec)
 	char	*cmdname;
 
 	cmdname = exec->args[0];
+	if (!cmdname)
+		return ;
 	if (ft_strnrealcmp(cmdname, "echo", ft_strlen("echo")) == 0)
 		exec->builtin = &command_echo;
 	if (ft_strnrealcmp(cmdname, "cd", ft_strlen("cd")) == 0)
