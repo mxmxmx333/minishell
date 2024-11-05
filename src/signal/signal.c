@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:28:12 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/04 16:15:24 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:56:32 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	handle_sigint_child(int signum)
 	*status = 130;
 	//rl_on_new_line();
 	//rl_replace_line("", 0);
-	printf("\n");
+	//printf("\n");
 	rl_redisplay();
 }
 
@@ -37,7 +37,7 @@ void	handle_sigint(int signum)
 	*status = 130;
 	rl_on_new_line();
 	rl_replace_line("", 0);
-	printf("\n");
+	//printf("\n");
 	rl_redisplay();
 
 }
@@ -45,5 +45,5 @@ void	handle_sigint(int signum)
 void	handle_sigquit(int signum)
 {
 	(void)signum;
-	printf("Quit (core dumped)\n");
+	//printf("Quit (core dumped)\n");
 }

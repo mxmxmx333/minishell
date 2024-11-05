@@ -6,11 +6,21 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:56:00 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/30 15:44:08 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:01:55 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	count_args(t_exec *exec)
+{
+	int	i;
+
+	i = 1;
+	while (ft_strnrealcmp(exec->args[i], "-n", 2) == 0)
+		i++;
+	return (i);
+}
 
 static int	argument_len(t_exec *exec)
 {
@@ -32,7 +42,7 @@ static char	*argument_join__no_newline(t_msh *msh, t_exec *exec)
 	int		j;
 	int		p;
 
-	i = 1;
+	i = count_args(exec) - 1;
 	j = 0;
 	p = 0;
 	str = malloc(argument_len(exec) + 1);
@@ -57,7 +67,7 @@ static char	*argument_join_newline(t_msh *msh, t_exec *exec)
 	int		j;
 	int		p;
 
-	i = 0;
+	i = 1;
 	j = 0;
 	p = 0;
 	str = malloc(argument_len(exec) + 1 + 1);
