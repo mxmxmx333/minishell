@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:50:00 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:06:32 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,18 @@ void	minishell_interface(t_msh *msh)
 {
 	while (1)
 	{
-		msh->cur_cmd_line = readline(msh->prompt);
+		if (isatty(fileno(stdin)))
+			msh->cur_cmd_line = readline(msh->prompt);
+		else
+		{
+			char *line;
+			line = get_next_line(fileno(stdin));
+			msh->cur_cmd_line = ft_strtrim(line, "\n");
+			free(line);
+		}
 		if (msh->cur_cmd_line == NULL)
 		{
-			printf("exit\n");
+			//printf("exit\n");
 			break ;
 		}
 		if (msh->cur_cmd_line && !str_is_empty(msh->cur_cmd_line))

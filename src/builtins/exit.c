@@ -6,11 +6,18 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:31:05 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/30 16:27:51 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:08:36 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	ft_isdigit_custom(int c)
+{
+	if ((c > 47 && c < 58) || c == '+' || c == '-')
+		return (1);
+	return (0);
+}
 
 static int	check_digits(char *str)
 {
@@ -19,7 +26,7 @@ static int	check_digits(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit_custom(str[i]))
 			return (0);
 	}
 	return (1);
@@ -27,8 +34,8 @@ static int	check_digits(char *str)
 
 static void	error_numeric(t_msh *msh, t_exec *exec)
 {
-	destroy_minishell(msh);
 	dis_func_err("exit: ", exec->args[1], "numeric argument required");
+	destroy_minishell(msh);
 	exit(2);
 }
 
@@ -36,8 +43,8 @@ static void	exit_with_code(t_msh *msh, t_exec *exec)
 {
 	int	ex_code;
 
-	destroy_minishell(msh);
 	ex_code = ft_atoi(exec->args[1]);
+	destroy_minishell(msh);
 	exit(ex_code);
 }
 

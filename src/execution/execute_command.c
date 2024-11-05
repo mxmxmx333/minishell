@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:54:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/31 14:53:23 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:20:44 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,14 @@ int	execute_command(t_msh *msh, t_exec *current)
 	pid = wrppd_fork(msh);
 	if (is_parent(pid))
 	{
+		signal(SIGINT, SIG_IGN);
 		msh->last_pid = pid;
 		close_previous_pipe(msh, current);
 	}
 	else
 	{
+		signal(SIGINT, handle_sigint_child);
+		signal(SIGQUIT, handle_sigquit);
 		handle_redirections(msh, current);
 		implement_command(msh, current);
 		exit_success(msh);

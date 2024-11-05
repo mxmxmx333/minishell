@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:47:45 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/31 17:37:40 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:09:34 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	is_varname_break(char c)
 
 int	ft_strnrealcmp(char *s1, char *s2, int n)
 {
+	if (!s1 || !s2)
+		return (0);
 	if (n != (int)ft_strlen(s1))
 		return (1);
 	while (*s1 && *s2 && n--)
