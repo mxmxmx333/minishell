@@ -4,3 +4,5 @@
 *.a
 minishell
 minishell_tester
+mstest*
+.gitignore
