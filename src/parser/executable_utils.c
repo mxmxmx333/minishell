@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:34:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 16:17:55 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:47:04 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_exec	*create_executable(t_msh *msh)
 
 static int	put_words2(t_msh *msh, char **args, t_tok *words, size_t i)
 {
+	if (str_is_empty(words->content) && words->splitme)
+		return (0);
 	args[i] = ft_strdup(words->content);
 	if (!args[i])
 		error_simple(msh, M_ERR, EXIT_FAILURE);
@@ -41,9 +43,10 @@ int	put_words(t_msh *msh, char **args, t_tok *words, size_t i)
 	str = words->content;
 	if (words->splitme && !str_is_empty(words->content))
 	{
-		while (str)
+		while (*str)
 		{
 			j = 0;
+			str = skip_whitespace(str);
 			while (str[j] && !c_is_white(str[j]))
 				++j;
 			args[i] = ft_strndup(str, j);

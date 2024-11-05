@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:19:06 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/30 16:30:27 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:03:15 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,16 @@ static void	remove_env_node(t_msh *msh, t_env *node)
 {
 	t_env	*tmp;
 
-	tmp = msh->env;
-	while (tmp->next != node)
-		tmp = tmp->next;
-	tmp->next = node->next;
+	if (msh->env == node)
+		msh->env = node->next;
+	else
+	{
+		tmp = msh->env;
+		while (tmp && tmp->next != node)
+			tmp = tmp->next;
+		if (tmp != NULL)
+			tmp->next = node->next;
+	}
 	free(node->v_name);
 	free(node->v_value);
 	free(node);

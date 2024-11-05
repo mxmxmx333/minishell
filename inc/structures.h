@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/31 15:22:05 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:18:15 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_tokens
 	char			*file;		//file name
 	t_e_typ			type;		//type of token
 	int				splitme;		//mode for expansion
+	int				splitfile;
 	struct s_tokens	*next;
 }	t_tok;
 

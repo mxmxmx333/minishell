@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 17:08:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/17 13:51:34 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:19:21 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	process_fragment(t_msh *msh, char *fragment, int type)
 
 	if (!fragment)
 		return (error_simple(msh, M_ERR, EXIT_FAILURE));
-	new = ft_calloc(sizeof(t_tok), 1);
-	if (!new)
-		return (free(fragment), error_simple(msh, M_ERR, EXIT_FAILURE));
+	new = create_tok_node(msh);
 	add_tok_node(msh, new);
 	new->content = fragment;
 	new->type = type;

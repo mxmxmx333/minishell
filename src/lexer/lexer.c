@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:58:43 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/21 14:25:23 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:40:19 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	lexer(t_msh *msh)
 		if (!position)
 			break ;
 	}
+	add_expander_flags(msh);
 	if (msh->tokens)
 		if (refining_tokens(msh))
 			return (2);

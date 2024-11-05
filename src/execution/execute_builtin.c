@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:55:49 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/31 18:07:28 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:04:09 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	execute_builtin(t_msh *msh, t_exec *exec)
 	}
 	if (exec->next)
 	{
-		msh->status = exec->builtin(msh, exec, exec->out_pipe[1]);
+		if (exec->builtin != command_export)
+			msh->status = exec->builtin(msh, exec, exec->out_pipe[1]);
 	}
 	else
 		msh->status = exec->builtin(msh, exec, fd);

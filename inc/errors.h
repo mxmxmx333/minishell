@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 14:51:29 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 13:53:30 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@
 */
 
 /* Permission denied*/
-# define PER_ERR ": permission denied\n"
+# define PER_ERR ": permission denied"
 /* Open Permission denied*/
-# define O_PER_ERR ": permission denied\n"
+# define O_PER_ERR ": permission denied"
 /* Is a directory */
-# define DIR_ERR "is a directory\n"
+# define DIR_ERR "is a directory"
 /* No such file or directory */
-# define NODF_ERR ": no such file or directory\n"
+# define NODF_ERR ": no such file or directory"
 /* Command not found*/
-# define CMDNF_ERR ": command not found\n"
+# define CMDNF_ERR ": command not found"
 /* Fatal: Failed to create Pipe */
 # define FATAL_ERR_PIPE "Fatal Error: Failed to create Pipe!\n"
 
