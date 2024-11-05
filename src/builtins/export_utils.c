@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:59:34 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/31 18:45:56 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:17:10 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_valid(char *v_name)
 		return (0);
 	while (v_name[i])
 	{
-		if (ft_isalpha(v_name[i]))
+		if (ft_isalpha(v_name[i]) || v_name[i] == '_')
 			break ;
 		i++;
 	}
@@ -30,9 +30,10 @@ int	check_valid(char *v_name)
 	i = 0;
 	while (v_name[i])
 	{
-		if (!ft_isalnum(v_name[i]) && v_name[i] != '_')
+		if (ft_isalnum(v_name[i]) || v_name[i] == '_')
+			i++;
+		else
 			return (0);
-		i++;
 	}
 	return (1);
 }

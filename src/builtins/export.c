@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 17:04:06 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 18:20:11 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,30 @@
 static void	print_export_array(t_msh *msh, int fd)
 {
 	int	i;
+	int	j;
 
 	i = -1;
 	if (!msh->export)
-	{
 		convert_exp(msh);
-		sort_export_array(msh);
-	}
+	sort_export_array(msh);
 	while (msh->export[++i])
 	{
-		if (msh->export[i][0] == '_')
+		j = 0;
+		if (msh->export[i][0] == '_' && msh->export[i][1] == '=')
 			continue ;
 		ft_putstr_fd("declare -x ", fd);
-		ft_putstr_fd(msh->export[i], fd);
+		while (msh->export[i][j] && msh->export[i][j] != '=')
+			ft_putchar_fd(msh->export[i][j++], fd);
+		if (!msh->export[i][j])
+		{
+			ft_putstr_fd("\n", fd);
+			continue ;
+		}
+		ft_putchar_fd(msh->export[i][j++], fd);
+		ft_putchar_fd('"', fd);
+		while (msh->export[i][j])
+			ft_putchar_fd(msh->export[i][j++], fd);
+		ft_putchar_fd('"', fd);
 		ft_putstr_fd("\n", fd);
 	}
 }
@@ -131,7 +142,7 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 			v_name = exec->args[i];
 		if (!check_valid(v_name))
 		{
-			dis_export_err("export: ", v_name, "not a valid identifier");
+			dis_export_err("export: ", exec->args[i], "not a valid identifier");
 			status = 1;
 			continue;
 		}

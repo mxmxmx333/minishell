@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 16:23:24 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 19:30:01 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,16 @@ static void	update_env(t_msh *msh, char *pwd, char *oldpwd)
 	{
 		if (ft_strnrealcmp(temp->v_name, "PWD", ft_strlen("PWD")) == 0)
 		{
-			free(temp->v_value);
+			if (temp->v_value)
+				free(temp->v_value);
 			temp->v_value = ft_strdup(pwd);
 			if (!temp->v_value)
 				error_simple(msh, M_ERR, EXIT_FAILURE);
 		}
 		if (ft_strnrealcmp(temp->v_name, "OLDPWD", ft_strlen("OLDPWD")) == 0)
 		{
-			free(temp->v_value);
+			if (temp->v_value)
+				free(temp->v_value);
 			temp->v_value = ft_strdup(oldpwd);
 			if (!temp->v_value)
 				error_simple(msh, M_ERR, EXIT_FAILURE);
@@ -69,6 +71,23 @@ static void	free_stuff(t_msh *msh, char *oldpwd)
 	free(msh->cur_dir);
 	free(msh->prompt);
 	create_prompt(msh);
+}
+
+int	previous_dir(t_msh *msh, char *oldpwd)
+{
+	char	*newpwd;
+
+	newpwd = ft_strdup(env_variable_finder(msh, "OLDPWD"));
+	if(chdir(newpwd) == -1)
+		return(cd_errors(errno, newpwd), free(newpwd), 1);
+	update_env(msh, newpwd, oldpwd);
+	printf("%s\n", newpwd);
+	free(oldpwd);
+	free(newpwd);
+	free(msh->cur_dir);
+	free(msh->prompt);
+	create_prompt(msh);
+	return (0);
 }
 
 int	command_cd(t_msh *msh, t_exec *exec, int fd)
@@ -92,6 +111,8 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 		return (free(msh->cur_dir), free(msh->prompt), create_prompt(msh),
 			update_env(msh, msh->home_dir, oldpwd), free(oldpwd), 0);
 	}
+	if (ft_strlen(exec->args[1]) == 1 && exec->args[1][0] == '-')
+			return (previous_dir(msh, oldpwd));
 	if (chdir(exec->args[1]) == -1)
 		return (free(oldpwd), cd_errors(errno, exec->args[1]), 1);
 	free_stuff(msh, oldpwd);
