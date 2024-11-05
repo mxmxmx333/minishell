@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/31 19:22:22 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:23:24 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,13 @@ static void	free_stuff(t_msh *msh, char *oldpwd)
 int	command_cd(t_msh *msh, t_exec *exec, int fd)
 {
 	char	*oldpwd;
+	int		i;
 
 	(void)fd;
-	if (exec->args[2])
+	i = 0;
+	while (exec->args[i])
+		i++;
+	if (i > 2)
 		return(dis_func_err("cd", "", "too many arguments"), 1);
 	oldpwd = getcwd(NULL, 0);
 	if (!oldpwd)

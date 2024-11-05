@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:56:00 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 14:39:06 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:40:57 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	count_args(t_exec *exec)
 	int	j;
 
 	i = 1;
-	while (exec->args[i][0] == '-')
+	while (exec->args[i] && exec->args[i][0] == '-')
 	{
 		j = 1;
 		while (exec->args[i][j])
@@ -101,8 +101,7 @@ int	command_echo(t_msh *msh, t_exec *exec, int fd)
 {
 	char	*args;
 
-	if (exec->args[1]
-		&& (ft_strnrealcmp(exec->args[1], "-n", 2) == 0))
+	if (exec->args[1] && check_newline(exec))
 		args = argument_join__no_newline(msh, exec);
 	else
 		args = argument_join_newline(msh, exec);

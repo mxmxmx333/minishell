@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 13:55:20 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:04:06 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ static int	allocate_and_copy(t_msh *msh, char *arg,
 
 	(void)msh;
 	i = 0;
+	if (arg[i] == '=')
+		return (0);
 	while (arg[i])
 	{
 		if (arg[i] == '=')
@@ -109,7 +111,7 @@ static int	allocate_and_copy(t_msh *msh, char *arg,
 			error_simple(msh, M_ERR, EXIT_FAILURE);
 		}
 	}
-	return (0);
+	return (1);
 }
 
 int	command_export(t_msh *msh, t_exec *exec, int fd)
@@ -125,12 +127,11 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 		print_export_array(msh, fd);
 	while (exec->args[++i])
 	{
-		allocate_and_copy(msh, exec->args[i], &v_name, &v_value);
+		if(!allocate_and_copy(msh, exec->args[i], &v_name, &v_value))
+			v_name = exec->args[i];
 		if (!check_valid(v_name))
 		{
-			dis_func_err("export: ", v_name, "not a valid identifier ");
-			free(v_name);
-			free(v_value);
+			dis_export_err("export: ", v_name, "not a valid identifier");
 			status = 1;
 			continue;
 		}

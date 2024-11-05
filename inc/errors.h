@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 13:53:30 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:45:06 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 /* Is a directory */
 # define DIR_ERR "is a directory"
 /* No such file or directory */
-# define NODF_ERR ": no such file or directory"
+# define NODF_ERR ": No such file or directory"
 /* Command not found*/
 # define CMDNF_ERR ": command not found"
 /* Fatal: Failed to create Pipe */
