@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 15:28:31 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 17:40:41 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/11/05 19:09:51 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/11/05 19:27:08 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exit_success(t_msh *msh)
+char	*env_variable_finder(t_msh *msh, char *node)
 {
-	int	temp;
+	t_env	*tmp;
 
-	temp = msh->status;
-	destroy_minishell(msh);
-	exit(temp);
-}
-
-int	main(int ac, char **av, char **env)
-{
-	t_msh	*msh;
-
-	(void)ac;
-	(void)av;
-	if (ac > 1)
-		return (0);
-	msh = initialize_minishell(env);
-	minishell_interface(msh);
-	return (exit_success(msh), EXIT_SUCCESS);
+	tmp = msh->env;
+	while (tmp)
+	{
+		if (!ft_strnrealcmp(tmp->v_name, node, ft_strlen(node)))
+			return (tmp->v_value);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }

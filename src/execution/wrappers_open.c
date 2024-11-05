@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   wrappers_open.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:48:34 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/11/05 17:08:16 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/11/05 19:33:52 by nicvrlja         ###   ########.fr       */
+>>>>>>> dev_ni
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +59,7 @@ static void	open_error_builtin(t_msh *msh, int errorcode, char *path)
 	else if (errorcode == ELOOP)
 		dis_func_err("", path, ": Too many levels of symbolic links");
 	else if (errorcode == ENAMETOOLONG)
-		dis_func_err("", path, ": Gile name too long");
+		dis_func_err("", path, ": File name too long");
 	else if (errorcode == EMFILE)
 		dis_func_err("", path, ": Too many open files");
 	else if (errorcode == EFAULT)

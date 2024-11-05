@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:47:45 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/11/05 18:00:15 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/11/05 19:12:34 by nicvrlja         ###   ########.fr       */
+>>>>>>> dev_ni
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +58,7 @@ int	is_varname_break(char c)
 int	ft_strnrealcmp(char *s1, char *s2, int n)
 {
 	if (!s1 || !s2)
-		return (0);
+		return (1);
 	if (n != (int)ft_strlen(s1))
 		return (1);
 	while (*s1 && *s2 && n--)
