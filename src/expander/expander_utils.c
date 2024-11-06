@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:47:45 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/11/05 18:00:15 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/11/05 19:12:34 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
+/*   Updated: 2024/11/06 12:38:10 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

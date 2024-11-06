@@ -6,13 +6,13 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:23:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:19:51 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/06 13:03:50 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*	
+/*
 	creates a new token node, handles malloc errors, and returns it
 */
 t_tok	*create_tok_node(t_msh *msh)

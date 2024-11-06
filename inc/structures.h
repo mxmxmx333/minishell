@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:18:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/06 13:47:07 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # include "minishell.h"
 
 typedef struct s_minishell	t_msh;
+
+/*-------------------------------> HERE_DOCS <--------------------------------*/
+
+typedef struct s_here_doc
+{
+	char				*file;
+	struct s_here_doc	*next;
+}	t_hdoc;
 
 /*------------------------------> TOKEN TYPES <-------------------------------*/
 
@@ -50,7 +58,7 @@ typedef struct s_tokens
 	char			*content;	//token content
 	char			*file;		//file name
 	t_e_typ			type;		//type of token
-	int				splitme;		//mode for expansion
+	int				splitme;	//mode for expansion
 	int				splitfile;
 	struct s_tokens	*next;
 }	t_tok;
@@ -144,6 +152,7 @@ typedef struct s_minishell
 	int		status;			//exit code
 	char	status_char[4];    //exit_code_printable
 	int		last_pid;		//last process id
+	t_hdoc	*here_doc;		//here document list
 }	t_msh;
 
 #endif

@@ -3,18 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   wrappers_open.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:48:34 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/11/05 17:08:16 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/11/05 19:33:52 by nicvrlja         ###   ########.fr       */
->>>>>>> dev_ni
+/*   Updated: 2024/11/06 12:37:00 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+
+static void	dis_func_err_open(char *cmdname, char *arg, char *errmsg)
+{
+	//ft_putstr_fd(RED, STDERR_FILENO);
+	//ft_putstr_fd(BOLD, STDERR_FILENO);
+	ft_putstr_fd("msh", STDERR_FILENO);
+	ft_putstr_fd(cmdname, STDERR_FILENO);
+	ft_putstr_fd(arg, STDERR_FILENO);
+	ft_putstr_fd(errmsg, STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
+	//ft_putstr_fd(RESET, STDERR_FILENO);
+}
 
 static void	open_error(t_msh *msh, int errorcode, char *path)
 {
@@ -47,29 +56,29 @@ static void	open_error(t_msh *msh, int errorcode, char *path)
 static void	open_error_builtin(t_msh *msh, int errorcode, char *path)
 {
 	if (errorcode == EACCES)
-		dis_func_err("", path, O_PER_ERR);
+		dis_func_err_open("", path, O_PER_ERR);
 	else if (errorcode == EEXIST)
-		dis_func_err("", path, ": File exists");
+		dis_func_err_open("", path, ": File exists");
 	else if (errorcode == EISDIR)
-		dis_func_err("", path, ": Is a directory");
+		dis_func_err_open("", path, ": Is a directory");
 	else if (errorcode == ENOMEM)
 		error_simple(msh, M_ERR, 1);
 	else if (errorcode == EROFS)
-		dis_func_err("", path, ": Read-only file system");
+		dis_func_err_open("", path, ": Read-only file system");
 	else if (errorcode == ELOOP)
-		dis_func_err("", path, ": Too many levels of symbolic links");
+		dis_func_err_open("", path, ": Too many levels of symbolic links");
 	else if (errorcode == ENAMETOOLONG)
-		dis_func_err("", path, ": File name too long");
+		dis_func_err_open("", path, ": File name too long");
 	else if (errorcode == EMFILE)
-		dis_func_err("", path, ": Too many open files");
+		dis_func_err_open("", path, ": Too many open files");
 	else if (errorcode == EFAULT)
-		dis_func_err("", path, ": bad address");
+		dis_func_err_open("", path, ": bad address");
 	else if (errorcode == EINTR)
-		dis_func_err("", path, ": Interrupted function call");
+		dis_func_err_open("", path, ": Interrupted function call");
 	else if (errorcode == ENOSPC)
-		dis_func_err("", path, ": No space left on device");
+		dis_func_err_open("", path, ": No space left on device");
 	else
-		dis_func_err("", path, ": No such file or directory");
+		dis_func_err_open("", path, ": No such file or directory");
 }
 
 int	wrppd_open(t_msh *msh, char *path, int flags)
