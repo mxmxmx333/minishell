@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_refining.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:38:18 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:11:24 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,20 @@
 void	add_expander_flags(t_msh *msh)
 {
 	t_tok	*tok;
+	char	*str;
 
 	tok = msh->tokens;
 	while (tok)
 	{
-		if (tok->type == WORD && (strchr(tok->content, '"' ) || \
-			strchr(tok->content, '\'')))
-			tok->splitme = 0;
+		str = tok->content;
+		while (*str)
+		{
+			if (*str == '\'' || *str == '\"')
+				str = ret_next_twin(str);
+			if (*str == '$')
+				tok->splitme = 1;
+			str++;
+		}
 		tok = tok->next;
 	}
 }

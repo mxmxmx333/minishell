@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:46:39 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 19:15:51 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:41:05 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ long long	ft_atoi_custom(const char *nptr);
 int			check_newline(t_exec *exec);
 void		dis_export_err(char *cmdname, char *arg, char *errmsg);
 char		*env_variable_finder(t_msh *msh, char *node);
+char		*format_string(t_msh *msh, char *str);
 
 #endif

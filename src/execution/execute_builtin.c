@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:55:49 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 14:52:58 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:52:26 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ void	execute_builtin(t_msh *msh, t_exec *exec)
 		redirections = redirections->next;
 	}
 	run_builtin(msh, exec, fd);
+	wrpped_close_builtin(msh, fd);
 }

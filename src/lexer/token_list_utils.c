@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_list_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:23:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:19:51 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:11:03 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ t_tok	*create_tok_node(t_msh *msh)
 	new = (t_tok *)ft_calloc(sizeof(t_tok), 1);
 	if (!new)
 		error_simple(msh, M_ERR, EXIT_FAILURE);
-	new->splitme = 1;
-	new->splitfile = 1;
 	return (new);
 }
 

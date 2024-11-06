@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 18:10:39 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:51:09 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 /* Open Permission denied*/
 # define O_PER_ERR ": permission denied"
 /* Is a directory */
-# define DIR_ERR "is a directory"
+# define DIR_ERR ": Is a directory"
 /* No such file or directory */
 # define NODF_ERR ": No such file or directory"
 /* Command not found*/
