@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 15:24:37 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:26:28 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execution.h"
 
-void	wait_for_child(t_msh *msh)
+static void	wait_for_child(t_msh *msh)
 {
 	int	*status;
 
@@ -58,8 +58,8 @@ int	execution(t_msh *msh)
 {
 	t_exec	*current;
 
-	prepare_execution(msh);
 	current = msh->exec_table;
+	prepare_execution(msh);
 	while (current)
 	{
 		create_out_pipe(msh, current);
@@ -70,7 +70,7 @@ int	execution(t_msh *msh)
 			execute_builtin(msh, current);
 		}
  		else
-			execute_command(msh, current);
+				execute_command(msh, current);
 		if (!current->next)
 			break ;
 		current = current->next;

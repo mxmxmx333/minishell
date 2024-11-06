@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:54:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/04 16:20:44 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:29:31 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	implement_command(t_msh *msh, t_exec *current)
 		return ;
 	pathfinder(msh, current->args[0]);
 	execve(msh->exe_path, current->args, msh->export);
-	free(msh->exe_path);
+	destroy_exe_path(msh);
 }
 
 int	execute_command(t_msh *msh, t_exec *current)
@@ -57,6 +57,8 @@ int	execute_command(t_msh *msh, t_exec *current)
 		signal(SIGINT, handle_sigint_child);
 		signal(SIGQUIT, handle_sigquit);
 		handle_redirections(msh, current);
+		if (!ft_strnrealcmp(current->args[0], ".", 1) || !ft_strnrealcmp(current->args[0], "..", 2))
+			error_complex(msh, CMDNF_ERR, current->args[0], 127);
 		implement_command(msh, current);
 		exit_success(msh);
 	}

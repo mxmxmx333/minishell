@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 15:45:13 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:12:40 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static void	minishell_interaction(t_msh *msh)
 	parse_tokens(msh);
 	//printf("Remaining Tokens:\n");
 	//print_tokens(msh);
-	// printf("Executable Table:\n");
-	// print_executable(msh);
+	//printf("Executable Table:\n");
+	//print_executable(msh);
 	execution(msh);
 	//printf("Exit status:%d\n", msh->status);
 }
@@ -65,9 +65,12 @@ void	minishell_interface(t_msh *msh)
 			msh->cur_cmd_line = readline(msh->prompt);
 		else
 		{
-			char *line;
+			char	*line;
+			char	*tmp;
 			line = get_next_line(fileno(stdin));
+			tmp = msh->cur_cmd_line;
 			msh->cur_cmd_line = ft_strtrim(line, "\n");
+			free(tmp);
 			free(line);
 		}
 		if (msh->cur_cmd_line == NULL)

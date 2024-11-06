@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pathfinder.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:55:35 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/22 17:53:00 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/06 14:37:39 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ void	destroy_exe_path(t_msh *msh)
 	If a '/' is found in the string, the command ins going to be interpreted 
 	as a absolute or relative path.
 */
-static int	is_real_path(char *path)
+static int	is_real_path(char *path, t_msh *msh)
 {
-	if (ft_strchr(path, '/'))
+	if (ft_strchr(path, '/') || env_variable_finder(msh, "PATH") == NULL
+		|| ft_strncmp(env_variable_finder(msh, "PATH"), "", 1) == 0)
 		return (1);
 	return (0);
 }
@@ -89,11 +90,13 @@ int	pathfinder(t_msh *msh, char *path)
 
 	if (!path || !msh)
 		return (error_simple(msh, SUFA_ERR_PATHFINDER, 42), 42);
-	if (is_real_path(path))
+	if (is_real_path(path, msh))
 		return (check_relabs_path(msh, path));
 	i = -1;
 	if (str_is_empty(path))
 		return (error_complex(msh, CMDNF_ERR, path, 127), 0);
+	if (!msh->paths)
+		return(0);
 	while (msh->paths[++i])
 	{
 		tmp_path = ft_strjoin_three(msh->paths[i], "/", path);

@@ -6,7 +6,11 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:48:34 by mbonengl          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/11/06 12:37:00 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/11/06 17:53:21 by nicvrlja         ###   ########.fr       */
+>>>>>>> 989982d2dddf826881005e3f241265774bc58f7c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +83,18 @@ static void	open_error_builtin(t_msh *msh, int errorcode, char *path)
 		dis_func_err_open("", path, ": No space left on device");
 	else
 		dis_func_err_open("", path, ": No such file or directory");
+}
+
+void	wrpped_close_builtin(t_msh *msh, int fd)
+{
+	if (fd > 2)
+	{
+		if (close(fd) == -1)
+		{
+			dis_func_err("", FD_ERR, "");
+			msh->status = 1;
+		}
+	}
 }
 
 int	wrppd_open(t_msh *msh, char *path, int flags)
