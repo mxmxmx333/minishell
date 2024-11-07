@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 18:33:38 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:44:27 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ void	add_expander_flags(t_msh *msh);
 void	destroy_here_doc(t_msh *msh);
 void	add_here_doc(t_msh *msh, char *file);
 void	gen_here_doc(t_msh *msh, t_tok *tok);
+char	*trim_quotes(char *str, t_tok *tok);
+char	*expand_heredoc(t_msh *msh, char *str);
 
 #endif

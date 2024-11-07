@@ -38,3 +38,5 @@ Tokenizer will launch its own child and the child will handle errors and syntax 
 This has positive effect in terms of how erros can be handled in the tokenizer, since it doesnt have to check anymore. On error tokenizer can now exit at anytime. 
 -> Effect: Syntax Error function has been changed. msh_error function is obsolete and can be deleted. 
 
+Expander: It somehow has to expand two time. One time the stuff without the quotes, one time with the quotes in this order. 
+before adding the quotes, it needs to split everything in multiple words. 

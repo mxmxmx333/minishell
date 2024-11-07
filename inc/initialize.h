@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:58:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/30 14:08:23 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:41:00 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

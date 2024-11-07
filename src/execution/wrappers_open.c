@@ -6,11 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:48:34 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/11/06 12:37:00 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/11/06 17:53:21 by nicvrlja         ###   ########.fr       */
->>>>>>> 989982d2dddf826881005e3f241265774bc58f7c
+/*   Updated: 2024/11/07 18:40:13 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +17,7 @@ static void	dis_func_err_open(char *cmdname, char *arg, char *errmsg)
 {
 	//ft_putstr_fd(RED, STDERR_FILENO);
 	//ft_putstr_fd(BOLD, STDERR_FILENO);
-	ft_putstr_fd("msh", STDERR_FILENO);
+	ft_putstr_fd("msh: ", STDERR_FILENO);
 	ft_putstr_fd(cmdname, STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putstr_fd(errmsg, STDERR_FILENO);
@@ -82,7 +78,7 @@ static void	open_error_builtin(t_msh *msh, int errorcode, char *path)
 	else if (errorcode == ENOSPC)
 		dis_func_err_open("", path, ": No space left on device");
 	else
-		dis_func_err_open("", path, ": No such file or directory");
+		dis_func_err_open(path,"" , ": No such file or directory");
 }
 
 void	wrpped_close_builtin(t_msh *msh, int fd)

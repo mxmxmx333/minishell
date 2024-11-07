@@ -50,9 +50,12 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/lexer/tok_redirection.c \
 				$(SRC_DIR)/lexer/token_refining.c \
 				$(SRC_DIR)/lexer/lexer.c \
+				$(SRC_DIR)/lexer/here_doc.c \
+				$(SRC_DIR)/lexer/here_doc_utils.c \
 				$(SRC_DIR)/expander/expander.c \
 				$(SRC_DIR)/expander/expander_utils.c \
 				$(SRC_DIR)/expander/get_length.c \
+				$(SRC_DIR)/expander/expand_splitme.c \
 				$(SRC_DIR)/parser/destroy_executables.c \
 				$(SRC_DIR)/parser/parser.c \
 				$(SRC_DIR)/parser/words_and_rest.c \

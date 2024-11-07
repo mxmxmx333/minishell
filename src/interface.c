@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 17:12:40 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:58:52 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	minishell_interaction(t_msh *msh)
 {
 	msh->status = lexer(msh);
 	if (msh->status)
-		return ;
+		return (destroy_here_doc(msh));
 	//printf("Lexer exited with status: %d\n", msh->status);
 	//print_tokens(msh);
 	//printf("\nParsing Tokens...\n");
@@ -54,6 +54,7 @@ static void	minishell_interaction(t_msh *msh)
 	//printf("Executable Table:\n");
 	//print_executable(msh);
 	execution(msh);
+	destroy_here_doc(msh);
 	//printf("Exit status:%d\n", msh->status);
 }
 

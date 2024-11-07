@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:53 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/04 14:13:43 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:53:55 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	put_part_expander(t_msh *msh, char *str, char *exp)
 		if (*str == '$')
 		{
 			v_value = variable_finder_value(msh, str);
-			ft_strncat(exp, v_value, ft_strlen(v_value));
+			add_trimmed_var(exp, v_value);
 			str++;
 			if (*str == '?')
 			{

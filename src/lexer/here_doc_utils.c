@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 18:35:03 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:29:14 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,27 @@ void	add_here_doc(t_msh *msh, char *file)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
+}
+
+char	*trim_quotes(char *str, t_tok *curr)
+{
+	char	*new;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	new = (char *)ft_calloc(sizeof(char), ft_strlen(str) + 1);
+	if (!new)
+		return (NULL);
+	while (str[i])
+	{
+		if (str[i] != '\'' && str[i] != '\"')
+		{
+			new[j++] = str[i];
+			curr->expander = 1;
+		}
+		i++;
+	}
+	return (new);
 }

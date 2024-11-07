@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:18:10 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 15:11:34 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/07 18:48:38 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static char	*gen_filename_heredoc(t_msh *msh, t_tok *tok)
 {
 	char	*filename;
 	char	*limiter;
+	char	*tmp;
 	int		i;
 
 	i = -1;
@@ -55,6 +56,14 @@ static char	*gen_filename_heredoc(t_msh *msh, t_tok *tok)
 		filename[i] = get_random_alphanum(get_seed(), i);
 	tok->file = ft_strjoin("/tmp/here_doc_", filename);
 	free(filename);
+	tmp = limiter;
+	limiter = ft_strjoin(limiter, "\n");
+	free(tmp);
+	if (!tok->file || !limiter)
+		return (error_simple(msh, M_ERR, 1), NULL);
+	tmp = limiter;
+	limiter = trim_quotes(limiter, tok);
+	free(tmp);
 	return (limiter);
 }
 
@@ -79,6 +88,8 @@ void	gen_here_doc(t_msh *msh, t_tok *tok)
 			get_next_line(-1);
 			break ;
 		}
+		if (line && !tok->expander)
+			line = expand(msh, line);
 		write(fd, line, ft_strlen(line));
 		free(line);
 	}

@@ -6,11 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:47:45 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/11/06 12:38:10 by mbonengl         ###   ########.fr       */
-=======
-/*   Updated: 2024/11/05 19:38:12 by nicvrlja         ###   ########.fr       */
->>>>>>> 989982d2dddf826881005e3f241265774bc58f7c
+/*   Updated: 2024/11/07 15:42:33 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +44,10 @@ static void	ft_itoa_custom(int n, char *array)
 		i--;
 	}
 }
-
+/* 
+	(c == ' ' || c == '\t' || c == '\'' || c == '\"' || c == '$' || \
+		c == '/' || c == '.')
+*/
 int	is_varname_break(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\'' || c == '\"' || c == '$' || \

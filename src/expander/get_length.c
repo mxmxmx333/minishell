@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_length.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:55:44 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/16 16:12:42 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:45:54 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	get_part_len(t_msh *msh, char *str)
 	{
 		if (*str == '$')
 		{
-			len += ft_strlen(variable_finder_value(msh, str));
+			len += splitme_len(variable_finder_value(msh, str));
 			str++;
 			while (*str && !is_varname_break(*str))
 				str++;

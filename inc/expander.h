@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/21 15:43:35 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:57:19 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int		get_len_not_var_in_part(char *str);
 int		get_part_len(t_msh *msh, char *str);
 int		get_single_len(char *str);
 int		ft_strnrealcmp(char *s1, char *s2, int n);
+int		splitme_len(char *str);
+void	add_trimmed_var(char *exp, char *v_value);
 
 /*-------------------------> Expander main function <-------------------------*/
 

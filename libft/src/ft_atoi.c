@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 19:19:30 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 15:24:57 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:51:38 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

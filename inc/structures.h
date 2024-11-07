@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 13:47:07 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/07 14:03:59 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_tokens
 	t_e_typ			type;		//type of token
 	int				splitme;	//mode for expansion
 	int				splitfile;
+	int				expander;
 	struct s_tokens	*next;
 }	t_tok;
 
