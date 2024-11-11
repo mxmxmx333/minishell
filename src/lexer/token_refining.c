@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/07 15:23:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:16:57 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	refining_tokens(t_msh *msh)
 	{
 		if (ref_redir(msh, tok) || ref_pipe(tok))
 			return (2);
-		expand_token(msh, tok);
+		neo_expand(msh, tok);
 		tok = tok->next;
 	}
 	return (0);

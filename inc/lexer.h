@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/07 14:44:27 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/11 11:57:14 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_tok	*create_tok_node(t_msh *msh);
 void	add_tok_node(t_msh *msh, t_tok *new);
 void	destroy_tok_node(t_tok *prev, t_tok *tok);
 void	destroy_tokens(t_msh *msh);
+void	clear_tok_list(t_tok *tok);
 
 /*
 	Interpret utils <----------------------------------------------------------
