@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 18:20:11 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/07 18:49:47 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,21 +93,14 @@ static void	add_node_env(t_msh *msh, char *v_name, char *v_value)
 /*
 	Allocate memory and copy from args to v_name and v_value.
 */
-static int	allocate_and_copy(t_msh *msh, char *arg,
-	char **v_name, char **v_value)
+static int	allocate_and_copy(t_msh *msh, char *arg, char **v_name, char **v_value)
 {
 	int		i;
 
-	(void)msh;
-	i = 0;
-	if (arg[i] == '=')
-		return (0);
-	while (arg[i])
-	{
+	i = -1;
+	while (arg[++i])
 		if (arg[i] == '=')
 			break ;
-		i++;
-	}
 	*v_name = ft_strndup(arg, i);
 	if (!*v_name)
 		error_simple(msh, M_ERR, EXIT_FAILURE);
@@ -116,9 +109,10 @@ static int	allocate_and_copy(t_msh *msh, char *arg,
 	else
 	{
 		*v_value = ft_strdup(arg + i + 1);
-		if (!v_value)
+		if (!*v_value)
 		{
 			free(*v_name);
+			*v_name = NULL;
 			error_simple(msh, M_ERR, EXIT_FAILURE);
 		}
 	}
@@ -138,14 +132,9 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 		print_export_array(msh, fd);
 	while (exec->args[++i])
 	{
-		if(!allocate_and_copy(msh, exec->args[i], &v_name, &v_value))
-			v_name = exec->args[i];
-		if (!check_valid(v_name))
-		{
-			dis_export_err("export: ", exec->args[i], "not a valid identifier");
-			status = 1;
-			continue;
-		}
+		if (!check_valid(msh, exec->args[i]))
+			return (1);
+		allocate_and_copy(msh, exec->args[i], &v_name, &v_value);
 		if (search_and_replace(msh, v_name, v_value) == 1)
 		{
 			free(v_name);
