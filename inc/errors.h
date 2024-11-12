@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 12:51:09 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:20:43 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@
 	EXECUTION ERRORS <-----------------------------------------------------
 */
 
-/* Permission denied*/
+/* permission denied*/
 # define PER_ERR ": permission denied"
-/* Open Permission denied*/
+/* Open permission denied*/
 # define O_PER_ERR ": permission denied"
 /* Is a directory */
 # define DIR_ERR ": Is a directory"
@@ -77,6 +77,7 @@ void	error_complex(t_msh *msh, char *msg, char *param, int exit_code);
 void	error_complex_tok(t_msh *msh, char *msg, char *param, int exit_code);
 void	display_tok_err(char *p1, char *p2);
 void	dis_func_err(char *cmdname, char *arg, char *errmsg);
+void	here_doc_error(int line, char *limiter);
 
 int		check_syntax_error_quotes(t_msh *msh);
 void	check_token_err_redi(t_msh *msh);

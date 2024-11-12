@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 13:59:18 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:28:21 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void	minishell_interface(t_msh *msh)
 			if (DISABLE_HISTORY)
 				history_update(msh);
 			free(msh->cur_cmd_line);
-		}	
+		}
 	}
 }

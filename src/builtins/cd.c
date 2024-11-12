@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 19:30:01 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:20:43 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	cd_errors(int errcode, char *arg)
 	else if (errcode == ENOENT)
 		dis_func_err("cd: ", arg, "No such file or directory");
 	else if (errcode == EACCES)
-		dis_func_err("cd: ", arg, "Permission denied");
+		dis_func_err("cd: ", arg, "permission denied");
 	else if (errcode == EFAULT)
 		dis_func_err("cd: ", arg, "Bad address");
 	else if (errcode == EIO)

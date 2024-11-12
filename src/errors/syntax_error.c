@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:20:52 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 12:38:21 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:14:03 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,13 @@ int	check_syntax_error_quotes(t_msh *msh)
 		temp++;
 	}
 	return (0);
+}
+
+void	here_doc_error(int line, char *limiter)
+{
+	ft_putstr_fd("msh: warning: here-document at line ", 2);
+	ft_putnbr_fd(line, 2);
+	ft_putstr_fd(" delimited by end-of-file (wanted `", 2);
+	ft_putstr_fd(limiter, 2);
+	ft_putendl_fd("')", 2);
 }

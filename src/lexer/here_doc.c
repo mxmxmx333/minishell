@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 09:38:40 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:30:05 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,24 +80,30 @@ char	*trim_quotes(t_msh *msh, char *str, t_tok *curr)
 
 void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 {
-	char	*line;
+	char		*line;
+	static int	i;
 
+	i = 1;
 	while (1)
 	{
 		line = get_next_line(STDIN_FILENO);
 		if (!line)
+		{
+			/* here_doc_error(i, limiter); */
 			break ;
+			continue ;
+		}
 		if (!tok->expander)
 			line = expand(msh, line);
 		if (!ft_strcmp(line, limiter))
 		{
 			if (line)
 				free(line);
-			get_next_line(-1);
 			break ;
 		}
 		write(fd, line, ft_strlen(line));
 		free(line);
+		i++;
 	}
 }
 
