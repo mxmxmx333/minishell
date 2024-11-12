@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 16:32:11 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/24 16:36:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 10:24:53 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	print_tokens(t_msh *msh)
 		printf("     NR: %d\n", i++);
 		printf("   type: %s\n", get_type(token->type));
 		printf(" string: %s\n", token->content);
-		printf("splitme: %d\n", token->splitme);
+		printf("lonely: %d\n", token->lonely);
 		printf("   file: %s\n\n", token->file);
 		token = token->next;
 	}
@@ -74,7 +74,7 @@ void	print_token(t_tok *token)
 	printf("  Token:-------------:\n");
 	printf("   type: %s\n", get_type(token->type));
 	printf(" string: %s\n", token->content);
-	printf("splitme: %d\n", token->splitme);
+	printf("lonely: %d\n", token->lonely);
 	printf("   file: %s\n\n", token->file);
 }
 

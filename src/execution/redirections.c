@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:30:03 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 15:22:51 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:26:29 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	redirect_input(t_msh *msh, t_tok *redirections)
 {
 	int	fd;
 
+	if (redirections->splitfile || redirections->lonely)
+		error_complex(msh, ": ambiguous redirect", redirections->file, 1);
 	fd = wrppd_open(msh, redirections->file, O_RDONLY);
 	wrppd_dup2(msh, fd, STDIN_FILENO);
 	wrppd_close(msh, fd);
@@ -25,6 +27,8 @@ void	redirect_output(t_msh *msh, t_tok *redirections)
 {
 	int	fd;
 
+	if (redirections->splitfile || redirections->lonely)
+		error_complex(msh, ": ambiguous redirect", redirections->file, 1);
 	if (redirections->type == REDI_TOUT)
 		fd = wrppd_open(msh, redirections->file, O_TRUNC);
 	else

@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 16:25:54 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/09/26 19:07:52 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:51:13 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_countwords_whitespace(char const *s)
 	i = 0;
 	while (s[i])
 	{
-		if (!ft_is_white(s[i]))
+		if (!ft_is_white(s[i]) && !str_is_empty((char *) (s + i)))
 		{
 			words++;
 			while (s[i] && !ft_is_white(s[i]))

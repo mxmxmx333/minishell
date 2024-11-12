@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/07 14:03:59 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 10:16:28 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_tokens
 	char			*content;	//token content
 	char			*file;		//file name
 	t_e_typ			type;		//type of token
-	int				splitme;	//mode for expansion
+	int				lonely;	//mode for expansion
 	int				splitfile;
 	int				expander;
 	struct s_tokens	*next;
@@ -82,6 +82,7 @@ typedef struct s_execute_table
 	char					**args;
 	t_tok					*redirections;
 	bool					pipe;
+	bool					lonely;
 	int						out_pipe[2];
 	struct s_execute_table	*next;
 	struct s_execute_table	*prev;

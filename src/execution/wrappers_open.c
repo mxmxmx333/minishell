@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:48:34 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/07 18:40:13 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:29:42 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	open_error(t_msh *msh, int errorcode, char *path)
 
 static void	open_error_builtin(t_msh *msh, int errorcode, char *path)
 {
+	msh->status = 1;
 	if (errorcode == EACCES)
 		dis_func_err_open("", path, O_PER_ERR);
 	else if (errorcode == EEXIST)

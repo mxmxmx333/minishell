@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/07 16:58:52 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:59:18 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,44 +45,46 @@ static void	minishell_interaction(t_msh *msh)
 	msh->status = lexer(msh);
 	if (msh->status)
 		return (destroy_here_doc(msh));
-	//printf("Lexer exited with status: %d\n", msh->status);
-	//print_tokens(msh);
-	//printf("\nParsing Tokens...\n");
+	// printf("Lexer exited with status: %d\n", msh->status);
+	// print_tokens(msh);
+	// printf("\nParsing Tokens...\n");
 	parse_tokens(msh);
-	//printf("Remaining Tokens:\n");
-	//print_tokens(msh);
-	//printf("Executable Table:\n");
-	//print_executable(msh);
+	// printf("Remaining Tokens:\n");
+	print_tokens(msh);
+	// printf("Executable Table:\n");
+	// print_executable(msh);
 	execution(msh);
 	destroy_here_doc(msh);
-	//printf("Exit status:%d\n", msh->status);
+	// printf("Exit status:%d\n", msh->status);
 }
 
 void	minishell_interface(t_msh *msh)
 {
 	while (1)
 	{
-		if (isatty(fileno(stdin)))
-			msh->cur_cmd_line = readline(msh->prompt);
+		if (isatty(STDIN_FILENO))
+			msh->cur_cmd_line = readline("Msh->");
 		else
 		{
 			char	*line;
 			char	*tmp;
-			line = get_next_line(fileno(stdin));
+			line = get_next_line(STDIN_FILENO);
 			tmp = msh->cur_cmd_line;
 			msh->cur_cmd_line = ft_strtrim(line, "\n");
 			free(tmp);
 			free(line);
 		}
-		if (msh->cur_cmd_line == NULL)
+		if (msh->cur_cmd_line == NULL)	
 		{
 			//printf("exit\n");
 			break ;
 		}
-		if (msh->cur_cmd_line && !str_is_empty(msh->cur_cmd_line))
+		else if (msh->cur_cmd_line && !str_is_empty(msh->cur_cmd_line))
+		{
 			minishell_interaction(msh);
-		if (msh->cur_cmd_line)
-			if (!DISABLE_HISTORY)
+			if (DISABLE_HISTORY)
 				history_update(msh);
+			free(msh->cur_cmd_line);
+		}	
 	}
 }

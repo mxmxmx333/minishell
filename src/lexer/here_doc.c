@@ -5,94 +5,112 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/25 11:18:10 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/07 18:48:38 by mbonengl         ###   ########.fr       */
+/*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
+/*   Updated: 2024/11/12 09:38:40 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static unsigned long	get_seed(void)
+void	destroy_here_doc(t_msh *msh)
 {
-	int				uninitialized_var;
-	unsigned long	seed;
+	t_hdoc	*tmp;
 
-	seed = (unsigned long)&uninitialized_var;
-	return (seed);
+	while (msh->here_doc)
+	{
+		tmp = msh->here_doc;
+		msh->here_doc = msh->here_doc->next;
+		if (tmp->file)
+		{
+			unlink(tmp->file);
+			free(tmp->file);
+		}
+		free(tmp);
+	}
+	msh->here_doc = NULL;
 }
 
-static unsigned long	get_random_number(unsigned long seed)
+void	add_here_doc(t_msh *msh, char *file)
 {
-	seed = (seed * 1103515245 + 12345) & 0x7fffffff;
-	return (seed);
-}
+	t_hdoc	*new;
+	t_hdoc	*tmp;
 
-static char	get_random_alphanum(unsigned long seed, int i)
-{
-	char			c;
-
-	c = get_random_number((seed / (i * i + 1))) % 62;
-	if (c < 10)
-		return (c + '0');
-	else if (c < 36)
-		return (c - 10 + 'A');
+	new = (t_hdoc *)ft_calloc(sizeof(t_hdoc), 1);
+	if (!new)
+		error_simple(msh, M_ERR, 1);
+	new->file = ft_strdup(file);
+	if (!new->file)
+		error_simple(msh, M_ERR, 1);
+	if (!msh->here_doc)
+		msh->here_doc = new;
 	else
-		return (c - 36 + 'a');
+	{
+		tmp = msh->here_doc;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
 }
 
-static char	*gen_filename_heredoc(t_msh *msh, t_tok *tok)
+char	*trim_quotes(t_msh *msh, char *str, t_tok *curr)
 {
-	char	*filename;
-	char	*limiter;
-	char	*tmp;
+	char	*new;
 	int		i;
+	int		j;
 
-	i = -1;
-	limiter = tok->file;
-	filename = ft_calloc(11, sizeof(char));
-	if (!filename)
-		return (error_simple(msh, M_ERR, 1), NULL);
-	while (++i < 10)
-		filename[i] = get_random_alphanum(get_seed(), i);
-	tok->file = ft_strjoin("/tmp/here_doc_", filename);
-	free(filename);
-	tmp = limiter;
-	limiter = ft_strjoin(limiter, "\n");
-	free(tmp);
-	if (!tok->file || !limiter)
-		return (error_simple(msh, M_ERR, 1), NULL);
-	tmp = limiter;
-	limiter = trim_quotes(limiter, tok);
-	free(tmp);
-	return (limiter);
+	i = 0;
+	j = 0;
+	new = (char *)ft_calloc(sizeof(char), ft_strlen(str) + 1);
+	if (!new)
+		return (NULL);
+	while (str[i])
+	{
+		if (str[i] == '\'' || str[i] == '\"')
+		{
+			i++;
+			curr->expander = 1;
+		}
+		else
+			new[j++] = str[i++];
+	}
+	if (!curr->expander)
+		new = expand(msh, new);
+	return (new);
+}
+
+void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = get_next_line(STDIN_FILENO);
+		if (!line)
+			break ;
+		if (!tok->expander)
+			line = expand(msh, line);
+		if (!ft_strcmp(line, limiter))
+		{
+			if (line)
+				free(line);
+			get_next_line(-1);
+			break ;
+		}
+		write(fd, line, ft_strlen(line));
+		free(line);
+	}
 }
 
 void	gen_here_doc(t_msh *msh, t_tok *tok)
 {
 	int		fd;
-	char	*line;
 	char 	*limiter;
 
 	limiter = gen_filename_heredoc(msh, tok);
 	fd = open(tok->file, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (fd == -1)
 		return (error_simple(msh, FD_ERR, 1));
-	while (1)
-	{
-		line = get_next_line(STDIN_FILENO);
-		if (!line)
-			continue ;
-		if (!ft_strcmp(line, limiter))
-		{
-			free(line);
-			get_next_line(-1);
-			break ;
-		}
-		if (line && !tok->expander)
-			line = expand(msh, line);
-		write(fd, line, ft_strlen(line));
-		free(line);
-	}
+	write_here_doc(msh, tok, limiter, fd);
 	free(limiter);
 	add_here_doc(msh, tok->file);
 	close(fd);

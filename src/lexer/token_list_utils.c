@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:23:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 18:38:10 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 10:57:20 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,14 @@ void	add_tok_node(t_msh *msh, t_tok *new)
 	}
 }
 
-int	tok_list_size(t_tok *tok)
+void	clear_tok_list(t_tok *tok)
 {
-	int		i;
+	t_tok	*tmp;
 
-	i = 0;
 	while (tok)
 	{
-		i++;
+		tmp = tok;
 		tok = tok->next;
+		free(tmp);
 	}
-	return (i);
 }

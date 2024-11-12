@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:59:55 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/01 17:07:36 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:21:53 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,9 @@ int	str_is_empty(char *str)
 		str++;
 	}
 	return (1);
+}
+
+int	is_space(char c)
+{
+	return (c == ' ');
 }

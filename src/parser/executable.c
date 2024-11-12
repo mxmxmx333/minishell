@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:42:57 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 17:52:45 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 10:47:04 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	convert_word_list(t_msh *msh, t_exec *table)
 
 	i = 0;
 	words = msh->words;
+	if (!words)
+		return ;
+	if (words->lonely && !words->next && str_is_empty(words->content))
+		table->lonely = true;
 	table->args = ft_calloc(sizeof(char *), get_args_size(words) + 1);
 	if (!table->args)
 		error_simple(msh, M_ERR, EXIT_FAILURE);
