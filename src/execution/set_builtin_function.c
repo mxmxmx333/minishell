@@ -6,19 +6,19 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 12:29:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 15:20:42 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:47:33 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	set_builtin_function(t_exec *exec)
+static void	set_builtin_function(t_exec *exec)
 {
 	char	*cmdname;
 
-	cmdname = exec->args[0];
-	if (!cmdname)
+	if (!exec->args || !exec->args[0])
 		return ;
+	cmdname = exec->args[0];
 	if (ft_strnrealcmp(cmdname, "echo", ft_strlen("echo")) == 0)
 		exec->builtin = &command_echo;
 	if (ft_strnrealcmp(cmdname, "cd", ft_strlen("cd")) == 0)
@@ -33,4 +33,13 @@ void	set_builtin_function(t_exec *exec)
 		exec->builtin = &command_env;
 	if (ft_strnrealcmp(cmdname, "exit", ft_strlen("exit")) == 0)
 		exec->builtin = &command_exit;
+}
+
+void	set_all_builtins(t_exec *exec)
+{
+	while (exec)
+	{
+		set_builtin_function(exec);
+		exec = exec->next;
+	}
 }

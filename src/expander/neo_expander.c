@@ -6,11 +6,32 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:55:52 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/11 13:30:50 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:17:58 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*dont_needs_split(t_msh *msh, char *str)
+{
+	while (*str)
+	{
+		if (*str == '\'' || *str == '\"')
+			str = ret_next_twin(str);
+		if (*str == '$')
+		{
+			if (ft_countwords_whitespace(variable_finder_value(msh, str)) > 1)
+				return (str);
+			else
+			{
+				while (*str && !is_varname_break(*str))
+					str++;
+			}
+		}
+		str++;
+	}
+	return (str);
+}
 
 int	get_level_1_len(t_msh *msh, t_tok *tok)
 {
@@ -26,11 +47,11 @@ int	get_level_1_len(t_msh *msh, t_tok *tok)
 		{
 			start = str;
 			str = ret_next_twin(str) + 1;
-			len = str - start;
+			len += str - start;
 		}
 		else
 		{
-			len = get_part_len(msh, str);
+			len += get_part_len(msh, str);
 			while (*str && *str != '\'' && *str != '\"')
 				str++;
 		}
@@ -38,7 +59,7 @@ int	get_level_1_len(t_msh *msh, t_tok *tok)
 	return (len);
 }
 
-void	expand_level_1(t_msh *msh, t_tok *tok, char *str)
+void	expand_vars(t_msh *msh, t_tok *tok, char *str)
 {
 	char	*expanded;
 	char	*start;
@@ -131,10 +152,12 @@ t_tok	*split_token(t_msh *msh, char *str)
 		if (str_is_empty(str))
 			break ;
 	}
+	if (!current)
+		return (new_token(current, msh, ft_strdup(""), WORD));
 	return (current);
 }
 
-void	expand_level_2(t_msh *msh, t_tok *current, t_tok *tok)
+t_tok	*insert_new_tokens(t_msh *msh, t_tok *current, t_tok *tok)
 {
 	t_tok	*prev;
 	t_tok	*next;
@@ -152,21 +175,80 @@ void	expand_level_2(t_msh *msh, t_tok *current, t_tok *tok)
 		prev->next = current;
 	else
 		msh->tokens = current;
-	while (current->next)
+	while (current && current->next)
 		current = current->next;
 	current->next = next;
 	free(tok->content);
 	free(tok);
+	return (current);
 }
 
-void	neo_expand(t_msh *msh, t_tok *tok)
+void	cpy_varname(t_msh *msh, t_tok *tok, char *redirect)
+{
+	char	*start;
+	char	*file;
+
+	file = tok->file;
+	start = redirect;
+	++redirect;
+	while (*redirect && !is_varname_break(*redirect))
+		redirect++;
+	*redirect = '\0';
+	tok->file = ft_strndup(start, redirect - start);
+	if (!tok->file)
+		error_simple(msh, M_ERR, 1);
+	free(file);
+	tok->splitfile = true;
+}
+
+t_tok	*expand_redirect(t_msh *msh, t_tok *tok)
+{
+	char	*redirect;
+	char	*cpy;
+
+	redirect = dont_needs_split(msh, tok->file);
+	if (!*redirect)
+	{
+		cpy = ft_strdup(tok->file);
+		if (!cpy)
+			return (error_simple(msh, M_ERR, 1), NULL);
+		tok->file = expand(msh, tok->file);
+		if (!tok->file)
+			return (free(cpy), error_simple(msh, M_ERR, 1), NULL);
+		if (str_is_empty(tok->file) && tok->lonely)
+			cpy_varname(msh, tok, cpy);
+		return (tok);
+	}
+	else
+		cpy_varname(msh, tok, redirect);
+	return (free(redirect), tok);
+}
+
+t_tok	*neo_expand(t_msh *msh, t_tok *tok)
 {
 	t_tok	*current;
+	bool	lonely;
 
 	if (tok->type == WORD)
 	{
-		expand_level_1(msh, tok, tok->content);
+		if (!ft_strchr(tok->content, '\'') && !ft_strchr(tok->content, '\"'))
+			lonely = true;
+		else
+			lonely = false;
+		expand_vars(msh, tok, tok->content);
 		current = split_token(msh, tok->content);
-		expand_level_2(msh, current, tok);
+		current->lonely = lonely;
+		return (insert_new_tokens(msh, current, tok));
 	}
+	if (tok->type == REDI_AOUT || tok->type == REDI_TOUT || tok->type == REDI_IN)
+	{
+		if (!ft_strchr(tok->file, '\'') && !ft_strchr(tok->file, '\"'))
+			tok->lonely = true;
+		expand_redirect(msh, tok);
+		if (!str_is_empty(tok->file))
+			tok->lonely = false;
+	}
+	if (tok->type == HERE_DOC)
+		gen_here_doc(msh, tok);
+	return (tok);
 }

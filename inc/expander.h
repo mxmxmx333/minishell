@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/11 13:20:47 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:39:33 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	put_part_expander(t_msh *msh, char *str, char *exp);
 /*-------------------------> Expander main function <-------------------------*/
 
 char	*expand(t_msh *msh, char *str);
-void	neo_expand(t_msh *msh, t_tok *tok);
+t_tok	*neo_expand(t_msh *msh, t_tok *tok);
 
 #endif

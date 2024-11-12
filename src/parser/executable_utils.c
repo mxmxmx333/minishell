@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:34:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/07 17:56:20 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:20:28 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,44 +22,13 @@ t_exec	*create_executable(t_msh *msh)
 	return (new);
 }
 
-static int	put_words2(t_msh *msh, char **args, t_tok *words, size_t i)
+int	put_words(t_msh *msh, char **args, t_tok *words, size_t i)
 {
-	if (str_is_empty(words->content) && words->splitme)
-		return (0);
 	args[i] = ft_strdup(words->content);
 	if (!args[i])
 		error_simple(msh, M_ERR, EXIT_FAILURE);
 	return (1);
 }
-
-int	put_words(t_msh *msh, char **args, t_tok *words, size_t i)
-{
-	size_t	j;
-	char	*str;
-	int		start;
-
-	start = i;
-	str = words->content;
-	if (words->splitme && !str_is_empty(words->content))
-	{
-		while (*str)
-		{
-			j = 0;
-			str = skip_whitespace(str);
-			while (str[j] && !c_is_white(str[j]))
-				++j;
-			args[i] = wrpped_ft_strndup(msh, str, j);
-			i++;
-			str += j;
-			if (str_is_empty(str))
-				break ;
-		}
-	}
-	else
-		i += put_words2(msh, args, words, i);
-	return (i - start);
-}
-
 
 int	get_args_size(t_tok *words)
 {
@@ -68,9 +37,6 @@ int	get_args_size(t_tok *words)
 	count = 0;
 	while (words)
 	{
-		if (words->splitme)
-			count += ft_countwords_whitespace(words->content);
-		else
 			count++;
 		words = words->next;
 	}

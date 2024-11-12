@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 16:26:28 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/12 14:16:08 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@ int	execution(t_msh *msh)
 
 	current = msh->exec_table;
 	prepare_execution(msh);
+	set_all_builtins(current);
 	while (current)
 	{
 		create_out_pipe(msh, current);
-		set_builtin_function(current);			
 		if (current->builtin)
 		{
 			close_previous_pipe(msh, current);
 			execute_builtin(msh, current);
 		}
  		else
-				execute_command(msh, current);
+			execute_command(msh, current);
 		if (!current->next)
 			break ;
 		current = current->next;

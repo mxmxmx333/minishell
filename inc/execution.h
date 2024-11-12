@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 17:53:30 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:48:00 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		is_parent(int pid);
 /*------------------------------> execution <------------------------------*/
 
 int		execution(t_msh *msh);
-void	set_builtin_function(t_exec *exec);
+void	set_all_builtins(t_exec *exec);
 void	execute_builtin(t_msh *msh, t_exec *exec);
 
 #endif
