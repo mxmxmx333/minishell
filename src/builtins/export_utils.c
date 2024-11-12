@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:59:34 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/07 18:40:04 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:37:53 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_valid(t_msh *msh, char *args)
 	i = 0;
 	digits = 0;
 	if (args[0] == '=' || ft_isdigit(args[0]))
-		return (dis_export_err("export: ", str, "not a valid identifier"), free(str), 0);
+		return (dis_export_err("export: ", args, "not a valid identifier"), free(str), 0);
 	while (args[i] && args[i] != '=')
 	{
 		if (ft_isalnum(args[i]) || args[i] == '_')
@@ -33,11 +33,11 @@ int	check_valid(t_msh *msh, char *args)
 				digits++;
 		}
 		else
-			return (dis_export_err("export: ", str, "not a valid identifier"), free(str), 0);
+			return (dis_export_err("export: ", args, "not a valid identifier"), free(str), 0);
 		i++;
 	}
 	if (digits == (int)ft_strlen(args))
-		return (dis_export_err("export: ", str, "not a valid identifier"), free(str), 0);
+		return (dis_export_err("export: ", args, "not a valid identifier"), free(str), 0);
 	return (free(str), 1);
 }
 

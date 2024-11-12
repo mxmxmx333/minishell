@@ -6,7 +6,11 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/11/12 17:20:43 by mbonengl         ###   ########.fr       */
+=======
+/*   Updated: 2024/11/12 18:04:52 by nicvrlja         ###   ########.fr       */
+>>>>>>> 9f1b30c37783f980ace06da5d039590feb022847
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +101,8 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 
 	(void)fd;
 	i = 0;
+	if (exec->next || exec->prev)
+		return (0);
 	while (exec->args[i])
 		i++;
 	if (i > 2)
