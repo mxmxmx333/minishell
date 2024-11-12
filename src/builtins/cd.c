@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 19:30:01 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:04:52 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 
 	(void)fd;
 	i = 0;
+	if (exec->next || exec->prev)
+		return (0);
 	while (exec->args[i])
 		i++;
 	if (i > 2)

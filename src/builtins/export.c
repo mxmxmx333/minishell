@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/07 18:49:47 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:28:20 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,18 @@ static int	allocate_and_copy(t_msh *msh, char *arg, char **v_name, char **v_valu
 	return (1);
 }
 
+int	export_variable(t_msh *msh, char *arg, char *v_name, char *v_value)
+{
+	if (!check_valid(msh, arg))
+			return (1);
+	allocate_and_copy(msh, arg, &v_name, &v_value);
+	if (search_and_replace(msh, v_name, v_value) == 1)
+		free(v_name);
+	else
+		add_node_env(msh, v_name, v_value);
+	return (0);
+}
+
 int	command_export(t_msh *msh, t_exec *exec, int fd)
 {
 	int		i;
@@ -128,24 +140,15 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 	
 	status = 0;
 	i = 0;
+	v_name = NULL;
+	v_value = NULL;
+	if ((exec->next && exec->next->builtin) || exec->prev)
+		return (0);
 	if (!exec->args[1])
 		print_export_array(msh, fd);
 	while (exec->args[++i])
-	{
-		if (!check_valid(msh, exec->args[i]))
-			return (1);
-		allocate_and_copy(msh, exec->args[i], &v_name, &v_value);
-		if (search_and_replace(msh, v_name, v_value) == 1)
-		{
-			free(v_name);
-			continue ;
-		}
-		else
-		{
-			add_node_env(msh, v_name, v_value);
-			destroy_exp(msh);
-		}
-	}
+		status = export_variable(msh, exec->args[i], v_name, v_value);
 	msh->env_size = env_size(msh);
 	return (status);
 }
+

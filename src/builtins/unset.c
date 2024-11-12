@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:19:06 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 13:03:15 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 17:30:26 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	command_unset(t_msh *msh, t_exec *exec, int fd)
 	int		i;
 
 	(void)fd;
+	if (exec->next || exec->prev)
+		return (0);
 	if (!exec->args[1])
 		return (0);
 	i = 0;
