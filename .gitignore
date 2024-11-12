@@ -7,3 +7,4 @@ minishell_tester
 mstest*
 .gitignore
 *.swp
+Errors.txt

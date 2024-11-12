@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:54:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 14:37:18 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/12 15:50:38 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	handle_redirections(t_msh *msh, t_exec *current)
 
 	redirections = current->redirections;
 	redirect_inpipe(msh, current);
+	redirect_outpipe(msh, current);
 	while (redirections)
 	{
 		if (redirections->type == REDI_IN || redirections->type == HERE_DOC)
@@ -49,7 +50,6 @@ void	handle_redirections(t_msh *msh, t_exec *current)
 			redirect_output(msh, redirections);
 		redirections = redirections->next;
 	}
-	redirect_outpipe(msh, current);
 	close_both_pipes(msh, current);
 }
 
