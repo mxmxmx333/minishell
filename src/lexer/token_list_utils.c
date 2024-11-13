@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:23:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 10:57:20 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/13 20:09:29 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	clear_tok_list(t_tok *tok)
 	{
 		tmp = tok;
 		tok = tok->next;
+		if (tmp->content)
+			free(tmp->content);
 		free(tmp);
 	}
 }
