@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:23:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 20:09:29 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:44:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	destroy_tokens(t_msh *msh)
 /* 
 	adds a new token node to the end of the list, if list is empty, the new node
 	will be the first nodes
- */
+*/
 void	add_tok_node(t_msh *msh, t_tok *new)
 {
 	t_tok	*tmp;

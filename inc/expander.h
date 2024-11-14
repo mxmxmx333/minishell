@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 20:19:06 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:21:13 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_tok	*insert_new_tokens(t_tok **old, t_tok *current, t_tok *replace);
 
 /*--------------------------> Splitting variables <---------------------------*/
 
-void	split_expanded_variable(t_tok *current);
+void	split_expanded_variable(t_tok *current, int varflag);
 void	split_next_var(t_msh *msh, t_tok *clear, t_tok *current);
 
 /*------------------------------> join Tokens <-------------------------------*/

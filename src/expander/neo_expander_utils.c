@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:34:46 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 20:27:46 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:10:11 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,23 @@
 t_tok	*insert_new_tokens(t_tok **old, t_tok *current, t_tok *replace)
 {
 	t_tok	*prev;
-	t_tok	*next;
 
 	if (*old == replace)
+	{
+		*old = current;
 		prev = NULL;
+	}
 	else
 	{
 		prev = *old;
 		while (prev->next != replace)
 			prev = prev->next;
 	}
-	next = replace->next;
 	if (prev)
 		prev->next = current;
-	else
-		*old = current;
-	while (current && current->next)
+	while (current->next)
 		current = current->next;
-	current->next = next;
+	current->next = replace->next;
 	free(replace->content);
 	free(replace);
 	return (current);

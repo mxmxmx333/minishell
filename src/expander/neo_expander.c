@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:55:52 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 20:37:35 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:38:17 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ static int	needs_split(char *str)
 	has_var = 0;
 	while (*str)
 	{
-		if (*str == '\'' || *str == '\"')
-		{
-			str = ret_next_twin(str);
+		if (is_varname_break(*str))
 			has_quote++;
-		}
+		if (*str == '\'' || *str == '\"')
+			str = ret_next_twin(str);
 		if (*str == '$')
 			has_var++;
 		str++;
@@ -35,21 +34,25 @@ static int	needs_split(char *str)
 	return (0);
 }
 
-static t_tok	*expand_vars(t_msh *msh, t_tok *old, t_tok *replace)
+static t_tok	*expand_vars(t_msh *msh, t_tok **old, t_tok *replace)
 {
 	t_tok	*head;
 	t_tok	*current;
 
-	head = new_token(old, msh, ft_strdup(variable_finder_value(msh, replace->content)), 0);
+	head = new_token(*old, msh, ft_strdup(variable_finder_value(msh, replace->content)), WORD);
 	current = head;
+	current->expander = true;
+	current->splitfile = replace->splitfile;
 	while (current && ft_countwords_whitespace(current->content) > 1)
 	{
-		split_expanded_variable(current);
+		split_expanded_variable(current, replace->splitfile);
 		if (!current->next)
-			return (clear_tok_list(head), clear_tok_list(old), error_simple(msh, M_ERR, 1), NULL);
+			return (clear_tok_list(head), clear_tok_list(*old), error_simple(msh, M_ERR, 1), NULL);
 		current = current->next;
 	}
-	return (insert_new_tokens(&old, head, replace));
+	if (current)
+		current->splitfile = replace->splitfile;
+	return (insert_new_tokens(old, head, replace));
 }
 
 static t_tok	*expand_and_split_vars(t_msh *msh, t_tok *tok)
@@ -68,14 +71,14 @@ static t_tok	*expand_and_split_vars(t_msh *msh, t_tok *tok)
 	while (tmp)
 	{
 		if (tmp->expander)
-			tmp = expand_vars(msh, splitlist, tmp);
+			tmp = expand_vars(msh, &splitlist, tmp);
 		else
 		{
 			tmp->content = expand(msh, tmp->content);
 			if (!tmp->content)
 				return (clear_tok_list(splitlist), error_simple(msh, M_ERR, 1), NULL);
-			tmp = tmp->next;
 		}
+		tmp = tmp->next;
 	}
 	return (manage_join(msh, splitlist));
 }
@@ -84,7 +87,7 @@ t_tok	*neo_expand(t_msh *msh, t_tok *tok)
 {
 	t_tok	*current;
 	bool	lonely;
-
+ 
 	if (tok->type == WORD)
 	{
 		if (!ft_strchr(tok->content, '\'') && !ft_strchr(tok->content, '\"'))
