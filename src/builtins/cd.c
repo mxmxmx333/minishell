@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/13 14:03:10 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:42:52 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	cd_errors(int errcode, char *arg)
 	else if (errcode == ENOENT)
 		dis_func_err("cd: ", arg, "No such file or directory");
 	else if (errcode == EACCES)
-		dis_func_err("cd: ", arg, "permission denied");
+		dis_func_err("cd: ", arg, "Permission denied");
 	else if (errcode == EFAULT)
 		dis_func_err("cd: ", arg, "Bad address");
 	else if (errcode == EIO)

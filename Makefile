@@ -52,6 +52,7 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/lexer/lexer.c \
 				$(SRC_DIR)/lexer/here_doc.c \
 				$(SRC_DIR)/lexer/here_doc_utils.c \
+				$(SRC_DIR)/lexer/here_doc_expansion.c \
 				$(SRC_DIR)/expander/expander.c \
 				$(SRC_DIR)/expander/expander_utils.c \
 				$(SRC_DIR)/expander/get_length.c \
