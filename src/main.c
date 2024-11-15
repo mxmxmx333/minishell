@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:28:31 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 17:40:41 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:18:18 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	exit_success(t_msh *msh)
 
 	temp = msh->status;
 	destroy_minishell(msh);
+	close (STDIN_FILENO);
+	close (STDOUT_FILENO);
 	exit(temp);
 }
 

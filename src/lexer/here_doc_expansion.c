@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 10:03:34 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/15 10:35:47 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:15:22 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ char	*expand_heredoc(t_msh *msh, char *str)
 		else
 			new[j++] = str[i++];
 	}
-	return (new);
+	return (free(str), new);
 }

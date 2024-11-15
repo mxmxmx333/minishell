@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:27:56 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/15 09:59:40 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:19:02 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	error_complex_tok(t_msh *msh, char *msg, char *param, int exit_code)
 	ft_putendl_fd(error_msg, STDERR_FILENO);
 	free(error_msg);
 	destroy_minishell(msh);
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
 	//ft_putstr_fd(RESET, STDERR_FILENO);
 	exit(exit_code);
 }
@@ -85,6 +87,8 @@ void	error_complex(t_msh *msh, char *msg, char *param, int exit_code)
 	free(error_msg);
 	//ft_putstr_fd(RESET, STDERR_FILENO);
 	destroy_minishell(msh);
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
 	exit(exit_code);
 }
 

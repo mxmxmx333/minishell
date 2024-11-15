@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/15 10:29:46 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:27:45 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 		{
 			/* here_doc_error(i, limiter); */
 			break ;
-			continue ;
 		}
 		if (!tok->expander)
 			line = expand_heredoc(msh, line);
