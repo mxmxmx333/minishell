@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/12 17:28:20 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:32:36 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	search_and_replace(t_msh *msh, char *v_name, char *v_value)
 	In the case where an existing variable name was not found, just
 	create a new node with v_name and v_value.
 */
-static void	add_node_env(t_msh *msh, char *v_name, char *v_value)
+void	add_node_env(t_msh *msh, char *v_name, char *v_value)
 {
 	t_env	*env;
 	t_env	*node;

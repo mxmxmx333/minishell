@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 16:36:05 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:47:23 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define DISABLE_HISTORY 1
 # include "libraries.h"
 
+extern sig_atomic_t g_sig;
 /*-----------------------------> Initialization <-----------------------------*/
 
 t_msh	*initialize_minishell(char **env);

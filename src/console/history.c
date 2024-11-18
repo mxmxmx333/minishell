@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:03:28 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/10/17 12:34:48 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:03:57 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static char	*add_history_custom(t_msh *msh, char *filename)
 	char	*history;
 	char	*temp;
 	char	*path;
+	int		status;
 
 	path = create_filename(msh, filename);
 	fd = open(path, O_RDWR | O_CREAT, S_IRWXG | S_IRWXU);
@@ -101,7 +102,7 @@ static char	*add_history_custom(t_msh *msh, char *filename)
 		return (error_simple(msh, M_ERR, EXIT_FAILURE), NULL);
 	while (1)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(fd, &status);
 		if (line == NULL)
 			break ;
 		temp = history;

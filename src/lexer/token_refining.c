@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_refining.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 11:54:09 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:26:27 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 /* 
 	refine pipes: 
 */
-int	ref_pipe(t_tok *current)
+int	ref_pipe(t_msh *msh, t_tok *current)
 {
 	if (current->type == PIPE)
 	{
 		if (!current->next)
-			return (display_tok_err(SYN_ERR_UNEXP_TOK, "newline"), 2);
+			return (display_tok_err(msh, SYN_ERR_UNEXP_TOK, "newline"), 2);
 		else if (current->next->type == PIPE)
-			return (display_tok_err(SYN_ERR_UNEXP_TOK, "|"), 2);
+			return (display_tok_err(msh, SYN_ERR_UNEXP_TOK, "|"), 2);
 	}
 	return (0);
 }
@@ -35,9 +35,9 @@ int	ref_redir(t_msh *msh, t_tok *current)
 	if (isredi(current->type))
 	{
 		if (!current->next)
-			return (display_tok_err(SYN_ERR_UNEXP_TOK, "newline"), 2);
+			return (display_tok_err(msh, SYN_ERR_UNEXP_TOK, "newline"), 2);
 		else if (current->next->type != WORD)
-			return (display_tok_err(SYN_ERR_UNEXP_TOK, \
+			return (display_tok_err(msh, SYN_ERR_UNEXP_TOK, \
 					current->next->content), 2);
 		else
 		{
@@ -56,10 +56,10 @@ int	refining_tokens(t_msh *msh)
 
 	tok = msh->tokens;
 	if (tok->type == PIPE)
-		return (display_tok_err(SYN_ERR_UNEXP_TOK, "|"), 2);
+		return (display_tok_err(msh, SYN_ERR_UNEXP_TOK, "|"), 2);
 	while (tok)
 	{
-		if (ref_redir(msh, tok) || ref_pipe(tok))
+		if (ref_redir(msh, tok) || ref_pipe(msh, tok))
 			return (2);
 		tok = neo_expand(msh, tok);
 		tok = tok->next;

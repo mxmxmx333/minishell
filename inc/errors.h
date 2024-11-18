@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 17:20:43 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:24:08 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@
 */
 
 /* permission denied*/
-# define PER_ERR ": permission denied"
+# define PER_ERR ": Permission denied"
 /* Open permission denied*/
-# define O_PER_ERR ": permission denied"
+# define O_PER_ERR ": Permission denied"
 /* Is a directory */
 # define DIR_ERR ": Is a directory"
 /* No such file or directory */
@@ -75,8 +75,8 @@ idiot"
 void	error_simple(t_msh *msh, char *msg, int exit_code);
 void	error_complex(t_msh *msh, char *msg, char *param, int exit_code);
 void	error_complex_tok(t_msh *msh, char *msg, char *param, int exit_code);
-void	display_tok_err(char *p1, char *p2);
-void	dis_func_err(char *cmdname, char *arg, char *errmsg);
+void	display_tok_err(t_msh *msh, char *p1, char *p2);
+void	dis_func_err(t_msh *msh, char *cmdname, char *arg, char *errmsg);
 void	here_doc_error(int line, char *limiter);
 
 int		check_syntax_error_quotes(t_msh *msh);

@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:01:35 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/21 16:39:51 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:07:42 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*concatenate_prompt(t_msh *msh, char *s1, char *s2, char *s3)
 	if (check_home_dir(msh, s3))
 		s3 = s3 + homelen;
 	prompt = ft_calloc(ft_strlen(s1) + ft_strlen(s2)
-			+ ft_strlen(s3) + 5 + 4, sizeof(char));
+			+ ft_strlen(s3) + 6, sizeof(char));
 	if (!prompt)
 		return (perror("malloc fail"), NULL);
 	while (*s1)
@@ -52,9 +52,9 @@ static char	*concatenate_prompt(t_msh *msh, char *s1, char *s2, char *s3)
 	prompt[i++] = '~';
 	while (*s3)
 		prompt[i++] = *s3++;
-	ft_strlcpy(prompt + i, "🦫", 4 + 1);
-	i += 4;
+	prompt[i++] = '$';
 	prompt[i++] = ' ';
+	prompt[i] = '\0';
 	return (prompt);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 16:28:21 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:03:01 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,13 @@ void	minishell_interface(t_msh *msh)
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			msh->cur_cmd_line = readline("Msh->");
+			msh->cur_cmd_line = readline(msh->prompt);
 		else
 		{
 			char	*line;
 			char	*tmp;
-			line = get_next_line(STDIN_FILENO);
+			int status;
+			line = get_next_line(STDIN_FILENO, &status);
 			tmp = msh->cur_cmd_line;
 			msh->cur_cmd_line = ft_strtrim(line, "\n");
 			free(tmp);

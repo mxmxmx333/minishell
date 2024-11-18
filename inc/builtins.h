@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:46:39 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/07 18:36:25 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:04:12 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,10 @@ void		dis_export_err(char *cmdname, char *arg, char *errmsg);
 char		*env_variable_finder(t_msh *msh, char *node);
 void		export_error(char *v_name, char *v_value, int *status);
 int			find_v_value(char *arg);
+void		cd_errors(t_msh *msh, int errcode, char *arg);
+t_env	*env_node_finder(t_msh *msh, char *node);
+int		args_numb(char **args);
+int	change_directory(t_msh *msh, char *dir);
+void	add_node_env(t_msh *msh, char *v_name, char *v_value);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:55:49 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 14:00:27 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:25:04 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	redi_status(t_msh *msh, t_tok *redirections, int *fd)
 											|| redirections->lonely))
 		{
 			msh->status = 1;
-			dis_func_err("", redirections->file, "ambiguous redirect");
+			dis_func_err(msh, "", redirections->file, "ambiguous redirect");
 			return (1);
 		}
 		if (redirections->type == REDI_IN || redirections->type == HERE_DOC)

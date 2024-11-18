@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:28:12 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/04 17:56:32 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:29:10 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,18 @@ void	handle_sigquit(int signum)
 {
 	(void)signum;
 	//printf("Quit (core dumped)\n");
+}
+void	handle_sigint_heredoc(int signum)
+{
+	int	*status;
+
+	g_sig = 1;
+	(void)signum;
+	status = get_status(NULL);
+	*status = 130;
+	close(STDIN_FILENO);
+	printf("\n");
+	//rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }

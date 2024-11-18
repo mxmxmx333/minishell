@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:19:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 09:14:03 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:19:03 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ void	gen_here_doc(t_msh *msh, t_tok *tok);
 char	*trim_quotes(t_msh *msh, char *str, t_tok *tok);
 char	*expand_heredoc(t_msh *msh, char *str);
 char	*gen_filename_heredoc(t_msh *msh, t_tok *tok);
+void	wrapper_dup2(t_msh *msh, int old_fd, int new_fd);
+int		wrapper_dup(t_msh *msh);
 
 #endif

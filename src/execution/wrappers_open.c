@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrappers_open.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:48:34 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 12:29:42 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/13 14:24:51 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	wrpped_close_builtin(t_msh *msh, int fd)
 	{
 		if (close(fd) == -1)
 		{
-			dis_func_err("", FD_ERR, "");
+			dis_func_err(msh, "", FD_ERR, "");
 			msh->status = 1;
 		}
 	}

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 16:30:05 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:46:51 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+sig_atomic_t g_sig = 0;
 
 void	destroy_here_doc(t_msh *msh)
 {
@@ -82,16 +84,24 @@ void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 {
 	char		*line;
 	static int	i;
+	int			status;
+	int			newfd;
 
 	i = 1;
+	status = 0;
+	g_sig = 0;
+	newfd = wrapper_dup(msh);
 	while (1)
 	{
-		line = get_next_line(STDIN_FILENO);
+		get_status(&msh->status);
+		signal(SIGINT, handle_sigint_heredoc);
+		line = get_next_line(STDIN_FILENO, &status);
+		if (!line && status == 1)
+			break ;
 		if (!line)
 		{
-			/* here_doc_error(i, limiter); */
+			here_doc_error(i, limiter);
 			break ;
-			continue ;
 		}
 		if (!tok->expander)
 			line = expand(msh, line);
@@ -105,6 +115,8 @@ void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 		free(line);
 		i++;
 	}
+	wrapper_dup2(msh, newfd, STDIN_FILENO);
+	close(newfd);
 }
 
 void	gen_here_doc(t_msh *msh, t_tok *tok)
@@ -120,4 +132,5 @@ void	gen_here_doc(t_msh *msh, t_tok *tok)
 	free(limiter);
 	add_here_doc(msh, tok->file);
 	close(fd);
+	signal(SIGINT, handle_sigint);
 }
