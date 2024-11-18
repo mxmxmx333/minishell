@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:20:52 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 15:05:58 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:57:28 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

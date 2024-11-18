@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 13:44:28 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:04:11 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	handle_piped_input(t_msh *msh)
 {
 	char	*line;
 	char	*tmp;
+	int		status;
 
-	line = get_next_line(STDIN_FILENO, NULL);
+	line = get_next_line(STDIN_FILENO, &status);
 	tmp = msh->cur_cmd_line;
 	msh->cur_cmd_line = ft_strtrim(line, "\n");
-	free(tmp);
 	free(line);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 14:47:23 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:52:39 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-# define DISABLE_HISTORY 1
+# define DISABLE_HISTORY 0
 # include "libraries.h"
 
 extern sig_atomic_t g_sig;
