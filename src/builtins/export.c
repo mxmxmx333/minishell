@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/18 15:25:45 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:40:25 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,11 @@ static int	alloc_copy(t_msh *msh, char *arg, char **v_name, char **v_value)
 
 static int	export_variable(t_msh *msh, char *arg, t_exec *exec, int *error)
 {
-	char	*str;
 	char	*v_name;
 	char	*v_value;
 
-	str = ft_strndup(arg, find_v_value(arg));
-	if (!str)
-		error_simple(msh, M_ERR, EXIT_FAILURE);
-	if (!check_valid(str))
+	if (!check_valid(arg))
 	{
-		free(str);
 		*error = 1;
 		return (1);
 	}

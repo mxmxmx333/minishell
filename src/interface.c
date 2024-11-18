@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 14:04:11 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:46:50 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ void	handle_piped_input(t_msh *msh)
 {
 	char	*line;
 	char	*tmp;
-	int		status;
 
-	line = get_next_line(STDIN_FILENO, &status);
+	line = get_next_line(STDIN_FILENO);
 	tmp = msh->cur_cmd_line;
 	msh->cur_cmd_line = ft_strtrim(line, "\n");
 	free(line);
