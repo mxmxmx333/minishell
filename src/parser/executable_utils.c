@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:34:04 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/11 15:20:28 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:44:35 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_args_size(t_tok *words)
 	count = 0;
 	while (words)
 	{
-			count++;
+		count++;
 		words = words->next;
 	}
 	return (count);

@@ -6,222 +6,84 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:55:52 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 12:17:58 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:37:27 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*dont_needs_split(t_msh *msh, char *str)
+static int	needs_split(char *str)
 {
+	int	has_quote;
+	int	has_var;
+
+	has_quote = 0;
+	has_var = 0;
 	while (*str)
 	{
+		if (is_varname_break(*str))
+			has_quote++;
 		if (*str == '\'' || *str == '\"')
 			str = ret_next_twin(str);
 		if (*str == '$')
-		{
-			if (ft_countwords_whitespace(variable_finder_value(msh, str)) > 1)
-				return (str);
-			else
-			{
-				while (*str && !is_varname_break(*str))
-					str++;
-			}
-		}
+			has_var++;
 		str++;
 	}
-	return (str);
+	if (has_var > 1 || (has_var && has_quote))
+		return (1);
+	return (0);
 }
 
-int	get_level_1_len(t_msh *msh, t_tok *tok)
+static t_tok	*expand_vars(t_msh *msh, t_tok **old, t_tok *replace)
 {
-	int		len;
-	char	*str;
-	char	*start;
-
-	len = 0;
-	str = tok->content;
-	while (*str)
-	{
-		if (*str == '\'' || *str == '\"')
-		{
-			start = str;
-			str = ret_next_twin(str) + 1;
-			len += str - start;
-		}
-		else
-		{
-			len += get_part_len(msh, str);
-			while (*str && *str != '\'' && *str != '\"')
-				str++;
-		}
-	}
-	return (len);
-}
-
-void	expand_vars(t_msh *msh, t_tok *tok, char *str)
-{
-	char	*expanded;
-	char	*start;
-
-	expanded = ft_calloc(get_level_1_len(msh, tok) + 1, sizeof(char));
-	if (!expanded)
-		return (error_simple(msh, M_ERR, 1));
-	while (*str)
-	{
-		if (*str == '\'' || *str == '\"')
-		{
-			start = str;
-			str = ret_next_twin(str) + 1;
-			ft_strncat(expanded, start, str - start);
-		}
-		else 
-		{
-			put_part_expander(msh, str, expanded);
-			while (*str && *str != '\'' && *str != '\"')
-				str++;
-		}
-	}
-	free(tok->content);
-	tok->content = expanded;
-} 
-
-void	token_add_back(t_tok **head, t_tok *new)
-{
+	t_tok	*head;
 	t_tok	*current;
 
-	if (!head || !new)
-		return ;
-	if (!*head)
+	head = new_token(*old, msh, ft_strdup(variable_finder_value
+				(msh, replace->content)), WORD);
+	current = head;
+	current->expander = true;
+	current->splitfile = replace->splitfile;
+	while (current && ft_countwords_whitespace(current->content) > 1)
 	{
-		*head = new;
-		return ;
-	}
-	current = *head;
-	while (current->next)
+		split_expanded_variable(current, replace->splitfile);
+		if (!current->next)
+			return (clear_tok_list(head), clear_tok_list(*old)
+				, error_simple(msh, M_ERR, 1), NULL);
 		current = current->next;
-	current->next = new;
+	}
+	if (current)
+		current->splitfile = replace->splitfile;
+	return (insert_new_tokens(old, head, replace));
 }
 
-char	*get_next_part(char *str)
+static t_tok	*expand_and_split_vars(t_msh *msh, t_tok *tok)
 {
-	while (*str && !is_space(*str))
+	t_tok	*splitlist;
+	t_tok	*tmp;
+
+	splitlist = copy_token(msh, tok);
+	tmp = splitlist;
+	while (needs_split(tmp->content))
 	{
-		if (*str == '\'' || *str == '\"')
-			str = ret_next_twin(str) + 1;
+		split_next_var(msh, splitlist, tmp);
+		tmp = tmp->next;
+	}
+	tmp = splitlist;
+	while (tmp)
+	{
+		if (tmp->expander)
+			tmp = expand_vars(msh, &splitlist, tmp);
 		else
-			str++;
+		{
+			tmp->content = expand(msh, tmp->content);
+			if (!tmp->content)
+				return (clear_tok_list(splitlist)
+					, error_simple(msh, M_ERR, 1), NULL);
+		}
+		tmp = tmp->next;
 	}
-	return (str);
-}
-
-t_tok	*new_token(t_tok *current, t_msh *msh, char *content, int type)
-{
-	t_tok	*new;
-
-	if (!content)
-		return (clear_tok_list(current), error_simple(msh, M_ERR, 1), NULL);
-	new = ft_calloc(1, sizeof(t_tok));
-	if (!new)
-		return (free(content), clear_tok_list(current), 
-				error_simple(msh, M_ERR, 1), NULL);
-	new->content = content;
-	new->type = type;
-	return (new);
-}
-
-t_tok	*split_token(t_msh *msh, char *str)
-{
-	char	*start;
-	t_tok	*current;
-	char	*expanded;
-
-	current = NULL;
-	while (*str)
-	{
-		str = skip_whitespace(str);
-		start = str;
-		str = get_next_part(str);
-		expanded = ft_strndup(start, str - start);
-		if (!expanded)
-			return (clear_tok_list(current), error_simple(msh, M_ERR, 1), NULL);
-		expanded = expand(msh, expanded);
-		if (!expanded)
-			return (clear_tok_list(current), error_simple(msh, M_ERR, 1), NULL);
-		token_add_back (&current, new_token(current, msh, expanded, WORD));
-		if (str_is_empty(str))
-			break ;
-	}
-	if (!current)
-		return (new_token(current, msh, ft_strdup(""), WORD));
-	return (current);
-}
-
-t_tok	*insert_new_tokens(t_msh *msh, t_tok *current, t_tok *tok)
-{
-	t_tok	*prev;
-	t_tok	*next;
-
-	if (msh->tokens == tok)
-		prev = NULL;
-	else
-	{
-		prev = msh->tokens;
-		while (prev->next != tok)
-			prev = prev->next;
-	}
-	next = tok->next;
-	if (prev)
-		prev->next = current;
-	else
-		msh->tokens = current;
-	while (current && current->next)
-		current = current->next;
-	current->next = next;
-	free(tok->content);
-	free(tok);
-	return (current);
-}
-
-void	cpy_varname(t_msh *msh, t_tok *tok, char *redirect)
-{
-	char	*start;
-	char	*file;
-
-	file = tok->file;
-	start = redirect;
-	++redirect;
-	while (*redirect && !is_varname_break(*redirect))
-		redirect++;
-	*redirect = '\0';
-	tok->file = ft_strndup(start, redirect - start);
-	if (!tok->file)
-		error_simple(msh, M_ERR, 1);
-	free(file);
-	tok->splitfile = true;
-}
-
-t_tok	*expand_redirect(t_msh *msh, t_tok *tok)
-{
-	char	*redirect;
-	char	*cpy;
-
-	redirect = dont_needs_split(msh, tok->file);
-	if (!*redirect)
-	{
-		cpy = ft_strdup(tok->file);
-		if (!cpy)
-			return (error_simple(msh, M_ERR, 1), NULL);
-		tok->file = expand(msh, tok->file);
-		if (!tok->file)
-			return (free(cpy), error_simple(msh, M_ERR, 1), NULL);
-		if (str_is_empty(tok->file) && tok->lonely)
-			cpy_varname(msh, tok, cpy);
-		return (tok);
-	}
-	else
-		cpy_varname(msh, tok, redirect);
-	return (free(redirect), tok);
+	return (manage_join(msh, splitlist));
 }
 
 t_tok	*neo_expand(t_msh *msh, t_tok *tok)
@@ -235,12 +97,12 @@ t_tok	*neo_expand(t_msh *msh, t_tok *tok)
 			lonely = true;
 		else
 			lonely = false;
-		expand_vars(msh, tok, tok->content);
-		current = split_token(msh, tok->content);
+		current = expand_and_split_vars(msh, tok);
 		current->lonely = lonely;
-		return (insert_new_tokens(msh, current, tok));
+		return (insert_new_tokens(&msh->tokens, current, tok));
 	}
-	if (tok->type == REDI_AOUT || tok->type == REDI_TOUT || tok->type == REDI_IN)
+	if (tok->type == REDI_AOUT || tok->type == REDI_TOUT
+		|| tok->type == REDI_IN)
 	{
 		if (!ft_strchr(tok->file, '\'') && !ft_strchr(tok->file, '\"'))
 			tok->lonely = true;

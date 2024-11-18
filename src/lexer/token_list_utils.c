@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:23:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 10:57:20 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/15 14:36:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,13 @@ void	destroy_tokens(t_msh *msh)
 		destroy_tok_node(NULL, prev);
 	}
 	msh->tokens = NULL;
+	get_next_line(-1);
 }
 
 /* 
 	adds a new token node to the end of the list, if list is empty, the new node
 	will be the first nodes
- */
+*/
 void	add_tok_node(t_msh *msh, t_tok *new)
 {
 	t_tok	*tmp;
@@ -90,6 +91,8 @@ void	clear_tok_list(t_tok *tok)
 	{
 		tmp = tok;
 		tok = tok->next;
+		if (tmp->content)
+			free(tmp->content);
 		free(tmp);
 	}
 }

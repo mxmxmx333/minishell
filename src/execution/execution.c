@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 14:16:08 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:33:39 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void	wait_for_child(t_msh *msh)
 		;
 	if (WIFSIGNALED(*status))
 	{
-		if(WTERMSIG(*status) == SIGINT)
+		if (WTERMSIG(*status) == SIGINT)
 			handle_sigint_child(0);
-		if(WTERMSIG(*status) == SIGQUIT)
+		if (WTERMSIG(*status) == SIGQUIT)
 			handle_sigquit(0);
 	}
 	if (WIFEXITED(*status))
@@ -69,7 +69,7 @@ int	execution(t_msh *msh)
 			close_previous_pipe(msh, current);
 			execute_builtin(msh, current);
 		}
- 		else
+		else
 			execute_command(msh, current);
 		if (!current->next)
 			break ;

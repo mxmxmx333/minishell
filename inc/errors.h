@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:53:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 14:24:08 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:40:14 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

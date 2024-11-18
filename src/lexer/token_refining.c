@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_refining.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 14:26:27 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:42:49 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

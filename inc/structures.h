@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 10:16:28 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:08:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef enum e_typ
 }	t_e_typ;
 
 /*--------------------------> TOKENS linked list <----------------------------*/
+
 /*
 	*content;
 	*file;
@@ -60,7 +61,7 @@ typedef struct s_tokens
 	t_e_typ			type;		//type of token
 	int				lonely;	//mode for expansion
 	int				splitfile;
-	int				expander;
+	int				expander; //here_doc: flag for exp, in word: flag for var
 	struct s_tokens	*next;
 }	t_tok;
 
@@ -152,7 +153,7 @@ typedef struct s_minishell
 	char	*cur_cmd_line;	//current input
 	t_tok	*tokens;		//tokens list
 	int		status;			//exit code
-	char	status_char[4];    //exit_code_printable
+	char	status_char[4];	//exit_code_printable
 	int		last_pid;		//last process id
 	t_hdoc	*here_doc;		//here document list
 }	t_msh;

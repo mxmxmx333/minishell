@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:57:50 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 13:48:00 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:28:27 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int		wrppd_fork(t_msh *msh);
 int		wrppd_open(t_msh *msh, char *path, int flags);
 int		wrppd_open_builtin(t_msh *msh, char *path, int flags);
 void	wrpped_close_builtin(t_msh *msh, int fd);
+void	dis_func_err_open(char *cmdname, char *arg, char *errmsg);
+void	open_error(t_msh *msh, int errorcode, char *path);
+void	open_error_builtin(t_msh *msh, int errorcode, char *path);
 
 /*------------------------------> redirections <------------------------------*/
 

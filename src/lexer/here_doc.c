@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/14 12:46:51 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:42:44 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 			break ;
 		}
 		if (!tok->expander)
-			line = expand(msh, line);
+			line = expand_heredoc(msh, line);
 		if (!ft_strcmp(line, limiter))
 		{
 			if (line)
