@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:11:55 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 16:55:32 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:12:58 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	write_one_node(t_msh *msh, t_env *current, int i, char **env)
 		env[i] = ft_strdup(current->v_name);
 		if (!env[i])
 			error_simple(msh, M_ERR, EXIT_FAILURE);
+		return ;
 	}
 	env[i] = ft_strjoin_three(current->v_name, "=", current->v_value);
 	if (!env[i])

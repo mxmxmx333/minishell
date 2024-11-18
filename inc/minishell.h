@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 16:44:44 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:03:20 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-# define DISABLE_HISTORY 0
+# define DISABLE_HISTORY 1
 # include "libraries.h"
 
 /*-----------------------------> Initialization <-----------------------------*/
