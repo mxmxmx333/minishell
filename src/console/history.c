@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:03:28 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/13 15:03:57 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:47:42 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ static char	*add_history_custom(t_msh *msh, char *filename, char *history)
 	char	*line;
 	char	*temp;
 	char	*path;
-	int		status;
 
 	path = create_filename(msh, filename);
 	fd = open(path, O_RDWR | O_CREAT, S_IRWXG | S_IRWXU);
@@ -98,7 +97,7 @@ static char	*add_history_custom(t_msh *msh, char *filename, char *history)
 		return (error_complex(msh, FD_ERR, path, EXIT_FAILURE), NULL);
 	while (1)
 	{
-		line = get_next_line(fd, &status);
+		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
 		temp = history;

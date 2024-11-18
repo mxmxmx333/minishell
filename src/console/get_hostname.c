@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:58:08 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/13 15:04:26 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:47:33 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char	*get_hostname(void)
 	char	*res;
 	int		fd;
 	int		i;
-	int		status;
 
 	fd = open("/etc/hostname", O_RDONLY);
 	if (fd == -1)
@@ -56,7 +55,7 @@ char	*get_hostname(void)
 	res = NULL;
 	hostname = NULL;
 	i = 0;
-	hostname = get_next_line(fd, &status);
+	hostname = get_next_line(fd);
 	if (!hostname)
 		return (close(fd), close(fd), NULL);
 	i = ft_strlen(hostname) - 1;

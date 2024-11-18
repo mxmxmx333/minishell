@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:36:31 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 13:53:11 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:45:54 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	copycontent(int fd, t_list **b_list)
 	return (1);
 }
 
-char	*get_next_line(int fd, int *status)
+char	*get_next_line(int fd)
 {
 	static t_list	*b_list = NULL;
 	char			*current_line;
@@ -100,17 +100,12 @@ char	*get_next_line(int fd, int *status)
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (lstclear(&b_list), NULL);
 	if (copycontent(fd, &b_list) == -1)
-		return (lstclear(&b_list), *status = 1, NULL);
+		return (lstclear(&b_list), NULL);
 	if (!b_list)
-		return (resetlist(&b_list), *status = 1, NULL);
+		return (resetlist(&b_list), NULL);
 	current_line = takeline(b_list);
 	if (!current_line)
-		return (lstclear(&b_list), *status = 1, NULL);
+		return (lstclear(&b_list), NULL);
 	resetlist(&b_list);
-	if (current_line == NULL)
-	{
-		if (status)
-			*status = 1;
-	}
 	return (current_line);
 }
