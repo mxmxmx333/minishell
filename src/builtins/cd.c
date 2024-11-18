@@ -38,55 +38,42 @@ static int	update_env(t_msh *msh, char *pwd, char *oldpwd)
 {
 	t_env	*pwd_env;
 	t_env	*oldpwd_env;
-	char	*tmp_pwd;
-	char	*tmp_oldpwd;
 
 	oldpwd_env = env_node_finder(msh, "OLDPWD");
-	if (oldpwd_env)
+	if (oldpwd && oldpwd_env && oldpwd_env->v_value)
 	{
-		if (oldpwd_env->v_value)
-			free(oldpwd_env->v_value);
+		free(oldpwd_env->v_value);
 		oldpwd_env->v_value = ft_strdup(oldpwd);
 		if (!oldpwd_env->v_value)
 			error_simple(msh, M_ERR, EXIT_FAILURE);
 	}
+	else if (oldpwd)
+		create_oldpwd_node(msh, oldpwd);
 	else
-	{
-		tmp_oldpwd = ft_strdup(oldpwd);
-		if (!tmp_oldpwd)
-			error_simple(msh, M_ERR, EXIT_FAILURE);
-		add_node_env(msh, "OLDPWD", tmp_oldpwd);
-	}
+		remove_env_node(msh, oldpwd_env);
 	pwd_env = env_node_finder(msh, "PWD");
-	if (pwd_env)
+	if (pwd_env && pwd_env->v_value)
 	{
-		if (pwd_env->v_value)
-			free(pwd_env->v_value);
+		free(pwd_env->v_value);
 		pwd_env->v_value = ft_strdup(pwd);
 		if (!pwd_env->v_value)
 			error_simple(msh, M_ERR, EXIT_FAILURE);
 	}
 	else
-	{
-		tmp_pwd = ft_strdup(pwd);
-		if (!tmp_pwd)
-			error_simple(msh, M_ERR, EXIT_FAILURE);
-		add_node_env(msh, "PWD", tmp_pwd);
-	}
-	msh->env_size = env_size(msh);
+		create_pwd_node(msh, pwd);
 	return (1);
 }
 
-static int	free_stuff(t_msh *msh)
+static int	update_variables(t_msh *msh)
 {
 	char	*newpwd;
 	t_env	*env;
 	char	*pwd;
-	
+
 	pwd = NULL;
 	newpwd = getcwd(NULL, 0);
 	env = env_node_finder(msh, "PWD");
-	if (env)
+	if (env && env->v_value)
 	{
 		pwd = ft_strdup(env->v_value);
 		if (!pwd)
@@ -95,11 +82,12 @@ static int	free_stuff(t_msh *msh)
 		free(pwd);
 	}
 	else
-		update_env(msh, newpwd, "");
+		update_env(msh, newpwd, NULL);
 	free(newpwd);
 	free(msh->cur_dir);
 	free(msh->prompt);
 	create_prompt(msh);
+	msh->env_size = env_size(msh);
 	return (1);
 }
 
@@ -107,15 +95,17 @@ int	previous_dir(t_msh *msh)
 {
 	char	*newpwd;
 
-	newpwd = ft_strdup(env_variable_finder(msh, "OLDPWD"));
-	if(!change_directory(msh, newpwd))
-		return(free(newpwd), 0);
+	newpwd = env_variable_finder(msh, "OLDPWD");
+	if (!newpwd)
+		return (dis_func_err(msh, "cd", "", "OLDPWD not set"), 0);
+	if (!change_directory(msh, newpwd))
+		return (1);
 	printf("%s\n", newpwd);
-	free(newpwd);
+	update_variables(msh);
 	free(msh->cur_dir);
 	free(msh->prompt);
 	create_prompt(msh);
-	return (1);
+	return (0);
 }
 
 int	command_cd(t_msh *msh, t_exec *exec, int fd)
@@ -124,7 +114,7 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 	if (exec->next || exec->prev)
 		return (0);
 	if (args_numb(exec->args) > 2)
-		return(dis_func_err(msh, "cd", "", "too many arguments"), 1);
+		return (dis_func_err(msh, "cd", "", "too many arguments"), 1);
 	if (!exec->args[1])
 	{
 		if (!change_directory(msh, msh->home_dir))
@@ -132,9 +122,9 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 		return (free(msh->cur_dir), free(msh->prompt), create_prompt(msh), 0);
 	}
 	if (ft_strlen(exec->args[1]) == 1 && exec->args[1][0] == '-')
-			return (previous_dir(msh));
+		return (previous_dir(msh));
 	if (!change_directory(msh, exec->args[1]))
 		return (1);
-	free_stuff(msh);
+	update_variables(msh);
 	return (0);
 }

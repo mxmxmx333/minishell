@@ -12,37 +12,6 @@
 
 #include "minishell.h"
 
-static void	print_export_array(t_msh *msh, int fd)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	if (!msh->export)
-		convert_exp(msh);
-	sort_export_array(msh);
-	while (msh->export[++i])
-	{
-		j = 0;
-		if (msh->export[i][0] == '_' && msh->export[i][1] == '=')
-			continue ;
-		ft_putstr_fd("declare -x ", fd);
-		while (msh->export[i][j] && msh->export[i][j] != '=')
-			ft_putchar_fd(msh->export[i][j++], fd);
-		if (!msh->export[i][j])
-		{
-			ft_putstr_fd("\n", fd);
-			continue ;
-		}
-		ft_putchar_fd(msh->export[i][j++], fd);
-		ft_putchar_fd('"', fd);
-		while (msh->export[i][j])
-			ft_putchar_fd(msh->export[i][j++], fd);
-		ft_putchar_fd('"', fd);
-		ft_putstr_fd("\n", fd);
-	}
-}
-
 /*
 	Check if there is already a variable with the name,if there is then
 	update it.
@@ -93,7 +62,7 @@ void	add_node_env(t_msh *msh, char *v_name, char *v_value)
 /*
 	Allocate memory and copy from args to v_name and v_value.
 */
-static int	allocate_and_copy(t_msh *msh, char *arg, char **v_name, char **v_value)
+static int	alloc_copy(t_msh *msh, char *arg, char **v_name, char **v_value)
 {
 	int		i;
 
@@ -119,16 +88,21 @@ static int	allocate_and_copy(t_msh *msh, char *arg, char **v_name, char **v_valu
 	return (1);
 }
 
-int	export_variable(t_msh *msh, char *arg, char *v_name, char *v_value)
+static int	export_variable(t_msh *msh, char *arg, char *v_name, char *v_value)
 {
-	if (!check_valid(msh, arg))
-			return (1);
-	allocate_and_copy(msh, arg, &v_name, &v_value);
+	char	*str;
+
+	str = ft_strndup(arg, find_v_value(arg));
+	if (!str)
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+	if (!check_valid(arg))
+		return (free(str), 1);
+	alloc_copy(msh, arg, &v_name, &v_value);
 	if (search_and_replace(msh, v_name, v_value) == 1)
 		free(v_name);
 	else
 		add_node_env(msh, v_name, v_value);
-	return (0);
+	return (free(str), 0);
 }
 
 int	command_export(t_msh *msh, t_exec *exec, int fd)
@@ -137,7 +111,7 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 	char	*v_name;
 	char	*v_value;
 	int		status;
-	
+
 	status = 0;
 	i = 0;
 	v_name = NULL;
@@ -151,4 +125,3 @@ int	command_export(t_msh *msh, t_exec *exec, int fd)
 	msh->env_size = env_size(msh);
 	return (status);
 }
-

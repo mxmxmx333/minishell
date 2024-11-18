@@ -47,7 +47,7 @@ int	ft_countwords_whitespace(char const *s)
 	i = 0;
 	while (s[i])
 	{
-		if (!ft_is_white(s[i]) && !str_is_empty((char *) (s + i)))
+		if (!ft_is_white(s[i]) && !str_is_empty((char *)(s + i)))
 		{
 			words++;
 			while (s[i] && !ft_is_white(s[i]))

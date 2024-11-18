@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo_utils.c                                       :+:      :+:    :+:   */
+/*   cd_utils_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 16:36:26 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/06 16:51:15 by nicvrlja         ###   ########.fr       */
+/*   Created: 2024/11/05 19:09:51 by nicvrlja          #+#    #+#             */
+/*   Updated: 2024/11/14 15:04:06 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	check_newline(t_exec *exec)
+int	swap_pwd(t_msh *msh)
 {
-	int	i;
+	t_env	*pwd;
+	t_env	*oldpwd;
+	char	*tmp;
 
-	i = 1;
-	if (exec->args[1][0] != '-')
-		return (0);
-	if (exec->args[1][0] == '-' && exec->args[1][1] != 'n')
-		return (0);
-	while (exec->args[1][i])
-	{
-		if (exec->args[1][i] != 'n')
-			return (0);
-		i++;
-	}
-	return (1);
+	oldpwd = env_node_finder(msh, "OLDPWD");
+	pwd = env_node_finder(msh, "PWD");
+	if (!pwd)
+		return (1);
+	tmp = pwd->v_value;
+	pwd->v_value = oldpwd->v_value;
+	oldpwd->v_value = tmp;
+	return (0);
 }

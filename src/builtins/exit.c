@@ -38,7 +38,7 @@ static int	check_digits(char *str)
 		return (0);
 	while (str[i] == ' ')
 		i++;
-	if (str[i] == '+' || str[i] ==  '-')
+	if (str[i] == '+' || str[i] == '-')
 		i++;
 	while (str[i])
 	{

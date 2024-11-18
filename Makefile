@@ -80,7 +80,8 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/builtins/exit_utils.c \
 				$(SRC_DIR)/builtins/echo_utils.c \
 				$(SRC_DIR)/builtins/export_utils_2.c \
-				$(SRC_DIR)/builtins/cd_utils.c
+				$(SRC_DIR)/builtins/cd_utils.c \
+				$(SRC_DIR)/builtins/cd_utils_2.c
 OBJ 		:= 	$(SRC:.c=.o)
 
 all: $(Name)

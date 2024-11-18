@@ -42,8 +42,35 @@ t_env	*env_node_finder(t_msh *msh, char *node)
 
 int	change_directory(t_msh *msh, char *dir)
 {
-	if(chdir(dir))
+	if (chdir(dir))
 		return (cd_errors(msh, errno, dir), 0);
 	return (1);
 }
 
+void	create_oldpwd_node(t_msh *msh, char *oldpwd)
+{
+	char	*tmp_val;
+	char	*tmp_name;
+
+	tmp_val = ft_strdup(oldpwd);
+	if (!tmp_val)
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+	tmp_name = ft_strdup("OLDPWD");
+	if (!tmp_val)
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+	add_node_env(msh, tmp_name, tmp_val);
+}
+
+void	create_pwd_node(t_msh *msh, char *pwd)
+{
+	char	*tmp_val;
+	char	*tmp_name;
+
+	tmp_val = ft_strdup(pwd);
+	if (!tmp_val)
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+	tmp_name = ft_strdup("PWD");
+	if (!tmp_val)
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+	add_node_env(msh, tmp_name, tmp_val);
+}

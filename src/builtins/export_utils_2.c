@@ -45,3 +45,40 @@ int	args_numb(char **args)
 		i++;
 	return (i);
 }
+
+static void	format_line(int fd, char *str)
+{
+	int	j;
+
+	j = 0;
+	ft_putstr_fd("declare -x ", fd);
+	while (str[j] && str[j] != '=')
+		ft_putchar_fd(str[j++], fd);
+	if (!str[j])
+	{
+		ft_putstr_fd("\n", fd);
+		return ;
+	}
+	ft_putchar_fd(str[j++], fd);
+	ft_putchar_fd('"', fd);
+	while (str[j])
+		ft_putchar_fd(str[j++], fd);
+	ft_putchar_fd('"', fd);
+	ft_putstr_fd("\n", fd);
+}
+
+void	print_export_array(t_msh *msh, int fd)
+{
+	int	i;
+
+	i = -1;
+	if (!msh->export)
+		convert_exp(msh);
+	sort_export_array(msh);
+	while (msh->export[++i])
+	{
+		if (msh->export[i][0] == '_' && msh->export[i][1] == '=')
+			continue ;
+		format_line(fd, msh->export[i]);
+	}
+}

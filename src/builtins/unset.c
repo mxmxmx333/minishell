@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static void	remove_env_node(t_msh *msh, t_env *node)
+void	remove_env_node(t_msh *msh, t_env *node)
 {
 	t_env	*tmp;
 

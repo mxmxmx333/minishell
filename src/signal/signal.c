@@ -39,7 +39,6 @@ void	handle_sigint(int signum)
 	rl_replace_line("", 0);
 	//printf("\n");
 	rl_redisplay();
-
 }
 
 void	handle_sigquit(int signum)
@@ -47,6 +46,7 @@ void	handle_sigquit(int signum)
 	(void)signum;
 	//printf("Quit (core dumped)\n");
 }
+
 void	handle_sigint_heredoc(int signum)
 {
 	int	*status;

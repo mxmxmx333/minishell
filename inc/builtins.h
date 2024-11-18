@@ -22,7 +22,7 @@ int			command_env(t_msh *msh, t_exec *exec, int fd);
 int			command_export(t_msh *msh, t_exec *exec, int fd);
 int			command_unset(t_msh *msh, t_exec *exec, int fd);
 int			command_exit(t_msh *msh, t_exec *exec, int fd);
-int			check_valid(t_msh *msh, char *v_name);
+int			check_valid(char *arg);
 void		sort_export_array(t_msh *msh);
 long long	ft_atoi_custom(const char *nptr);
 int			check_newline(t_exec *exec);
@@ -35,5 +35,9 @@ t_env	*env_node_finder(t_msh *msh, char *node);
 int		args_numb(char **args);
 int	change_directory(t_msh *msh, char *dir);
 void	add_node_env(t_msh *msh, char *v_name, char *v_value);
+void	print_export_array(t_msh *msh, int fd);
+void	create_oldpwd_node(t_msh *msh, char *oldpwd);
+void	create_pwd_node(t_msh *msh, char *pwd);
+void	remove_env_node(t_msh *msh, t_env *node);
 
 #endif

@@ -84,11 +84,10 @@ int	write_history_custom(t_msh *msh, char *filename, char *line)
 /*
 	Reads the line until EOF and joins it together into a one single string.
 */
-static char	*add_history_custom(t_msh *msh, char *filename)
+static char	*add_history_custom(t_msh *msh, char *filename, char *history)
 {
 	int		fd;
 	char	*line;
-	char	*history;
 	char	*temp;
 	char	*path;
 	int		status;
@@ -97,9 +96,6 @@ static char	*add_history_custom(t_msh *msh, char *filename)
 	fd = open(path, O_RDWR | O_CREAT, S_IRWXG | S_IRWXU);
 	if (fd == -1)
 		return (error_complex(msh, FD_ERR, path, EXIT_FAILURE), NULL);
-	history = ft_strdup("");
-	if (!history)
-		return (error_simple(msh, M_ERR, EXIT_FAILURE), NULL);
 	while (1)
 	{
 		line = get_next_line(fd, &status);
@@ -125,7 +121,10 @@ int	load_history(t_msh *msh, char *filename)
 	int		i;
 
 	i = 0;
-	history = add_history_custom(msh, filename);
+	history = ft_strdup("");
+	if (!history)
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+	history = add_history_custom(msh, filename, history);
 	splitted_history = ft_split(history, 3);
 	if (!splitted_history)
 		return (error_simple(msh, M_ERR, EXIT_FAILURE), 0);

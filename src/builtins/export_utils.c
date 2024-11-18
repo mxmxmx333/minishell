@@ -12,20 +12,16 @@
 
 #include "minishell.h"
 
-int	check_valid(t_msh *msh, char *args)
+int	check_valid(char *args)
 {
 	int		i;
 	int		digits;
-	char	*str;
 
-	str = ft_strndup(args, find_v_value(args));
-	if (!str)
-		error_simple(msh, M_ERR, EXIT_FAILURE);
-	i = 0;
+	i = -1;
 	digits = 0;
 	if (args[0] == '=' || ft_isdigit(args[0]))
-		return (dis_export_err("export: ", args, "not a valid identifier"), free(str), 0);
-	while (args[i] && args[i] != '=')
+		return (dis_export_err("export: ", args, "not a valid identifier"), 0);
+	while (args[++i] && args[i] != '=')
 	{
 		if (ft_isalnum(args[i]) || args[i] == '_')
 		{
@@ -33,14 +29,13 @@ int	check_valid(t_msh *msh, char *args)
 				digits++;
 		}
 		else
-			return (dis_export_err("export: ", args, "not a valid identifier"), free(str), 0);
-		i++;
+			return (dis_export_err("export: ", args, "not a valid identifier"),
+				0);
 	}
 	if (digits == (int)ft_strlen(args))
-		return (dis_export_err("export: ", args, "not a valid identifier"), free(str), 0);
-	return (free(str), 1);
+		return (dis_export_err("export: ", args, "not a valid identifier"), 0);
+	return (1);
 }
-
 
 static void	swap_two(char **s1, char **s2)
 {
