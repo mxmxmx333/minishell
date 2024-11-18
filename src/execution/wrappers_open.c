@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrappers_open.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:48:34 by mbonengl          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/11/13 14:24:51 by nicvrlja         ###   ########.fr       */
-=======
-/*   Updated: 2024/11/18 09:20:56 by mbonengl         ###   ########.fr       */
->>>>>>> dev_ma
+/*   Updated: 2024/11/18 13:45:48 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:36:31 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 15:05:35 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:48:09 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ char	*get_next_line(int fd, int *status)
 		return (lstclear(&b_list), *status = 1, NULL);
 	resetlist(&b_list);
 	if (current_line == NULL)
-		*status = 1;
+	{
+		if (status)
+			*status = 1;
+	}
 	return (current_line);
 }

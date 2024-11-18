@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 13:42:44 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:49:53 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 	i = 1;
 	status = 0;
 	g_sig = 0;
-	newfd = wrapper_dup(msh);
+	newfd = dup(STDIN_FILENO);
 	while (1)
 	{
 		get_status(&msh->status);
@@ -115,7 +115,7 @@ void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 		free(line);
 		i++;
 	}
-	wrapper_dup2(msh, newfd, STDIN_FILENO);
+	wrppd_dup2(msh, newfd, STDIN_FILENO);
 	close(newfd);
 }
 

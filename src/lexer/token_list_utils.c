@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:23:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/15 14:36:48 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:47:54 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	destroy_tokens(t_msh *msh)
 		destroy_tok_node(NULL, prev);
 	}
 	msh->tokens = NULL;
-	get_next_line(-1);
+	get_next_line(-1, NULL);
 }
 
 /* 
