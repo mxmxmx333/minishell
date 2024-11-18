@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:42 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 13:26:49 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:06:18 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ t_env	*create_env_node(t_msh *msh, char *env)
 {
 	t_env	*node;
 	int		i;
-	int		tmp;
 
 	node = (t_env *)ft_calloc(sizeof(t_env), 1);
 	if (!node)
@@ -79,14 +78,6 @@ t_env	*create_env_node(t_msh *msh, char *env)
 	node->v_name = ft_strndup(env, i);
 	node->v_value = ft_strdup(env + i + 1);
 	node->next = NULL;
-	if (!ft_strnrealcmp(node->v_name, "SHLVL", 5))
-	{
-		tmp = ft_atoi(node->v_value) + 1;
-		free(node->v_value);
-		node->v_value = ft_itoa(tmp);
-		if (!node->v_value)
-			error_simple(msh, M_ERR, EXIT_FAILURE);
-	}
 	if (!node->v_name || !node->v_value)
 		return (free_env_node(&node),
 			error_simple(msh, M_ERR, EXIT_FAILURE), NULL);
@@ -98,10 +89,12 @@ t_env	*create_env_node(t_msh *msh, char *env)
 */
 void	initialize_environment(t_msh *msh, char **env)
 {
-	int	i;
-
+	int		i;
+	t_env	*node;
+	
 	i = -1;
 	while (env[++i])
 		add_env_node(msh, create_env_node(msh, env[i]));
+	node = msh->env;
 	msh->env_size = i;
 }

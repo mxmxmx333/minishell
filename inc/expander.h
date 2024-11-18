@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 09:40:41 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:16:37 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@
 # define EXPANDER_H
 
 # include "minishell.h"
-
-typedef enum e_expander_mode
-{
-	GEN,
-	DUO,
-	SGL
-}	t_exmode;
 
 /*-----------------------------> Expander utils <-----------------------------*/
 

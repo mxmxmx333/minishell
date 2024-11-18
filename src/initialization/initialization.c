@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:29:49 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/04 15:37:57 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:05:28 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,64 @@ int	*get_status(int *msh_status)
 	if (msh_status)
 		stat = msh_status;
 	return (stat);
+}
+
+static void	create_new_SHLVL(t_msh *msh, t_env *last)
+{
+	t_env	*new;
+	
+	new = (t_env *)ft_calloc(sizeof(t_env), 1);
+	if (!new)
+		error_simple(msh, M_ERR, 1);
+	new->v_name = ft_strdup("SHLVL");
+	if (!new->v_name)
+		return (free(new), error_simple(msh, M_ERR, 1));
+	new->v_value = ft_strdup("0");
+	if (!new->v_value)
+		return (free(new->v_name), free(new), error_simple(msh, M_ERR, 1));
+	last->next = new;
+}
+
+static t_env	*search_shlvl_node(t_msh *msh)
+{
+	t_env	*tmp;
+
+	tmp = msh->env;
+	while (tmp)
+	{
+		if (!ft_strcmp(tmp->v_name, "SHLVL"))
+			return (tmp);
+		tmp = tmp->next;
+	}
+	msh->env_size++;
+	return (NULL);
+}
+
+static void	handle_SHLVL(t_msh *msh)
+{
+	t_env	*tmp;
+	char	*value;
+	int		shlvl;
+
+	tmp = search_shlvl_node(msh);
+	if (tmp)
+	{
+		if (!tmp->v_value)
+		{
+			tmp->v_value = ft_strdup("0");
+			if (!tmp->v_value)
+				error_simple(msh, M_ERR, 1);
+			return ;
+		}
+		shlvl = ft_atoi(tmp->v_value) + 1;
+		value = ft_itoa(shlvl);
+		if (!value)
+			error_simple(msh, M_ERR, 1);
+		free(tmp->v_value);
+		tmp->v_value = value;
+	}
+	else
+		create_new_SHLVL(msh, tmp);
 }
 
 /*
@@ -48,5 +106,6 @@ t_msh	*initialize_minishell(char **env)
 	signal(SIGQUIT, SIG_IGN);
 	load_history(msh, ".msh_history.txt");
 	get_status(&msh->status);
+	handle_SHLVL(msh);
 	return (msh);
 }
