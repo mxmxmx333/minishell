@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 Name 		:= 	minishell
-CFLAGS 		:= 	-fsanitize=address -g -I./inc -I./libft/inc -Wall -Wextra -Werror
+CFLAGS 		:= 	-g -I./inc -I./libft/inc -Wall -Wextra -Werror
 BFLAGS		:= 	-I./bonus/inc
 LDFLAGS		:= 	-L./libft -lft -lreadline
 CC 			:= 	cc

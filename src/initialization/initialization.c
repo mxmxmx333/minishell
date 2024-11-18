@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:29:49 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/18 12:05:28 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:54:46 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ static t_env	*search_shlvl_node(t_msh *msh)
 static void	handle_SHLVL(t_msh *msh)
 {
 	t_env	*tmp;
-	char	*value;
-	int		shlvl;
 
 	tmp = search_shlvl_node(msh);
 	if (tmp)
@@ -68,12 +66,6 @@ static void	handle_SHLVL(t_msh *msh)
 				error_simple(msh, M_ERR, 1);
 			return ;
 		}
-		shlvl = ft_atoi(tmp->v_value) + 1;
-		value = ft_itoa(shlvl);
-		if (!value)
-			error_simple(msh, M_ERR, 1);
-		free(tmp->v_value);
-		tmp->v_value = value;
 	}
 	else
 		create_new_SHLVL(msh, tmp);
