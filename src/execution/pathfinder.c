@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pathfinder.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:55:35 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/06 14:37:39 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:26:49 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	check_f_ok(t_msh *msh, char *path)
 	char	*tmp_path;
 
 	i = -1;
-	while (msh->paths[++i])
+	while (msh->paths && msh->paths[++i])
 	{
 		tmp_path = ft_strjoin_three(msh->paths[i], "/", path);
 		if (access(tmp_path, F_OK) == 0)
@@ -95,9 +95,7 @@ int	pathfinder(t_msh *msh, char *path)
 	i = -1;
 	if (str_is_empty(path))
 		return (error_complex(msh, CMDNF_ERR, path, 127), 0);
-	if (!msh->paths)
-		return(0);
-	while (msh->paths[++i])
+	while (msh->paths && msh->paths[++i])
 	{
 		tmp_path = ft_strjoin_three(msh->paths[i], "/", path);
 		if (!tmp_path)

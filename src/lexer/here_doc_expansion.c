@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 10:03:34 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/15 15:15:22 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:42:46 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*expand_heredoc(t_msh *msh, char *str)
 	char	*var;
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	j = 0;
 	new = (char *)ft_calloc(sizeof(char), get_heredoc_exp_len(msh, str) + 1);

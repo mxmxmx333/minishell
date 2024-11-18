@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:44:58 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/15 11:19:08 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:09:12 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ t_tok	*expand_redirect(t_msh *msh, t_tok *tok)
 	}
 	else
 		cpy_varname(msh, tok, redirect);
-	return (free(redirect), tok);
+	return (tok);
 }

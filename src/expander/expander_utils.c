@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:47:45 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/15 10:31:05 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:35:54 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	ft_itoa_custom(int n, char *array)
 		i--;
 	}
 }
+
 /* 
 	(c == ' ' || c == '\t' || c == '\'' || c == '\"' || c == '$' || \
 		c == '/' || c == '.')
@@ -51,7 +52,7 @@ static void	ft_itoa_custom(int n, char *array)
 int	is_varname_break(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\'' || c == '\"' || c == '$' || \
-			 c == '/' || c == '.' || c == '\n' || c == ':');
+			c == '/' || c == '.' || c == '\n' || c == ':');
 }
 
 int	ft_strnrealcmp(char *s1, char *s2, int n)

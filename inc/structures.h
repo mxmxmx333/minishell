@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/13 14:36:18 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:10:23 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ typedef struct s_minishell
 	char	*cur_cmd_line;	//current input
 	t_tok	*tokens;		//tokens list
 	int		status;			//exit code
-	char	status_char[4];    //exit_code_printable
+	char	status_char[4];	//exit_code_printable
 	int		last_pid;		//last process id
 	t_hdoc	*here_doc;		//here document list
 }	t_msh;

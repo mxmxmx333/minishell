@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:34:46 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/14 12:10:11 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:42:34 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_tok	*new_token(t_tok *current, t_msh *msh, char *content, int type)
 		return (clear_tok_list(current), error_simple(msh, M_ERR, 1), NULL);
 	new = ft_calloc(1, sizeof(t_tok));
 	if (!new)
-		return (free(content), clear_tok_list(current), 
+		return (free(content), clear_tok_list(current), \
 				error_simple(msh, M_ERR, 1), NULL);
 	new->content = content;
 	new->type = type;

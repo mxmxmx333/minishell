@@ -6,12 +6,11 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:37:30 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/14 17:07:25 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:41:25 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 char	*move_breakpoint(t_tok *current, char *breakpoint)
 {

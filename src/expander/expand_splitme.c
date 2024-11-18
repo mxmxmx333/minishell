@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:42:47 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 10:23:52 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:35:07 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 void	add_trimmed_var(char *exp, char *v_value)
 {
-	char *str;
+	char	*str;
 
 	str = v_value;
 	while (*exp)

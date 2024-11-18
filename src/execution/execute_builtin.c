@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:55:49 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/15 15:50:01 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:31:58 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	open_close(t_msh *msh, char *file)
 	wrpped_close_builtin(msh, fd);
 }
 
-static int	get_fd_output(t_msh *msh, t_tok *redirections, int current, int pipe)
+static int	get_fd_out(t_msh *msh, t_tok *redirections, int current, int pipe)
 {
 	if (current != 1 && current != pipe)
 		wrpped_close_builtin(msh, current);
@@ -35,7 +35,7 @@ static int	redi_status(t_msh *msh, t_tok *redirections, int *fd, int pipefd)
 	while (redirections)
 	{
 		if (redirections->type != HERE_DOC && (redirections->splitfile
-											|| redirections->lonely))
+				|| redirections->lonely))
 		{
 			msh->status = 1;
 			dis_func_err("", redirections->file, "ambiguous redirect");
@@ -44,7 +44,7 @@ static int	redi_status(t_msh *msh, t_tok *redirections, int *fd, int pipefd)
 		if (redirections->type == REDI_IN || redirections->type == HERE_DOC)
 			open_close(msh, redirections->file);
 		else
-			*fd = get_fd_output(msh, redirections, *fd, pipefd);
+			*fd = get_fd_out(msh, redirections, *fd, pipefd);
 		redirections = redirections->next;
 		if (msh->status)
 			return (1);
@@ -57,7 +57,7 @@ void	execute_builtin(t_msh *msh, t_exec *exec)
 	t_tok	*redirections;
 	int		fd;
 	int		pipefd;
-	
+
 	fd = 1;
 	redirections = exec->redirections;
 	if (exec->next)

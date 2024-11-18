@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:55:52 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/14 16:38:17 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:37:27 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static t_tok	*expand_vars(t_msh *msh, t_tok **old, t_tok *replace)
 	t_tok	*head;
 	t_tok	*current;
 
-	head = new_token(*old, msh, ft_strdup(variable_finder_value(msh, replace->content)), WORD);
+	head = new_token(*old, msh, ft_strdup(variable_finder_value
+				(msh, replace->content)), WORD);
 	current = head;
 	current->expander = true;
 	current->splitfile = replace->splitfile;
@@ -47,7 +48,8 @@ static t_tok	*expand_vars(t_msh *msh, t_tok **old, t_tok *replace)
 	{
 		split_expanded_variable(current, replace->splitfile);
 		if (!current->next)
-			return (clear_tok_list(head), clear_tok_list(*old), error_simple(msh, M_ERR, 1), NULL);
+			return (clear_tok_list(head), clear_tok_list(*old)
+				, error_simple(msh, M_ERR, 1), NULL);
 		current = current->next;
 	}
 	if (current)
@@ -76,7 +78,8 @@ static t_tok	*expand_and_split_vars(t_msh *msh, t_tok *tok)
 		{
 			tmp->content = expand(msh, tmp->content);
 			if (!tmp->content)
-				return (clear_tok_list(splitlist), error_simple(msh, M_ERR, 1), NULL);
+				return (clear_tok_list(splitlist)
+					, error_simple(msh, M_ERR, 1), NULL);
 		}
 		tmp = tmp->next;
 	}
@@ -87,7 +90,7 @@ t_tok	*neo_expand(t_msh *msh, t_tok *tok)
 {
 	t_tok	*current;
 	bool	lonely;
- 
+
 	if (tok->type == WORD)
 	{
 		if (!ft_strchr(tok->content, '\'') && !ft_strchr(tok->content, '\"'))
@@ -98,7 +101,8 @@ t_tok	*neo_expand(t_msh *msh, t_tok *tok)
 		current->lonely = lonely;
 		return (insert_new_tokens(&msh->tokens, current, tok));
 	}
-	if (tok->type == REDI_AOUT || tok->type == REDI_TOUT || tok->type == REDI_IN)
+	if (tok->type == REDI_AOUT || tok->type == REDI_TOUT
+		|| tok->type == REDI_IN)
 	{
 		if (!ft_strchr(tok->file, '\'') && !ft_strchr(tok->file, '\"'))
 			tok->lonely = true;

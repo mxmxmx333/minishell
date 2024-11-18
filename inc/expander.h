@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:56:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/14 13:21:13 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:40:41 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,13 @@ void	split_next_var(t_msh *msh, t_tok *clear, t_tok *current);
 /*------------------------------> join Tokens <-------------------------------*/
 
 t_tok	*manage_join(t_msh *msh, t_tok *head);
+void	trim_first_spaces(t_tok *current);
+void	trim_spaces_in_the_end(t_tok *joined);
 
 /*-------------------------> Expander main function <-------------------------*/
 
 char	*expand(t_msh *msh, char *str);
 t_tok	*neo_expand(t_msh *msh, t_tok *tok);
+int		need_join(t_tok *current);
 
 #endif
