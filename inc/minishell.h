@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 16:44:44 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:16:04 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define MINISHELL_H
 # define DISABLE_HISTORY 0
 # include "libraries.h"
+
+extern sig_atomic_t g_sig;
 
 /*-----------------------------> Initialization <-----------------------------*/
 
