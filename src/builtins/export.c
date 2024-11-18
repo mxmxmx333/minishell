@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/14 14:32:36 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:25:45 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,40 +88,46 @@ static int	alloc_copy(t_msh *msh, char *arg, char **v_name, char **v_value)
 	return (1);
 }
 
-static int	export_variable(t_msh *msh, char *arg, char *v_name, char *v_value)
+static int	export_variable(t_msh *msh, char *arg, t_exec *exec, int *error)
 {
 	char	*str;
+	char	*v_name;
+	char	*v_value;
 
 	str = ft_strndup(arg, find_v_value(arg));
 	if (!str)
 		error_simple(msh, M_ERR, EXIT_FAILURE);
-	if (!check_valid(arg))
-		return (free(str), 1);
+	if (!check_valid(str))
+	{
+		free(str);
+		*error = 1;
+		return (1);
+	}
+	if (exec->next || exec->prev)
+		return (0);
 	alloc_copy(msh, arg, &v_name, &v_value);
 	if (search_and_replace(msh, v_name, v_value) == 1)
 		free(v_name);
 	else
 		add_node_env(msh, v_name, v_value);
-	return (free(str), 0);
+	return (0);
 }
 
 int	command_export(t_msh *msh, t_exec *exec, int fd)
 {
 	int		i;
-	char	*v_name;
-	char	*v_value;
+	int		error;
 	int		status;
 
 	status = 0;
+	error = 0;
 	i = 0;
-	v_name = NULL;
-	v_value = NULL;
-	if ((exec->next && exec->next->builtin) || exec->prev)
-		return (0);
 	if (!exec->args[1])
 		print_export_array(msh, fd);
 	while (exec->args[++i])
-		status = export_variable(msh, exec->args[i], v_name, v_value);
+		status = export_variable(msh, exec->args[i], exec, &error);
 	msh->env_size = env_size(msh);
+	if (error)
+		status = error;
 	return (status);
 }
