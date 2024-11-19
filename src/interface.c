@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 12:04:14 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:45:59 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	minishell_interaction(t_msh *msh)
 void	minishell_interface(t_msh *msh)
 {
 	while (1)
-	{	
+	{
 		msh->cur_cmd_line = readline(msh->prompt);
 		if (msh->cur_cmd_line == NULL)
 			break ;

@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:31:05 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/18 18:16:29 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:26:34 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	exit_with_code(t_msh *msh, t_exec *exec, int *status)
 	long long	ex_code;
 
 	ex_code = ft_atoi_custom(exec->args[1]);
-	if (ex_code == -300 || ex_code == -301)
+	if (ex_code == -4233342 || ex_code == -4233343)
 	{
 		error_numeric(msh, exec);
 		*status = 2;

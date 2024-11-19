@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:21:29 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/05 15:56:11 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:26:21 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static int	checkoverflow(long long res, int num, int sign)
 	if (sign == 1)
 	{
 		if (res > (LLONG_MAX - num) / 10)
-			return (-300);
+			return (-4233342);
 	}
 	else
 	{
 		if (-res < (LLONG_MIN + num) / 10)
-			return (-301);
+			return (-4233343);
 	}
 	return (1);
 }

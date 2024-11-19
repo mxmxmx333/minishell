@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/19 10:59:32 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:45:38 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,12 @@ int	command_cd(t_msh *msh, t_exec *exec, int fd)
 		return (0);
 	if (args_numb(exec->args) > 2)
 		return (dis_func_err(msh, "cd", "", "too many arguments"), 1);
-	if (!exec->args[1])
+	if (!exec->args[1] || (ft_strlen(exec->args[1]) == 1
+			&& exec->args[1][0] == '~'))
 	{
 		if (!change_directory(msh, msh->home_dir))
 			return (1);
+		update_variables(msh);
 		return (free(msh->cur_dir), free(msh->prompt), create_prompt(msh), 0);
 	}
 	if (ft_strlen(exec->args[1]) == 1 && exec->args[1][0] == '-')

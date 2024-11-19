@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:53 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 10:40:09 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:10:59 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ char	*expand(t_msh *msh, char *str)
 	}
 	exp = (char *)ft_calloc(sizeof(char), len + 1);
 	if (!exp)
-		return (NULL);
+		return (free(str), NULL);
 	put_expanded(msh, str, exp);
 	free(str);
 	return (exp);

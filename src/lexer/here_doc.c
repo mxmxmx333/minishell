@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 12:02:59 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:51:20 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*trim_quotes(t_msh *msh, char *str, t_tok *curr)
 	j = 0;
 	new = (char *)ft_calloc(sizeof(char), ft_strlen(str) + 1);
 	if (!new)
-		return (NULL);
+		return (free(str), error_simple(msh, M_ERR, EXIT_FAILURE), NULL);
 	while (str[i])
 	{
 		if (str[i] == '\'' || str[i] == '\"')
@@ -77,6 +77,8 @@ char	*trim_quotes(t_msh *msh, char *str, t_tok *curr)
 	}
 	if (!curr->expander)
 		new = expand(msh, new);
+	if (!new)
+		return (free(str), error_simple(msh, M_ERR, EXIT_FAILURE), NULL);
 	return (new);
 }
 
