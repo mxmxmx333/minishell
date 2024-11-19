@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:29:49 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/19 11:32:44 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:58:08 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,34 @@ static t_env	*search_shlvl_node(t_msh *msh)
 	{
 		if (!ft_strcmp(tmp->v_name, "SHLVL"))
 			return (tmp);
+		if (!tmp->next)
+			break ;
 		tmp = tmp->next;
 	}
 	msh->env_size++;
-	return (NULL);
+	return (tmp);
 }
 
 static void	handle_shlvl(t_msh *msh)
 {
 	t_env	*tmp;
+	t_env	*next;
 
 	tmp = search_shlvl_node(msh);
 	if (tmp)
 	{
-		if (!tmp->v_value)
+		next = tmp->next;
+		if (!ft_strcmp(tmp->v_name, "SHLVL") && !tmp->v_value)
 		{
 			tmp->v_value = ft_strdup("0");
 			if (!tmp->v_value)
 				error_simple(msh, M_ERR, 1);
+			tmp->next = next;
 			return ;
 		}
+		else if (ft_strcmp(tmp->v_name, "SHLVL"))
+			create_new_shlvl(msh, tmp);
 	}
-	else
-		create_new_shlvl(msh, tmp);
 }
 
 /*
