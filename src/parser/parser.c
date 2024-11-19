@@ -6,26 +6,11 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:23 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/12 11:05:19 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:09:25 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-//FIXME: DO i really need this function?
-void	destroy_token_part(t_msh *msh, t_tok *tmp)
-{
-	t_tok	*delete;
-
-	if (!tmp)
-		return (destroy_tokens(msh));
-	while (msh->tokens != tmp)
-	{
-		delete = msh->tokens;
-		msh->tokens = msh->tokens->next;
-		destroy_tok_node(NULL, delete);
-	}
-}
 
 void	remove_lonelys(t_msh *msh)
 {

@@ -75,7 +75,6 @@ SRC 		:=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/console/get_hostname.c \
 				$(SRC_DIR)/console/history.c \
 				$(SRC_DIR)/signal/signal.c \
-				$(SRC_DIR)/printing/printing.c \
 				$(SRC_DIR)/builtins/echo.c \
 				$(SRC_DIR)/builtins/cd.c \
 				$(SRC_DIR)/builtins/pwd.c \
