@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 14:20:52 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 11:40:16 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:40:17 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	check_syntax_error_quotes(t_msh *msh)
 			if (!*temp)
 			{
 				if (*err == '\"')
-					return (display_tok_err(msh, SYN_QUO_ERR, "\"\n"), 2);
+					return (display_tok_err(msh, SYN_QUO_ERR, "`\""), 2);
 				if (*err == '\'')
-					return (display_tok_err(msh, SYN_QUO_ERR, "\'\n"), 2);
+					return (display_tok_err(msh, SYN_QUO_ERR, "`\'"), 2);
 			}
 		}
 		temp++;
