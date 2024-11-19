@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:14:57 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/19 13:45:38 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:02:21 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static int	update_variables(t_msh *msh)
 
 	pwd = NULL;
 	newpwd = getcwd(NULL, 0);
+	if (!newpwd)
+		return (perror("getcwd"), 1);
 	env = env_node_finder(msh, "PWD");
 	if (env && env->v_value)
 	{
