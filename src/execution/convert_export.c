@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:11:55 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 17:12:58 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:13:17 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	write_one_node(t_msh *msh, t_env *current, int i, char **env)
 	int		shlvl;
 	char	*lvl;
 
-	if (!strcmp(current->v_name, "SHLVL"))
+	if (!ft_strcmp(current->v_name, "SHLVL"))
 	{
 		shlvl = ft_atoi(current->v_value) + 1;
 		lvl = ft_itoa(shlvl);

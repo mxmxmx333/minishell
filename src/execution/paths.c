@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:37 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/10/31 19:13:46 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:13:31 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	extract_paths(t_msh *msh)
 	char	**paths;
 
 	tmp = msh->env;
-	while (strncmp(tmp->v_name, "PATH", 4))
+	while (ft_strncmp(tmp->v_name, "PATH", 4))
 	{
 		if (tmp->next == NULL)
 			return ;
