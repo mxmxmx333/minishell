@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 11:25:39 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:04:14 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,11 @@ static void	minishell_interaction(t_msh *msh)
 	destroy_here_doc(msh);
 }
 
-void	handle_piped_input(t_msh *msh)
-{
-	char	*line;
-	char	*tmp;
-
-	line = get_next_line(STDIN_FILENO);
-	tmp = msh->cur_cmd_line;
-	msh->cur_cmd_line = ft_strtrim(line, "\n");
-	free(line);
-}
-
 void	minishell_interface(t_msh *msh)
 {
 	while (1)
-	{
-		if (isatty(STDIN_FILENO))
-			msh->cur_cmd_line = readline(msh->prompt);
-		else
-			handle_piped_input(msh);
+	{	
+		msh->cur_cmd_line = readline(msh->prompt);
 		if (msh->cur_cmd_line == NULL)
 			break ;
 		else if (msh->cur_cmd_line && !str_is_empty(msh->cur_cmd_line))

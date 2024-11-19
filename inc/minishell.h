@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:48:25 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 10:52:07 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:02:32 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define DISABLE_HISTORY 1
 # include "libraries.h"
 
-extern sig_atomic_t g_sig;
+extern sig_atomic_t	g_sig;
 
 /*-----------------------------> Initialization <-----------------------------*/
 

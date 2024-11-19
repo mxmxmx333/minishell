@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:29:49 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/19 10:43:18 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:32:44 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*get_status(int *msh_status)
 	return (stat);
 }
 
-static void	create_new_SHLVL(t_msh *msh, t_env *last)
+static void	create_new_shlvl(t_msh *msh, t_env *last)
 {
 	t_env	*new;
 
@@ -68,7 +68,7 @@ static void	handle_shlvl(t_msh *msh)
 		}
 	}
 	else
-		create_new_SHLVL(msh, tmp);
+		create_new_shlvl(msh, tmp);
 }
 
 /*

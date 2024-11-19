@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 11:28:30 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:02:59 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-sig_atomic_t g_sig = 0;
+sig_atomic_t	g_sig = 0;
 
 void	destroy_here_doc(t_msh *msh)
 {
@@ -84,48 +84,47 @@ void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 {
 	char		*line;
 	static int	i = 0;
-	int			newfd;
 
-	i++;
-	g_sig = 0;
-	newfd = dup(STDIN_FILENO);
 	while (1)
 	{
-		signal(SIGINT, handle_sigint_heredoc);
+		i++;
 		line = readline("> ");
+		if (!tok->expander)
+		{
+			if (line)
+				line = expand_heredoc(msh, line);
+		}
 		if (g_sig == 1)
 			break ;
-		if (!line)
-		{
-			here_doc_error(i, limiter);
-			break ;
-		}
-		if (!tok->expander)
-			line = expand_heredoc(msh, line);
-		if (!ft_strcmp(line, limiter))
+		if (!line || !ft_strcmp(line, limiter))
 		{
 			if (line)
 				free(line);
+			else
+				here_doc_error(i, limiter);
 			break ;
 		}
 		write(fd, line, ft_strlen(line));
 		free(line);
-		i++;
 	}
-	wrppd_dup2(msh, newfd, STDIN_FILENO);
-	close(newfd);
 }
 
 void	gen_here_doc(t_msh *msh, t_tok *tok)
 {
 	int		fd;
-	char 	*limiter;
+	char	*limiter;
+	int		newfd;
 
+	g_sig = 0;
+	signal(SIGINT, handle_sigint_heredoc);
+	newfd = wrapper_dup(STDIN_FILENO);
 	limiter = gen_filename_heredoc(msh, tok);
 	fd = open(tok->file, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (fd == -1)
 		return (error_simple(msh, FD_ERR, 1));
 	write_here_doc(msh, tok, limiter, fd);
+	wrppd_dup2(msh, newfd, STDIN_FILENO);
+	close(newfd);
 	free(limiter);
 	add_here_doc(msh, tok->file);
 	close(fd);

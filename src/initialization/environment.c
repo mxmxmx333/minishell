@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   environment.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:56:42 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 13:42:37 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:33:04 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	initialize_environment(t_msh *msh, char **env)
 {
 	int		i;
 	t_env	*node;
-	
+
 	i = -1;
 	while (env[++i])
 		add_env_node(msh, create_env_node(msh, env[i]));

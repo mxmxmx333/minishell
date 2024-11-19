@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:22:19 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 17:22:19 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:37:05 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 # include <signal.h>
 # include <sys/wait.h>
 # include <stdbool.h>
-# include <termios.h>
 
 /*----------------------------> custom libraries <----------------------------*/
 # include "minishell.h"
@@ -47,10 +46,8 @@
 # include "errors.h"
 # include "memory.h"
 # include "execution.h"
-# include "colors.h"
 # include "sig.h"
 # include "parser.h"
-# include "printing.h"
 # include "builtins.h"
 
 #endif
