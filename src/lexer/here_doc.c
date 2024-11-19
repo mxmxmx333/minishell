@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 17:00:36 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:51:28 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+sig_atomic_t g_sig = 0;
 
 void	destroy_here_doc(t_msh *msh)
 {
@@ -81,19 +83,20 @@ char	*trim_quotes(t_msh *msh, char *str, t_tok *curr)
 void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 {
 	char		*line;
-	static int	i;
+	static int	i = 0;
 	int			newfd;
 
-	i = 1;
+	i++;
+	g_sig = 0;
 	newfd = dup(STDIN_FILENO);
 	while (1)
 	{
-		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, handle_sigint_heredoc);
-		line = get_next_line(STDIN_FILENO);
+		line = readline("> ");
+		if (g_sig == 1)
+			break ;
 		if (!line)
 		{
-			ft_putchar_fd('\n', STDIN_FILENO);
 			here_doc_error(i, limiter);
 			break ;
 		}

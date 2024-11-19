@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:27:56 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 14:58:47 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:43:52 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	error_complex_tok(t_msh *msh, char *msg, char *param, int exit_code)
 	destroy_minishell(msh);
 	close(STDIN_FILENO);
 	close(STDOUT_FILENO);
-	//ft_putstr_fd(RESET, STDERR_FILENO);
 	exit(exit_code);
 }
 
