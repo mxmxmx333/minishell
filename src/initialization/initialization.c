@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:29:49 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/18 16:54:46 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:43:18 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	*get_status(int *msh_status)
 static void	create_new_SHLVL(t_msh *msh, t_env *last)
 {
 	t_env	*new;
-	
+
 	new = (t_env *)ft_calloc(sizeof(t_env), 1);
 	if (!new)
 		error_simple(msh, M_ERR, 1);
@@ -52,7 +52,7 @@ static t_env	*search_shlvl_node(t_msh *msh)
 	return (NULL);
 }
 
-static void	handle_SHLVL(t_msh *msh)
+static void	handle_shlvl(t_msh *msh)
 {
 	t_env	*tmp;
 
@@ -98,6 +98,6 @@ t_msh	*initialize_minishell(char **env)
 	signal(SIGQUIT, SIG_IGN);
 	load_history(msh, ".msh_history.txt");
 	get_status(&msh->status);
-	handle_SHLVL(msh);
+	handle_shlvl(msh);
 	return (msh);
 }

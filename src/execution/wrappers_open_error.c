@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:19:15 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 09:27:41 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:46:37 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 void	dis_func_err_open(char *cmdname, char *arg, char *errmsg)
 {
-	//ft_putstr_fd(RED, STDERR_FILENO);
-	//ft_putstr_fd(BOLD, STDERR_FILENO);
 	ft_putstr_fd("msh: ", STDERR_FILENO);
 	ft_putstr_fd(cmdname, STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putstr_fd(errmsg, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
-	//ft_putstr_fd(RESET, STDERR_FILENO);
 }
 
 void	open_error(t_msh *msh, int errorcode, char *path)

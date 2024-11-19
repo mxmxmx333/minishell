@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interface.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 16:46:50 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:23:38 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	minishell_interaction(t_msh *msh)
 	if (msh->status)
 		return (destroy_tokens(msh), destroy_here_doc(msh));
 	parse_tokens(msh);
-	print_tokens(msh);
 	execution(msh);
 	destroy_here_doc(msh);
 }
