@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:11:55 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 09:15:50 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:12:58 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,35 @@ static char	**allocate_memory(t_msh *msh, t_env **tmp)
 	return (env);
 }
 
+void	write_one_node(t_msh *msh, t_env *current, int i, char **env)
+{
+	int		shlvl;
+	char	*lvl;
+
+	if (!strcmp(current->v_name, "SHLVL"))
+	{
+		shlvl = ft_atoi(current->v_value) + 1;
+		lvl = ft_itoa(shlvl);
+		if (!lvl)
+			error_simple(msh, M_ERR, EXIT_FAILURE);
+		env[i] = ft_strjoin_three(current->v_name, "=", lvl);
+		free(lvl);
+		if (!env[i])
+			return (free(lvl), error_simple(msh, M_ERR, EXIT_FAILURE));
+		return ;
+	}
+	if (!current->v_value)
+	{
+		env[i] = ft_strdup(current->v_name);
+		if (!env[i])
+			error_simple(msh, M_ERR, EXIT_FAILURE);
+		return ;
+	}
+	env[i] = ft_strjoin_three(current->v_name, "=", current->v_value);
+	if (!env[i])
+		error_simple(msh, M_ERR, EXIT_FAILURE);
+}
+
 /*	
 	converts the environment list for export environment
 */
@@ -49,18 +78,7 @@ void	convert_exp(t_msh *msh)
 	i = 0;
 	while (tmp)
 	{
-		if (!tmp->v_value)
-		{
-			env[i] = ft_strdup(tmp->v_name);
-			if (!env[i])
-				error_simple(msh, M_ERR, EXIT_FAILURE);
-			tmp = tmp->next;
-			i++;
-			continue ;
-		}
-		env[i] = ft_strjoin_three(tmp->v_name, "=", tmp->v_value);
-		if (!env[i])
-			error_simple(msh, M_ERR, EXIT_FAILURE);
+		write_one_node(msh, tmp, i, env);
 		tmp = tmp->next;
 		i++;
 	}

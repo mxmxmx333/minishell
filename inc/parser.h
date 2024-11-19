@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:24:08 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/05 17:36:41 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:09:30 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	destroy_word_and_rest(t_msh *msh);
 
 /*---------------------------------> Parser <---------------------------------*/
 void	parse_tokens(t_msh *msh);
-void	destroy_token_part(t_msh *msh, t_tok *tmp);
 
 /*--------------------------> Creating Execu-Table <--------------------------*/
 void	add_exeutable(t_msh *msh);
