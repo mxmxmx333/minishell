@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:59:52 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/18 16:40:25 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:34:15 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@ static int	search_and_replace(t_msh *msh, char *v_name, char *v_value)
 	temp = msh->env;
 	while (temp)
 	{
-		if (ft_strnrealcmp(temp->v_name, v_name, ft_strlen(v_name)) == 0)
+		if (!ft_strnrealcmp(temp->v_name, v_name, ft_strlen(v_name)))
 		{
+			if (!v_value)
+				return (0);
 			free(temp->v_value);
 			temp->v_value = v_value;
-			return (1);
+			return (0);
 		}
 		temp = temp->next;
 	}
-	return (-1);
+	return (1);
 }
 
 /*
@@ -101,7 +103,7 @@ static int	export_variable(t_msh *msh, char *arg, t_exec *exec, int *error)
 	if (exec->next || exec->prev)
 		return (0);
 	alloc_copy(msh, arg, &v_name, &v_value);
-	if (search_and_replace(msh, v_name, v_value) == 1)
+	if (!search_and_replace(msh, v_name, v_value))
 		free(v_name);
 	else
 		add_node_env(msh, v_name, v_value);
