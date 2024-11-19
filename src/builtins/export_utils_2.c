@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 17:02:12 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/14 14:16:15 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:07:59 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	args_numb(char **args)
 {
 	int	i;
 
+	if (!args || !*args)
+		return (0);
 	i = 0;
 	while (args[i])
 		i++;

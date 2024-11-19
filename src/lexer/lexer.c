@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:58:43 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/11 16:54:12 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:27:39 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,10 @@ int	lexer(t_msh *msh)
 	if (msh->tokens)
 		if (refining_tokens(msh))
 			return (2);
+	if (msh->status == 42)
+	{
+		msh->status = 130;
+		return (msh->status);
+	}
 	return (0);
 }
