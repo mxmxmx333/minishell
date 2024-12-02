@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 10:03:34 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 09:42:46 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:52:07 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	get_heredoc_exp_len(t_msh *msh, char *str)
 	return (len);
 }
 
-char	*expand_heredoc(t_msh *msh, char *str)
+static char	*expand_heredoc_work(t_msh *msh, char *str)
 {
 	char	*new;
 	char	*var;
@@ -46,7 +46,7 @@ char	*expand_heredoc(t_msh *msh, char *str)
 
 	i = 0;
 	j = 0;
-	new = (char *)ft_calloc(sizeof(char), get_heredoc_exp_len(msh, str) + 1);
+	new = (char *)ft_calloc(sizeof(char), get_heredoc_exp_len(msh, str) + 2);
 	if (!new)
 		return (error_simple(msh, M_ERR, 1), NULL);
 	while (str[i])
@@ -64,4 +64,19 @@ char	*expand_heredoc(t_msh *msh, char *str)
 			new[j++] = str[i++];
 	}
 	return (free(str), new);
+}
+
+char	*expand_heredoc(t_msh *msh, char *str)
+{
+	char	*expanded;
+	char	*expanded_nl;
+
+	expanded = expand_heredoc_work(msh, str);
+	if (!expanded)
+		return (error_simple(msh, M_ERR, 1), NULL);
+	expanded_nl = ft_strjoin(expanded, "\n");
+	free(expanded);
+	if (!expanded_nl)
+		return (error_simple(msh, M_ERR, 1), NULL);
+	return (expanded_nl);
 }

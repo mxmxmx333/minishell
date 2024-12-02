@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:18:10 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 11:30:11 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:53:24 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ char	*gen_filename_heredoc(t_msh *msh, t_tok *tok)
 	tok->file = ft_strjoin("/tmp/here_doc_", filename);
 	free(filename);
 	if (!tok->file || !limiter)
+		return (error_simple(msh, M_ERR, 1), NULL);
+	tmp = limiter;
+	limiter = ft_strjoin(limiter, "\n");
+	free(tmp);
+	if (!limiter)
 		return (error_simple(msh, M_ERR, 1), NULL);
 	tmp = limiter;
 	limiter = trim_quotes(msh, limiter, tok);
