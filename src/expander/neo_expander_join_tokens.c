@@ -6,11 +6,22 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 19:38:22 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 09:42:07 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:42:35 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	handle_empty_var(t_tok *current)
+{
+	while (current->next)
+	{
+		if (str_is_empty(current->next->content) && current->next->expander)
+			destroy_tok_node(current, current->next);
+		if (current->next)
+			current = current->next;
+	}
+}
 
 static t_tok	*join_one_token(t_tok *current, t_tok *next)
 {
@@ -63,6 +74,7 @@ t_tok	*manage_join(t_msh *msh, t_tok *head)
 {
 	t_tok	*joined;
 
+	handle_empty_var(head);
 	joined = join_tokens(head);
 	if (!joined)
 		return (clear_tok_list(head), error_simple(msh, M_ERR, 1), NULL);
