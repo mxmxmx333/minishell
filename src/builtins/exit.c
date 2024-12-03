@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:31:05 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/19 12:26:34 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:24:02 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	command_exit(t_msh *msh, t_exec *exec, int fd)
 	int		status;
 
 	(void)fd;
-	status = 0;
+	status = msh->last_exit;
 	if (exec->args[1] && !check_digits(exec->args[1]))
 		error_numeric(msh, exec);
 	if (args_numb(exec->args) > 2)
@@ -110,7 +110,7 @@ int	command_exit(t_msh *msh, t_exec *exec, int fd)
 			return (status);
 		printf("exit\n");
 		destroy_minishell(msh);
-		exit(0);
+		exit(status);
 	}
 	else
 		exit_with_code(msh, exec, &status);

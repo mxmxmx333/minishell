@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:25:41 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 10:08:48 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:12:35 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ typedef struct s_minishell
 	t_tok	*tokens;		//tokens list
 	int		status;			//exit code
 	char	status_char[4];	//exit_code_printable
+	int		last_exit;		// last_exit_code
 	int		last_pid;		//last process id
 	t_hdoc	*here_doc;		//here document list
 }	t_msh;

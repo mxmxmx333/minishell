@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 14:44:43 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:17:36 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	wait_for_child(t_msh *msh)
 */
 void	finished_execution(t_msh *msh)
 {
+	msh->last_exit = msh->status;
 	destroy_exp(msh);
 	destroy_paths(msh);
 	destroy_executable(msh);

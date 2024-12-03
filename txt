@@ -1,1 +1,0 @@
-/bin/echo hi >./outfiles/outfile01 | /bin/echo bye
