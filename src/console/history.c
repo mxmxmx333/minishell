@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:03:28 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/18 16:47:42 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:49:53 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static char	*add_history_custom(t_msh *msh, char *filename, char *history)
 	path = create_filename(msh, filename);
 	fd = open(path, O_RDWR | O_CREAT, S_IRWXG | S_IRWXU);
 	if (fd == -1)
-		return (error_complex(msh, FD_ERR, path, EXIT_FAILURE), NULL);
+		return (free(path), free(history), error_complex(msh, FD_ERR, "", EXIT_FAILURE), NULL);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -126,7 +126,7 @@ int	load_history(t_msh *msh, char *filename)
 	history = add_history_custom(msh, filename, history);
 	splitted_history = ft_split(history, 3);
 	if (!splitted_history)
-		return (error_simple(msh, M_ERR, EXIT_FAILURE), 0);
+		return (free(history), error_simple(msh, M_ERR, EXIT_FAILURE), 0);
 	ft_free((void *)&history);
 	while (splitted_history[i])
 	{

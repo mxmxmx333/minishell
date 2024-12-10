@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:19:06 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/14 17:40:27 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:08:48 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ void	remove_env_node(t_msh *msh, t_env *node)
 			tmp->next = node->next;
 	}
 	free(node->v_name);
+	node->v_name = NULL;
 	free(node->v_value);
+	node->v_value = NULL;
 	free(node);
+	node = NULL;
 }
 
 static void	rem_dest_conv_sort(t_msh *msh, t_env *env)

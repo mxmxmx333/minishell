@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:36:33 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 13:45:59 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:28:48 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ static void	history_update(t_msh *msh)
 
 static void	minishell_interaction(t_msh *msh)
 {
+	msh->last_exit = msh->status;
 	msh->status = lexer(msh);
+	signal(SIGINT, handle_sigint);
 	if (msh->status)
 		return (destroy_tokens(msh), destroy_here_doc(msh));
 	parse_tokens(msh);

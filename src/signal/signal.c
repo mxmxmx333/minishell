@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:28:12 by nicvrlja          #+#    #+#             */
-/*   Updated: 2024/11/19 13:57:39 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:01:32 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	handle_sigint(int signum)
 void	handle_sigquit(int signum)
 {
 	(void)signum;
-	printf("Quit (core dumped)\n");
+	ft_putstr_fd("Quit (core dumped)\n", 2);
 }
 
 void	handle_sigint_heredoc(int signum)

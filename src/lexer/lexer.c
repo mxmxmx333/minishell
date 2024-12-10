@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:58:43 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/19 11:27:39 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:28:41 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 int	lexer(t_msh *msh)
 {
 	char	*position;
+	int		res;
 
 	if (check_syntax_error_quotes(msh))
 		return (2);
@@ -33,8 +34,13 @@ int	lexer(t_msh *msh)
 			break ;
 	}
 	if (msh->tokens)
-		if (refining_tokens(msh))
+	{
+		res = refining_tokens(msh);
+		if (res == 2)
 			return (2);
+		else if (res == 3)
+			return (130);
+	}
 	if (msh->status == 42)
 	{
 		msh->status = 130;

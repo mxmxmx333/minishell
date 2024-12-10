@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:55:24 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/12/03 12:17:36 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:09:44 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	wait_for_child(t_msh *msh)
 	}
 	if (WIFEXITED(*status))
 		*status = WEXITSTATUS(*status);
+	while (wait(NULL) > 0)
+		;
 }
 
 /* 
@@ -35,7 +37,6 @@ static void	wait_for_child(t_msh *msh)
 */
 void	finished_execution(t_msh *msh)
 {
-	msh->last_exit = msh->status;
 	destroy_exp(msh);
 	destroy_paths(msh);
 	destroy_executable(msh);
@@ -62,24 +63,21 @@ int	execution(t_msh *msh)
 	current = msh->exec_table;
 	prepare_execution(msh);
 	set_all_builtins(current);
-	while (current)
+	if (!current->next && current->builtin)
+		execute_builtin(msh, current);
+	else
 	{
-		create_out_pipe(msh, current);
-		if (current->builtin)
+		while (current)
 		{
-			close_previous_pipe(msh, current);
-			execute_builtin(msh, current);
-		}
-		else
+			create_out_pipe(msh, current);
 			execute_command(msh, current);
-		if (!current->next)
-			break ;
-		current = current->next;
+			if (!current->next)
+				break ;
+			current = current->next;
+		}
 	}
-	if (!current->builtin)
+	if (current->prev || !current->builtin)
 		wait_for_child(msh);
-	while (wait(NULL) > 0)
-		;
 	finished_execution(msh);
 	return (0);
 }

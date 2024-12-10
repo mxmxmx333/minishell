@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:54:05 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/18 09:34:40 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:41:30 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ void	implement_command(t_msh *msh, t_exec *current)
 
 	if (!current->args || !current->args[0])
 		return ;
+	if (current->builtin)
+	{
+		msh->status = current->builtin(msh, current, 1);
+		exit_success(msh);
+	}
 	pathfinder(msh, current->args[0]);
 	env = env_find_(msh, msh->env, "_");
 	tmp = env->v_value;

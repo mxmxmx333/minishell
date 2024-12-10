@@ -6,7 +6,7 @@
 /*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 10:03:34 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/12/02 15:00:25 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:41:01 by mbonengl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ static char	*expand_heredoc_work(t_msh *msh, char *str)
 	return (free(str), new);
 }
 
-char	*expand_heredoc(t_msh *msh, char *str)
+char	*expand_heredoc(t_msh *msh, char *str, t_tok *tok)
 {
 	char	*expanded;
 	char	*expanded_nl;
 
+	if (tok->expander)
+		return (append_nl(msh, str));
 	expanded = expand_heredoc_work(msh, str);
 	if (!expanded)
 		return (error_simple(msh, M_ERR, 1), NULL);

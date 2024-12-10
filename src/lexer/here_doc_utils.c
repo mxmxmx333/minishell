@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:18:10 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/12/02 14:53:24 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:22:18 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,19 @@ char	*gen_filename_heredoc(t_msh *msh, t_tok *tok)
 	limiter = trim_quotes(msh, limiter, tok);
 	free(tmp);
 	return (limiter);
+}
+
+char	*append_nl(t_msh *msh, char *line)
+{
+	char	*tmp;
+
+	if (!line)
+		return (NULL);
+	tmp = ft_calloc(ft_strlen(line) + 2, sizeof(char));
+	if (!tmp)
+		return (error_simple(msh, M_ERR, 1), NULL);
+	ft_strlcpy(tmp, line, ft_strlen(line) + 2);
+	tmp[ft_strlen(line)] = '\n';
+	free(line);
+	return (tmp);
 }

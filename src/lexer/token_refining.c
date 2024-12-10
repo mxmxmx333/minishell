@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_refining.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 12:01:27 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/11/28 19:07:31 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:28:32 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	refining_tokens(t_msh *msh)
 		if (ref_redir(msh, tok) || ref_pipe(msh, tok))
 			return (2);
 		tok = neo_expand(msh, tok);
+		if (!tok)
+			return (3);
 		tok = tok->next;
 	}
 	return (0);

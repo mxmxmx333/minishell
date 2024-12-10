@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbonengl <mbonengl@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/12/02 14:52:26 by mbonengl         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:30:00 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*trim_quotes(t_msh *msh, char *str, t_tok *curr)
 	return (new);
 }
 
-void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
+int	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 {
 	char		*line;
 	static int	i = 0;
@@ -91,13 +91,10 @@ void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 	{
 		i++;
 		line = readline("> ");
-		if (!tok->expander)
-		{
-			if (line)
-				line = expand_heredoc(msh, line);
-		}
+		if (line)
+			line = expand_heredoc(msh, line, tok);
 		if (g_sig == 1)
-			break ;
+			return (0);
 		if (!line || !ft_strcmp(line, limiter))
 		{
 			if (line)
@@ -109,9 +106,10 @@ void	write_here_doc(t_msh *msh, t_tok *tok, char *limiter, int fd)
 		write(fd, line, ft_strlen(line));
 		free(line);
 	}
+	return (1);
 }
 
-void	gen_here_doc(t_msh *msh, t_tok *tok)
+int	gen_here_doc(t_msh *msh, t_tok *tok)
 {
 	int		fd;
 	char	*limiter;
@@ -123,12 +121,16 @@ void	gen_here_doc(t_msh *msh, t_tok *tok)
 	limiter = gen_filename_heredoc(msh, tok);
 	fd = open(tok->file, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (fd == -1)
-		return (error_simple(msh, FD_ERR, 1));
-	write_here_doc(msh, tok, limiter, fd);
+		return (free(limiter), close(newfd), error_simple(msh, FD_ERR, 1), 0);
+	if(!write_here_doc(msh, tok, limiter, fd))
+	{
+		wrppd_dup2(msh, newfd, STDIN_FILENO);
+		return (close(fd), free(limiter), close(newfd), 0);
+	}
 	wrppd_dup2(msh, newfd, STDIN_FILENO);
 	close(newfd);
 	free(limiter);
 	add_here_doc(msh, tok->file);
 	close(fd);
-	signal(SIGINT, handle_sigint);
+	return (1);
 }
