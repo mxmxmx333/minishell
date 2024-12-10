@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:44:38 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/12/10 16:30:00 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:46:45 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	gen_here_doc(t_msh *msh, t_tok *tok)
 	fd = open(tok->file, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (fd == -1)
 		return (free(limiter), close(newfd), error_simple(msh, FD_ERR, 1), 0);
-	if(!write_here_doc(msh, tok, limiter, fd))
+	if (!write_here_doc(msh, tok, limiter, fd))
 	{
 		wrppd_dup2(msh, newfd, STDIN_FILENO);
 		return (close(fd), free(limiter), close(newfd), 0);

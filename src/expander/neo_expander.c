@@ -6,7 +6,7 @@
 /*   By: nicvrlja <nicvrlja@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:55:52 by mbonengl          #+#    #+#             */
-/*   Updated: 2024/12/10 16:16:33 by nicvrlja         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:49:20 by nicvrlja         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,7 @@ t_tok	*neo_expand(t_msh *msh, t_tok *tok)
 			tok->lonely = false;
 	}
 	if (tok->type == HERE_DOC)
-	{
-		if(!gen_here_doc(msh, tok))
+		if (!gen_here_doc(msh, tok))
 			return (NULL);
-	}
 	return (tok);
 }
