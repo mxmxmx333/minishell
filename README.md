@@ -128,6 +128,7 @@ $ echo $?
 │  └─ minishell.h
 ├─ src/
 │  ├─ main.c
+|  
 │  ├─ lexer/
 │  ├─ parser/
 │  ├─ exec/        # pipes, redirs, execve
