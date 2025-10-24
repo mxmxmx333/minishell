@@ -124,20 +124,22 @@ $ echo $?
 
 ```
 .
-├─ includes/
-│  └─ minishell.h
+├─ inc/                # Header
+├─ libft/              # Eigene Lib (Headers + Sources)
 ├─ src/
-│  ├─ main.c
-|  
-│  ├─ lexer/
-│  ├─ parser/
-│  ├─ exec/        # pipes, redirs, execve
-│  ├─ builtins/    # echo, cd, …
-│  ├─ env/
-│  └─ signals/
-├─ libft/
+│  ├─ builtins/        # echo, cd, …
+│  ├─ console/         # Prompt, History
+│  ├─ errors/          # Fehlermeldungen
+│  ├─ execution/       # execve, Pipes, Redirs
+│  ├─ expander/        # $VAR, $?
+│  ├─ initialization/  # Environment, Start
+│  ├─ lexer/           # Tokenizer, Here-Doc
+│  ├─ memory/          # Cleanup
+│  └─ parser/          # AST/Executable
 ├─ Makefile
-└─ README.md
+├─ README.md
+└─ readline.supp       # (Valgrind-Suppressions, falls genutzt)
+
 ```
 
 ---
@@ -263,11 +265,22 @@ HELLO
 
 ```
 .
-├─ includes/
+├─ inc/                # Header
+├─ libft/              # Eigene Lib (Headers + Sources)
 ├─ src/
-│  ├─ lexer/ parser/ exec/ builtins/ env/ signals/
-├─ libft/
-└─ Makefile
+│  ├─ builtins/        # echo, cd, …
+│  ├─ console/         # Prompt, History
+│  ├─ errors/          # Fehlermeldungen
+│  ├─ execution/       # execve, Pipes, Redirs
+│  ├─ expander/        # $VAR, $?
+│  ├─ initialization/  # Environment, Start
+│  ├─ lexer/           # Tokenizer, Here-Doc
+│  ├─ memory/          # Cleanup
+│  └─ parser/          # AST/Executable
+├─ Makefile
+├─ README.md
+└─ readline.supp       # (Valgrind-Suppressions, falls genutzt)
+
 ```
 
 ## Nicht implementiert
