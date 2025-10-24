@@ -147,7 +147,7 @@ $ echo $?
 ## Not implemented (by design)
 
 * Job control (`fg`, `bg`, `jobs`), `&&`, `||`, `;`, subshells `( … )`, backticks `` `cmd` ``.
-* Globbing (`*`, `?`) unless done as bonus.
+* Globbing (`*`, `?`).
 * Process substitution, brace expansion, advanced bash features.
 
 ---

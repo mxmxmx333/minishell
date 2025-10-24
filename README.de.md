@@ -105,7 +105,7 @@ HELLO
 
 ## Nicht implementiert
 
-Job‑Control, `&&`/`||`/`;`, Subshells, Backticks, Globbing (falls kein Bonus), etc.
+Job‑Control, `&&`/`||`/`;`, Subshells, Backticks, Globbing, etc.
 
 ## Troubleshooting
 
