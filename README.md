@@ -174,6 +174,6 @@ echo 'echo hi | wc -c' | ./minishell
 
 ## Authors
 
-* *Team <your-team-name>* — 42 Vienna
-
-> This README targets the 42 evaluation: concise and reproducible. Keep it in sync with your code (builtins, bonus, Make targets).
+* *Team <maxikola>* — 42 Vienna
+  Max Bonengl
+  Nicola Cvrlja

@@ -115,4 +115,6 @@ Job‑Control, `&&`/`||`/`;`, Subshells, Backticks, Globbing (falls kein Bonus),
 
 ## Autoren
 
-* *Team <euer‑Teamname>* — 42 Vienna
+* *Team <maxikola>* — 42 Vienna
+  Max Bonengl
+  Nikola Cvrlja
