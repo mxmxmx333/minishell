@@ -14,8 +14,7 @@
 
 /* 
 	this function will control the lexer
-	1. 	runs syntax checks. If there is an error, the program will exit.
-		later on, error handling will be implemented.
+	1. 	runs syntax checks. If there is an error it returns.
 	2. 	iterates over the command line and put the tokens into the list
 	3. 	destroys the command line
 */
