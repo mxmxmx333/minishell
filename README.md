@@ -176,4 +176,4 @@ echo 'echo hi | wc -c' | ./minishell
 
 * *Team <maxikola>* — 42 Vienna
   Max Bonengl
-  Nicola Cvrlja
+  Nikola Cvrlja
